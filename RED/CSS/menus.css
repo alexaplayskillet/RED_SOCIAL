@@ -1,0 +1,92 @@
+.menulist{
+  list-style-type: none;
+  padding: 5px;
+  border-radius: 50px;
+  margin-top: 0;
+  width: 100%;
+}
+
+.menulist li {
+  display: block;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 50px;
+  list-style: none;
+  border: 2px solid #f0f0f3;
+  min-width: 100px;
+  width: 80%;
+  color: black;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/*cuestiones del menu sin activar*/
+.menu {
+  background-color: #686869;
+  margin: 5px;
+  border: 5px #585858;
+  position: fixed;
+  border-radius: 30px;
+  top: 90px;
+  left: 0;
+  width: 20%;
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 1000;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease, background-color 0.5s ease, color 0.5s ease;
+  min-width: 225px;
+}
+
+.menu2 {
+  background-color: #686869; /* verde brillante */
+  color: white;
+  margin: 5px;
+  border: 2px solid #585858;
+  position: fixed;
+  border-radius: 30px;
+  top: 90px;
+  left: 75%;
+  width: 20%;
+  opacity: 0;
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 1000;
+  transform: translateX(100%);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    background-color 0.5s ease,
+    color 0.5s ease;
+  min-width: 200px;
+
+  /* No interactuable cuando esta oculto */
+  pointer-events: none;
+}
+
+/*cuestiones del menu activo*/
+
+/*animacion del menu*/
+.menu.active {
+  transform: translateX(0);
+}
+
+.menu2.active {
+  opacity: 1; /* usa valores entre 0 y 1, no % */
+  transform: translateX(0);
+
+  /* Reactivable al mostrarse */
+  pointer-events: auto;
+}
+
+.body.menu-active{
+    margin-left: clamp(235px, 22%, 300px);
+    transition: margin-left 0.5s ease;
+}
+
+.body:not(.menu-active){
+    margin-left: 0;
+    transition: margin-left 0.5s ease;
+}

@@ -1,0 +1,46 @@
+/*etiquetas completas*/
+body{
+  background-color: aliceblue;
+}
+
+/*barra principal*/
+.title{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: aqua;
+}
+
+/*contenedor principal*/
+.body{
+  display: flex;
+  margin-top: 90px;
+  margin-left: 0;
+  transition: margin-left 0.5s ease;
+}
+
+/*contenido del centro*/
+.ctr{
+  width: 80%;
+  min-width: 500px;
+  text-align: center;
+  border: 2px solid red;
+}
+
+.right{
+  display: flexbox;
+  visibility: visible;
+}
+
+.movil{
+  visibility: hidden;
+}
+
+
+

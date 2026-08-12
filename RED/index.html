@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<HTML>
+    <HEAD>
+        <title>Pagina Principal</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Aqui iran las ligas de elementos externos como iconos y tipografias-->
+        <!--aqui van las ligas externas-->
+            <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+			<link rel="preconnect" href="https://fonts.googleapis.com">
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+            
+        <!--Aqui iran las ligas de los elementos de css-->
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/distribucion.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/movil.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/menus.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
+    </HEAD>
+    <BODY>
+        <!--Acomodamos los menus antes que el contenido que siempre se vera-->
+        <DIV CLASS="menu">
+            <ul class="menulist">
+                <li>Inicio</li>
+                <li>Buscar</li>
+                <li>Videos</li>
+                <li>Mensajes</li>
+                <li>Notificaciones</li>
+                <li>Guardados</li>
+                <li>Solicitudes de amistad</li>
+                <!--opciones disponibles solo en modo de movil-->
+                <li class="movil">Noticias</li>
+                
+            </ul>
+        </DIV>
+        
+        <DIV CLASS="menu2">
+            <ul class="menulist">
+                <li>Perfil</li>
+                <li>Configuracion</li>
+            </ul>
+            AQUI VAN LAS CONFIGURACIONES DEL PERFIL
+        </DIV>
+
+        <!--colocar la barra principal-->
+        <DIV CLASS="title">
+            <button id="toggleMenu" class="hamburger" accesskey="M">☰</button>
+            <h1>PRUEBA</h1>
+            <button class="profile">HOLAA</button>
+        </DIV>
+        <DIV CLASS="body">
+            <DIV CLASS="ctr">
+                <DIV>
+                    AQUI ESTA FIJO LA OPCION PARA PUBLICAR
+                </DIV>
+                
+                <DIV>
+                    AQUI VAN FIJAS LAS HISTORIAS
+                </DIV>
+                <DIV CLASS="post">
+                    <DIV CLASS="userinfo">
+                        <img src="./resources/foto.jpg" alt="no cargo" class="foto">
+                        <DIV class="username">
+                            <p>USUARIO</p>
+                            <p>FECHA</p>
+                        </DIV>
+                    </DIV>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+                    <!--FORMULARIO PARA DEJAR LIKE, COMENTAR, GUARDAR Y ETC ETC-->
+                    <DIV CLASS="invisible">
+                        <FORM>
+                            <INPUT TYPE="text" PLACEHOLDER="Escribe tu comentario" CLASS="inputs">
+                        </FORM>
+                    </DIV>
+                </DIV>
+            </DIV>
+            <DIV CLASS="right">
+                <DIV>
+                    AQUI VAN LAS SUGERENCIAS Y NOTICIAS RELEVANTES
+                </DIV>
+            </DIV>
+        </DIV>
+    </BODY>
+    <FOOTER>
+        <!--colocar los scripts-->
+        <SCRIPT SRC="./JS/buttons.js"></SCRIPT>
+    </FOOTER>
+</HTML>
