@@ -43,12 +43,6 @@ body{
 
 
 }
-/*contenedor principal*/
-.body{
-  display: flex;
-  margin-top: calc(var(--header-height) + (2 * var(--gap)));
-  transition: margin-left 0.5s ease;
-}
 
 /*contenido del centro*/
 .ctr{
