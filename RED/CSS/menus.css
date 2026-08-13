@@ -124,3 +124,9 @@
   transition: margin-left 0.5s ease, width 0.5s ease, transform 0.5s ease;
 }
 
+.body:not(.menu-active){
+  margin-left: 0;
+  transition: margin-left 0.5s ease;
+}
+
+
