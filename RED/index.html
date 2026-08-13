@@ -19,12 +19,25 @@
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/movil.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/menus.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
     </HEAD>
     <BODY>
+        <!--Elementos para el fondo-->
+      <div class="fondo_cos">
+        <div class="gradi1"></div>
+        <div class="gradi2"></div>
+        <div class="gradi3"></div>
+        <div class="circulo1"></div>
+        <div class="circulo2"></div>
+        <div class="circulo3"></div>
+        <canvas id="particulas"></canvas>
+    </div>
+    <div class="figuras"></div>  
+
         <!--Acomodamos los menus antes que el contenido que siempre se vera-->
         <DIV CLASS="menu">
             <ul class="menulist">
-                <li>Inicio</li>
+                <li class="active">Inicio</li>
                 <li>Buscar</li>
                 <li>Videos</li>
                 <li>Mensajes</li>
@@ -88,5 +101,6 @@
     <FOOTER>
         <!--colocar los scripts-->
         <SCRIPT SRC="./JS/buttons.js"></SCRIPT>
+        <SCRIPT SRC="./JS/particulas.js"></SCRIPT>   
     </FOOTER>
 </HTML>

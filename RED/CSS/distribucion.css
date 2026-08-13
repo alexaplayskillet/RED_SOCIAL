@@ -1,27 +1,52 @@
+/* =====  header y menu tienen las mismas medidas ===== */
+:root{
+  --menu-width: 230px;
+  --gap: 20px;
+  --header-height: 72px;
+  --radius: 24px;
+}
+ 
+
+
 /*etiquetas completas*/
 body{
   background-color: aliceblue;
 }
 
-/*barra principal*/
+/*barra principal--Sticky header*/
 .title{
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: space-around;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: RED;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    position: fixed;
+    top: 0;
+    left: var(--menu-width);
+    width: calc(100% - var(--menu-width));
+    height: var(--header-height);
+    padding: 0 28px;
+    background: rgba(18, 12, 34, 0.55);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: #fff;
+    z-index: 900;
 }
 
+/*para que este oculto el de hamburugesa*/
+
+.hamburger{
+  display: none;
+  background: none; 
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+
+
+}
 /*contenedor principal*/
 .body{
   display: flex;
-  margin-top: 90px;
-  margin-left: 0;
+  margin-top: calc(var(--header-height) + (2 * var(--gap)));
   transition: margin-left 0.5s ease;
 }
 

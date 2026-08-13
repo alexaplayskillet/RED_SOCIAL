@@ -1,27 +1,46 @@
+
 @media (max-width: 768px){
+ 
     .right{
         display: none;
     }
-
+ 
     .ctr{
         width: 100% !important;
     }
-
+ 
     body{
         overflow-x: hidden;
         align-items: center;
         width: 100%;
     }
-
+ 
     .body.menu-active{
         margin-left: 0 !important;
     }
-
+ 
     .body{
         margin-left: 0;
     }
-
+ 
     .movil{
         visibility: visible;
     }
+ 
+    /* ===== menu hamburguesa solo movil ===== */
+    .menu{
+        transform: translateX(-100%);
+    }
+ 
+    .menu.active{
+        transform: translateX(0);
+    }
+ 
+    .hamburger{
+        display: block;
+    }
+    .title{
+        left: var(--gap);
+    }
 }
+ 
