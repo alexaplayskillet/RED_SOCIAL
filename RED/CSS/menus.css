@@ -22,7 +22,8 @@
 
 /*cuestiones del menu sin activar*/
 .menu {
-  background-color: #686869;
+  /*background-color: #686869;*/
+  background-color: green;
   margin: 5px;
   border: 5px #585858;
   position: fixed;
