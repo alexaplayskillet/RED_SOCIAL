@@ -96,7 +96,11 @@
   min-width: 200px;
   pointer-events: none;
 }
- 
+
+.menu.active {
+  transform: translateX(0);
+}
+
 .menu2.active {
   opacity: 1;
   transform: translateX(0);
