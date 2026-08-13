@@ -115,12 +115,12 @@
     margin-left: var(--menu-width);
 
     padding: 24px 28px;
+
+    transition: margin-left 0.5s ease;
 }
 
 .body.menu-active{
+  margin-left: var(--menu-width);
   transition: margin-left 0.5s ease, width 0.5s ease, transform 0.5s ease;
 }
-.body:not(.menu-active){
-  margin-left: 0;
-  transition: margin-left 0.5s ease;
-}
+
