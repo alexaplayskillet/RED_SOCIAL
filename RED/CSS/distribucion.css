@@ -15,6 +15,7 @@ body{
   left: 0;
   width: 100%;
   background-color: aqua;
+  z-index: 1000;
 }
 
 /*contenedor principal*/
@@ -27,7 +28,7 @@ body{
 
 /*contenido del centro*/
 .ctr{
-  width: 80%;
+  /*width: 80%;*/
   min-width: 500px;
   text-align: center;
   border: 2px solid red;
@@ -38,9 +39,44 @@ body{
   visibility: visible;
 }
 
+/*estilos que definen el grosor del contenido*/
+.w80{
+  width: 80%;
+}
+
+.w100{
+  width: 100%;
+}
+
 .movil{
   visibility: hidden;
 }
 
+/*cuestiones de la configuracion*/
+.dual{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: flex-start;
+}
 
+.Cpost{
+  margin: 15px 30px;
+  padding: 10px;
+  border: 1px #aaaaac;
+  border-radius: 20px;
+  box-shadow: 10px 5px 5px #aaaaac;
+  background-color: white;
+  color: black;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  /*min-width: 30%;*/
+  min-width: 400px;
+  width: 40%;
+  align-items: center;
+  justify-content: space-between;
+  justify-items: center;
+  text-align: center;
+  position: relative;
+  height: auto;
 
+}
