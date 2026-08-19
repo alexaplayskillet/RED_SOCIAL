@@ -1,0 +1,160 @@
+<HTML>
+    <HEAD>
+        <title>Configuración del perfil</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Aqui iran las ligas de elementos externos como iconos y tipografias-->
+        <!--aqui van las ligas externas-->
+            <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+			<link rel="preconnect" href="https://fonts.googleapis.com">
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+            
+        <!--Aqui iran las ligas de los elementos de css-->
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/distribucion.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/movil.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/menus.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/login.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/validaciones.css">
+        
+        
+    </HEAD>
+    <BODY>
+        <!--Acomodamos los menus antes que el contenido que siempre se vera-->
+        <DIV CLASS="menu">
+            <ul class="menulist">
+                <li>Inicio</li>
+                <li>Buscar</li>
+                <li>Videos</li>
+                <li>Mensajes</li>
+                <li>Notificaciones</li>
+                <li>Guardados</li>
+                <li>Solicitudes de amistad</li>
+                <!--opciones disponibles solo en modo de movil-->
+                <li class="movil">Noticias</li>
+                
+            </ul>
+        </DIV>
+        
+        <DIV CLASS="menu2">
+            <ul class="menulist">
+                <li>Perfil</li>
+                <li>Configuracion</li>
+            </ul>
+            AQUI VAN LAS CONFIGURACIONES DEL PERFIL
+        </DIV>
+
+        <!--colocar la barra principal-->
+        <DIV CLASS="title">
+            <button id="toggleMenu" class="hamburger" accesskey="M">☰</button>
+            <h1>PRUEBA</h1>
+            <button class="profile">Configuracion</button>
+        </DIV>
+        <DIV CLASS="body">
+            <DIV CLASS="ctr w100">
+                <DIV CLASS="dual">
+                    <DIV CLASS="Cpost">
+                        <div CLASS="username">
+                            <H3>USERNAME</H3>
+                            <label>@User</label>
+                        </div>
+                    </DIV>
+                    <DIV CLASS="Cpost">
+                        <form>
+                            <label for="foto">Subir fotografía</label><br/>
+                            <input type="file" class="inp" id="foto" name="foto">
+                        </form>
+                    </DIV>
+                    <DIV CLASS="Cpost">
+                        <form class="form-identidad">
+                            <label for="usuario">Usuario</label>
+                            <input type="text" name="usuario" id="usuario" placeholder="Usuario" class="inp">
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor ingresa el usuario</small>
+                                <small class="error">El usuario debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
+                            </DIV>
+                            <label for="@user">Usuario</label>
+                            <input type="text" name="@user" id="@user" placeholder="@Usuario" class="inp">
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor ingresa el tag de usuario</small>
+                                <small class="error">El tag de usuario debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
+                            </DIV>
+                            <BR>
+                            <DIV CLASS="enviar2">
+                                <input type="submit" class="btn" tabindex="0" value="Confirmar">
+                            </DIV>
+                        </form>
+                    </DIV>
+                    <DIV CLASS="Cpost">
+                        <!--<DIV CLASS="formulario">-->
+                        <H2>Configuración de datos</H2>
+                        <FORM class="form-configuracion">
+                            <INPUT TYPE="TEXT" NAME="nombre" CLASS="inp" PLACEHOLDER="Nombre completo" REQUIRED tabindex="0">
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor ingresa nombre</small>
+                                <small class="error">El usuario debe tener al menos 4 caracteres, NO DEBE incluir numeros y guiones bajos</small>
+                            </DIV>
+                            <LABEL><SMALL>Fecha de nacimiento</SMALL></LABEL>
+                            <INPUT TYPE="date" NAME="Fecha" CLASS="inp" PLACEHOLDER="Fecha de nacimiento" REQUIRED tabindex="0">
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor ingresa la fecha de nacimiento</small>
+                                <small class="error">El usuario tiene que ser de mayor a 12 años</small>
+                            </DIV>
+                            <LABEL><SMALL>Género</SMALL></LABEL><BR>
+                            <DIV CLASS="enviar2">
+                                <INPUT TYPE="radio" NAME="gender" VALUE="male" ID="male" REQUIRED>
+                                <LABEL for="male"><small>Hombre</small></LABEL><BR>
+                                <INPUT TYPE="radio" NAME="gender" VALUE="female" ID="female" REQUIRED>
+                                <LABEL for="female"><small>Mujer</small></LABEL><BR>
+                                <INPUT TYPE="radio" NAME="gender" VALUE="other" ID="other" REQUIRED>
+                                <LABEL for="other"><small>Otro</small></LABEL><BR>
+                            </DIV>
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor elija una de las opciones</small>
+                            </DIV>
+                            <INPUT TYPE="email" NAME="email" CLASS="inp" placeholder="Correo" id="Correo" REQUIRED tabindex="0">
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor ingresa correo</small>
+                                <small class="error">El correo debe tener al menos 4 caracteres antes del @, puede incluir numeros y guiones bajos</small>
+                            </DIV>
+                            <BR>
+                            <INPUT TYPE="password" NAME="password" CLASS="inp" PLACEHOLDER="Contraseña" REQUIRED tabindex="0">
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor ingresa password</small>
+                                <small class="error">El password debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
+                            </DIV>
+                            <BR>
+                            <INPUT TYPE="password" NAME="password2" CLASS="inp" PLACEHOLDER="Confirmar Contraseña" REQUIRED tabindex="0">
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor ingresa password</small>
+                                <small class="error">El password debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
+                                <small class="notsame">Las contraseñas no coinciden</small>
+                            </DIV>
+                            <DIV CLASS="enviar2">
+                                <INPUT TYPE="submit" CLASS="btn" tabindex="0" VALUE="Enviar">
+                            </DIV>
+                        </FORM>
+                    </DIV>
+
+                    <!--</DIV>-->
+                    
+                </DIV>
+            </DIV>
+            <!--
+            <DIV CLASS="right">
+                <DIV>
+                    AQUI VAN LAS SUGERENCIAS Y NOTICIAS RELEVANTES
+                </DIV>
+            </DIV>-->
+        </DIV>
+    </BODY>
+    <FOOTER>
+        <!--colocar los scripts-->
+        <SCRIPT SRC="./JS/buttons.js"></SCRIPT>
+        <SCRIPT src="./JS/Confvalidate.js"></SCRIPT>
+    </FOOTER>
+</HTML>

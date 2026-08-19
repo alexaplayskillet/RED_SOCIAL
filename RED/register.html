@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registro de usuario</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Aqui iran las ligas de elementos externos como iconos y tipografias-->
+        <!--aqui van las ligas externas-->
+            <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+			<link rel="preconnect" href="https://fonts.googleapis.com">
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+            
+        <!--Aqui iran las ligas de los elementos de css-->
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/distribucion.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/movil.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/menus.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/login.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/validaciones.css">
+    
+        </head>
+    <body>
+        <DIV class="log">
+            <div class="formulario">
+                <div class="cabecera">
+                    <h1>Registro</h1>
+                </div>
+                <form action="login.html">
+                <label for="usuario"><small>Usuario</small></label>
+                <input type="text" id="usuario" name="usuario" Placeholder="John Doe" class="inp">
+                <DIV CLASS="validations">
+                    <small class="pls">Por favor ingresa usuario</small>
+                    <small class="error">El usuario debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
+                </DIV>
+                <label for="nombre"><small>Nombre</small></label>
+                <input type="text" id="nombre" Name="Nombre" Class="inp" placeholder="Nombre completo" Required tabindex="0">
+                <DIV CLASS="validations">
+                    <small class="pls">Por favor ingresa nombre</small>
+                    <small class="error">El nombre debe tener al menos 4 caracteres, NO DEBE incluir numeros y guiones bajos</small>
+                </DIV>
+                <label><small>Fecha de nacimiento</small></label>
+                <input type="date" Name="fecha" id="fecha" Class="inp" placeholder="Fecha de nacimiento" tabindex="0" required>
+                <DIV CLASS="validations">
+                    <small class="pls">Por favor ingresa la fecha de nacimiento</small>
+                    <small class="error">El usuario tiene que ser de mayor a 12 años</small>
+                </DIV>
+                <label for="foto"><small>Fotografia (opcional)</small></label>
+                <input type="file" Name="foto" Id="foto" Class="inp" text="fotografía" tabindex="0">
+                <br/>
+                <label for="gender"><small>Género</small></label><br>
+                <INPUT TYPE="radio" NAME="gender" VALUE="male" ID="male" REQUIRED>
+                <LABEL for="male"><small>Hombre</small></LABEL><BR/>
+                <INPUT TYPE="radio" NAME="gender" VALUE="female" ID="female" REQUIRED>
+                <LABEL for="female"><small>Mujer</small></LABEL><BR/>
+                <INPUT TYPE="radio" NAME="gender" VALUE="other" ID="other" REQUIRED>
+                <LABEL for="other"><small>Otro</small></LABEL><BR/>
+                <DIV CLASS="validations">
+                    <small class="pls">Por favor elija una de las opciones</small>
+                </DIV>
+                <label for="email"><small>Correo</small></label>
+                <INPUT TYPE="email" NAME="email" ID="email" CLASS="inp" placeholder="Correo" REQUIRED tabindex="0">
+                <DIV CLASS="validations">
+                    <small class="pls">Por favor ingresa correo</small>
+                    <small class="error">El correo debe tener al menos 4 caracteres incluyendo el @, puede incluir numeros y guiones bajos</small>
+                </DIV>
+
+                <Label for="password"><small>Contraseña</small></Label>
+                <INPUT TYPE="password" id="password" CLASS="inp" PLACEHOLDER="Password" REQUIRED tabindex="0">
+                <DIV CLASS="validations">
+                    <small class="pls">Por favor ingresa password</small>
+                    <small class="error">La contraseña debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
+                </DIV>
+                <label for="password2"><small>Confirmar contraseña</small></label>
+                <INPUT TYPE="password" NAME="password2" ID="password2" CLASS="inp" PLACEHOLDER="Confirmar Contraseña" REQUIRED tabindex="0">
+                <DIV CLASS="validations">
+                    <small class="pls">Por favor ingresa password</small>
+                    <small class="error">El password debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
+                    <small class="notsame">Las contraseñas no coinciden</small>
+                </DIV>
+
+                <DIV CLASS="enviar">
+                    <INPUT TYPE="submit" CLASS="btn" tabindex="0" VALUE="Enviar">
+                </DIV>
+            </form>
+            </div>
+            
+        </DIV>
+
+    </body>
+    <footer>
+        <!--añadir ligas externas-->
+       <SCRIPT SRC="./JS/Regvalidate.js"></SCRIPT>
+
+    </footer>
+</html>

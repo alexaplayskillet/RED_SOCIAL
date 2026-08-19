@@ -1,0 +1,29 @@
+.validations{
+    display: block;
+}
+
+.validations .pls, .validations .error{
+    display: none;
+}
+
+.incorrecto{
+    border: 5px solid red;
+   
+}
+
+.correcto{
+    border: 5px solid green;
+    
+}
+
+.notsame{
+    display: none;
+}
+
+.invisible{
+  display: none
+}
+
+.post.active .invisible{
+  display: block;
+}

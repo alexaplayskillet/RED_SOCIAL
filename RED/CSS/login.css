@@ -1,0 +1,138 @@
+:root {
+  --dark-mode-width: 100px;
+  --dark-mode-height: 48px;
+
+  /*tamaño de la fuente*/
+  --font-size: 1em;
+
+  /*tipo de letra*/
+  --font-family: "Poppins", sans-serif;
+}
+
+body{
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+  /*es el fondo de la pantalla*/
+.log{
+    background-color: #009951;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+    position: relative;
+    transition: color 0.5s ease, background-color 0.5s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/*
+.auto{
+    height: auto;
+}
+*/
+
+.allscreen{
+    height: 100vh;
+}
+
+.cabecera{
+    display: flex;
+    justify-content: space-between;
+}
+
+.formulario{
+    align-items: center;
+    z-index: 1000;
+    border-radius: 50px;
+    background-color: white;
+    width: 45%;
+    top: 50%;
+    left: 50%;
+    box-shadow: #aaaaac;
+    padding: 20px;
+    margin: 20px;
+    box-sizing: content-box;
+    transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+.enviar{
+    text-align: right;
+    align-items: right;
+}
+.enviar2{
+    text-align: left;
+    align-items: left;
+}
+
+.btn{
+    border-radius: 200px;
+    margin: 5px;
+    padding: 20px;
+    font-size: 1em;
+    background-color: #9C9C9C;
+}
+
+.formulario input{
+    z-index: 1001;
+    margin-bottom: 0.9em;
+}
+
+.inp {
+  flex: 1;
+  width: 90%;
+  background-color: #c5c4c4;
+  border: none;
+  
+  padding: 15px;
+  border-radius: 20px;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.indexneg{
+    z-index: -1;
+}
+
+.log.active{
+    background-color: #006D0D;
+}
+
+.log.active .formulario{
+    background-color: #565865;
+    color: white;;
+}
+
+.log.active .DARK-MODE .CIRCLE {
+  transform: translateX(140%);
+  background-color: #2A2A2C;
+}
+
+.DARK-MODE .CIRCLE .mun {
+  transform: translateY(-120%);
+}
+
+.log.active .CIRCLE .sun {
+  transform: translateY(120%);
+}
+
+.log.active .CIRCLE .mun {
+  transform: translateX(0);
+  color: white;
+}
+
+.log.active a{
+    color: white;
+}
+
+.log.active .UNFILLED_CIRCLE_OUT, .log.active .UNFILLED_CIRCLE_OUT_FIXED{
+    border: 30px solid #FFAB0F;
+}
+
+.log.active .UNFILLED_CIRCLE_IN, .log.active .UNFILLED_CIRCLE_IN_FIXED{
+    border: 30px solid #E67402;
+}
