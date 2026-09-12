@@ -14,7 +14,7 @@ body{
 }
 
 
-/* barra principal: ocupa todo el ancho porque el menu esta oculto por defecto */
+
 .title{
     display: flex;
     align-items: center;
@@ -48,7 +48,7 @@ body{
     color: #00e5ff;
 }
 .hamburger{
-  display: block; /* siempre visible, no solo en movil */
+  display: block; 
   background: none;
   border: none;
   font-size: 24px;
@@ -96,7 +96,7 @@ body{
     cursor: pointer;
 }
 
-/* contenedor principal: sin margen fijo, el menu no reserva espacio por defecto */
+
 .body{
   display: flex;
   gap: var(--gap);
@@ -106,7 +106,7 @@ body{
   transition: margin-left 0.5s ease;
 }
 
-/* cuando el sidebar esta abierto, empuja el contenido */
+
 .body.menu-active{
   margin-left: clamp(235px, 22%, 300px);
 }
@@ -140,7 +140,7 @@ body{
   visibility: hidden;
 }
 
-/* ===== tuyo de ale, sin tocar ===== */
+
 .dual{
   display: flex;
   flex-wrap: wrap;

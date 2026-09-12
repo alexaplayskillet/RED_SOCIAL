@@ -2,10 +2,10 @@
   --dark-mode-width: 100px;
   --dark-mode-height: 48px;
 
-  /*tamaño de la fuente*/
+  
   --font-size: 1em;
 
-  /*tipo de letra*/
+  
   --font-family: "Poppins", sans-serif;
 }
 
@@ -17,7 +17,7 @@ body{
     height: 100%;
 }
 
-  /*es el fondo de la pantalla*/
+  /* fondo de la pantalla*/
 .log{
     background-color: #009951;
     display: flex;

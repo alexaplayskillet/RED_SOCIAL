@@ -312,7 +312,7 @@
   font-size: 11px;
   color: rgba(255, 255, 255, 0.4);
 }
-/* ===== noticias: layout horizontal ===== */
+/*noticias */
 .noticia-item {
   display: flex;
   gap: 12px;

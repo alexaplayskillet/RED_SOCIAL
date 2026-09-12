@@ -94,7 +94,7 @@
   cursor: pointer;
 }
 
-/* ===== Contenedor del menu: oculto por defecto (comportamiento de ale) ===== */
+/* ===== Menu hamburguesa ===== */
 .menu {
     background:
         radial-gradient(circle at 15% 20%, rgba(0, 229, 255, 0.12), transparent 40%),
