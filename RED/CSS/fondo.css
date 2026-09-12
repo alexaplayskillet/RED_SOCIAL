@@ -1,0 +1,53 @@
+
+body {
+  background: #0a0714;
+  color: #fff;
+}
+
+.fondo_cos {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* Manchas de degradado */
+.gradi1, .gradi2, .gradi3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.14;
+}
+.gradi1 { width: 500px; height: 500px; background: #a855f7; top: -10%; left: -5%; animation: float1 26s ease-in-out infinite; }
+.gradi2 { width: 450px; height: 450px; background: #00e5ff; bottom: -10%; right: -5%; animation: float2 30s ease-in-out infinite; }
+.gradi3 { width: 400px; height: 400px; background: #ff2fd4; top: 40%; left: 40%; animation: float3 34s ease-in-out infinite; }
+
+@keyframes float1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(60px,40px); } }
+@keyframes float2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-50px,-40px); } }
+@keyframes float3 { 0%,100% { transform: translate(-50%,-50%); } 50% { transform: translate(-50%,-50%) translate(30px,-40px); } }
+
+/* circulos */
+.circulo1, .circulo2, .circulo3 {
+  position: absolute;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: transparent;
+  opacity: 0.18;
+}
+.circulo1 { width: 620px; height: 620px; left: -200px; top: 8%; border-top-color: #ff2fd4; border-right-color: #ff2fd4; animation: rotate 90s linear infinite; }
+.circulo2 { width: 480px; height: 480px; right: -160px; top: 25%; border-bottom-color: #00e5ff; border-left-color: #00e5ff; animation: rotate 110s linear infinite reverse; }
+.circulo3 { width: 780px; height: 780px; left: 15%; bottom: -340px; border-top-color: #a855f7; border-left-color: #a855f7; animation: rotate 140s linear infinite; }
+
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+canvas#particulas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* Oscurece bordes */
+.figuras {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(10, 7, 20, 0.55) 100%);
+  pointer-events: none;
+}

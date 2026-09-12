@@ -1,11 +1,13 @@
 /*menu hamburguesa */
-const toggleBtn = document.getElementById("toggleMenu");
+const toggleBtns = document.querySelectorAll(".hamburger");
 const menu = document.querySelector(".menu");
 const bodyContainer = document.querySelector(".body");
 
-toggleBtn.addEventListener("click", () => {
-  menu.classList.toggle("active");
-  bodyContainer.classList.toggle("menu-active");
+toggleBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("active");
+    bodyContainer.classList.toggle("menu-active");
+  });
 });
 
 /*menu de usuario */
@@ -14,7 +16,7 @@ const profileTriggers = document.querySelectorAll(".profile");
 
   profileTriggers.forEach(trigger => {
     trigger.addEventListener("click", (e) => {
-      e.stopPropagation(); // evita que el clic cierre el menu inmediatamente
+      e.stopPropagation(); 
       menu2.classList.toggle("active");
     });
   });
@@ -25,3 +27,20 @@ const profileTriggers = document.querySelectorAll(".profile");
       menu2.classList.remove("active");
     }
   });
+
+  /*carrusel de historias */
+const storiesContainer = document.getElementById("storiesContainer");
+const flechaIzq = document.querySelector(".stories-flecha-izq");
+const flechaDer = document.querySelector(".stories-flecha-der");
+
+if (storiesContainer && flechaIzq && flechaDer) {
+  const scrollAmount = 220; 
+
+  flechaIzq.addEventListener("click", () => {
+    storiesContainer.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+  });
+
+  flechaDer.addEventListener("click", () => {
+    storiesContainer.scrollBy({ left: scrollAmount, behavior: "smooth" });
+  });
+}

@@ -1,65 +1,112 @@
 <!DOCTYPE HTML>
 <HTML>
     <HEAD>
+        <meta charset="UTF-8">
         <title>Pagina Principal</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--Aqui iran las ligas de elementos externos como iconos y tipografias-->
-        <!--aqui van las ligas externas-->
-            <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-			<link rel="preconnect" href="https://fonts.googleapis.com">
-			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-			<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-			<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-            
-        <!--Aqui iran las ligas de los elementos de css-->
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/distribucion.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/movil.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/menus.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
     </HEAD>
     <BODY>
+            <!--Elementos para el fondo-->
+        <div class="fondo_cos">
+            <div class="gradi1"></div>
+            <div class="gradi2"></div>
+            <div class="gradi3"></div>
+            <div class="circulo1"></div>
+            <div class="circulo2"></div>
+            <div class="circulo3"></div>
+            <canvas id="particulas"></canvas>
+        </div>
+        <div class="figuras"></div>
+
         <!--Acomodamos los menus antes que el contenido que siempre se vera-->
         <DIV CLASS="menu">
-            <ul class="menulist">
-                <li>Inicio</li>
-                <li>Buscar</li>
-                <li>Videos</li>
-                <li>Mensajes</li>
-                <li>Notificaciones</li>
-                <li>Guardados</li>
-                <li>Solicitudes de amistad</li>
-                <!--opciones disponibles solo en modo de movil-->
-                <li class="movil">Noticias</li>
-                
+            <div class="menu-logo">
+                <span><i class="ion-md-planet"></i> COSMIX</span>
+        <button class="hamburger hamburger-close" accesskey="M">☰</button>
+    </div>
+    <ul class="menulist">
+                <li class="active"><i class="ion-md-home"></i> Inicio</li>
+                <li><i class="ion-md-search"></i> Buscar</li>
+                <li><i class="ion-md-videocam"></i> Videos</li>
+                <li><i class="ion-md-mail"></i> Mensajes</li>
+                <li><i class="ion-md-notifications"></i> Notificaciones</li>
+                <li><i class="ion-md-bookmark"></i> Guardados</li>
+                <li><i class="ion-md-people"></i> Solicitudes de amistad</li>
+                <li class="movil"><i class="ion-md-newspaper"></i> Noticias</li>
             </ul>
+            <button class="create-post-btn">Publicar</button>
         </DIV>
-        
+
         <DIV CLASS="menu2">
             <ul class="menulist">
-                <li>Perfil</li>
-                <li>Configuracion</li>
+                <li><i class="ion-md-person"></i> Perfil</li>
+                <li><i class="ion-md-settings"></i> Configuracion</li>
             </ul>
             AQUI VAN LAS CONFIGURACIONES DEL PERFIL
         </DIV>
 
-        <!--colocar la barra principal-->
         <DIV CLASS="title">
             <button id="toggleMenu" class="hamburger" accesskey="M">☰</button>
-            <h1>PRUEBA</h1>
-            <button class="profile">Configuracion</button>
+            <div class="title-logo"><i class="ion-md-planet"></i> COSMIX</div>
+            <div class="search-box"><i class="ion-md-search"></i> Buscar</div>
+            <div class="title-icons">
+                <i class="ion-md-notifications-outline"></i>
+                <i class="ion-md-mail-outline"></i>
+                <div class="profile">HO</div>
+            </div>
         </DIV>
+
         <DIV CLASS="body">
-            <DIV CLASS="ctr w80">
-                <DIV>
-                    AQUI ESTA FIJO LA OPCION PARA PUBLICAR
+            <DIV CLASS="ctr">
+               <DIV CLASS="panel crear-post">
+                    <img src="./resources/foto.jpg" alt="foto usuario" class="foto">
+                    <input type="text" class="inputs crear-post-input" placeholder="¿Qué está pasando por tu mente?">
+                    <div class="crear-post-icons">
+                    <button class="icon-btn" title="Agregar foto"><i class="ion-md-image"></i></button>
+                    <button class="icon-btn" title="Agregar video"><i class="ion-md-videocam"></i></button>
+                </div>
+            </DIV>
+
+               <DIV CLASS="panel">
+                    <div class="panel-title">Historias</div>
+                    <div class="stories-carousel">
+                    <button class="stories-flecha stories-flecha-izq" title="Anterior"><i class="ion-md-arrow-back"></i></button>
+
+                    <div class="stories" id="storiesContainer">
+                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario1</span></div>
+                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario2</span></div>
+                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario3</span></div>
+                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario4</span></div>
+                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario5</span></div>
+                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario6</span></div>
+                     <div class="story"><div class="story-ring"><div></div></div><span>@usuario1</span></div>
+                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario2</span></div>
+                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario3</span></div>
+                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario4</span></div>
+                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario5</span></div>
+                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario6</span></div>
+                     <div class="story"><div class="story-ring"><div></div></div><span>@usuario1</span></div>
+                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario2</span></div>
+                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario3</span></div>
+                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario4</span></div>
+                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario5</span></div>
+                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario6</span></div>
+                    </div>
+
+                  <button class="stories-flecha stories-flecha-der" title="Siguiente"><i class="ion-md-arrow-forward"></i></button>
+                 </div>
                 </DIV>
-                
-                <DIV>
-                    AQUI VAN FIJAS LAS HISTORIAS
-                </DIV>
+
                 <DIV CLASS="post">
                     <DIV CLASS="userinfo">
                         <img src="./resources/foto.jpg" alt="no cargo" class="foto">
@@ -68,9 +115,17 @@
                             <p>FECHA</p>
                         </DIV>
                     </DIV>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    <div class="post-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    </div>
 
-                    <!--FORMULARIO PARA DEJAR LIKE, COMENTAR, GUARDAR Y ETC ETC-->
+                    <DIV CLASS="post-actions">
+                        <span><i class="ion-md-heart-empty"></i> Me gusta</span>
+                        <span onclick="this.closest('.post').querySelector('.invisible').classList.toggle('active')"><i class="ion-md-chatbubbles"></i> Comentar</span>
+                        <span><i class="ion-md-share"></i> Compartir</span>
+                        <span><i class="ion-md-bookmark"></i> Guardar</span>
+                    </DIV>
+
                     <DIV CLASS="invisible">
                         <FORM>
                             <INPUT TYPE="text" PLACEHOLDER="Escribe tu comentario" CLASS="inputs">
@@ -78,15 +133,49 @@
                     </DIV>
                 </DIV>
             </DIV>
-            <DIV CLASS="right">
-                <DIV>
-                    AQUI VAN LAS SUGERENCIAS Y NOTICIAS RELEVANTES
+<DIV CLASS="right">
+    <DIV CLASS="panel">
+        <div class="panel-title">Sugerencias para ti</div>
+        <div class="suggestion">
+            <div class="foto"></div>
+            <div class="suggestion-info"><p>@usuario4</p><p>Recomendado</p></div>
+            <button class="follow-btn">Seguir</button>
+        </div>
+        <div class="suggestion">
+            <div class="foto"></div>
+            <div class="suggestion-info"><p>@usuario5</p><p>Recomendado</p></div>
+            <button class="follow-btn">Seguir</button>
+        </div>
+    </DIV>
+
+    <DIV CLASS="panel">
+        <div class="panel-title">Noticias</div>
+
+        <div class="noticia-item">
+            <img src="./resources/noticia1.png" alt="noticia" class="noticia-thumb">
+            <div class="noticia-info">
+                <p class="noticia-titulo">New Jax and Gloink Queen Plushes!</p>
+                <p class="noticia-descrip">Coleccion limitada de peluches inspirados en el universo Digital Circus.</p>
+                <p class="noticia-fuente">glitchproductions.store</p>
+            </div>
+        </div>
+
+        <div class="noticia-item">
+            <img src="./resources/noticia2.png" alt="noticia" class="noticia-thumb">
+            <div class="noticia-info">
+                <p class="noticia-titulo">Prueba gratis de Acrobat Pro por 7 dias</p>
+                <p class="noticia-descrip">Edita, firma y envia documentos PDF desde cualquier dispositivo.</p>
+                <p class="noticia-fuente">adobe.com</p>
+            </div>
+        </div>
+    </DIV>
+</DIV>
                 </DIV>
             </DIV>
         </DIV>
     </BODY>
     <FOOTER>
-        <!--colocar los scripts-->
         <SCRIPT SRC="./JS/buttons.js"></SCRIPT>
+        <SCRIPT SRC="./JS/particulas.js"></SCRIPT>
     </FOOTER>
 </HTML>
