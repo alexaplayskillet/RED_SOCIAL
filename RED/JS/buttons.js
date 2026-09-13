@@ -44,3 +44,54 @@ if (storiesContainer && flechaIzq && flechaDer) {
     storiesContainer.scrollBy({ left: scrollAmount, behavior: "smooth" });
   });
 }
+
+/*Accesibilidad*/
+// ---- Navegación entre menú de perfil y accesibilidad ----
+function toggleAccessMenu(show){
+    document.getElementById('profileMenu').classList.remove('active');
+    document.getElementById('accessMenu').classList.toggle('active', show);
+    if(!show){
+        document.getElementById('profileMenu').classList.add('active');
+    }
+}
+
+// ---- Modo claro / oscuro ----
+function setTheme(mode){
+    document.getElementById('themeLight').classList.toggle('active', mode === 'light');
+    document.getElementById('themeDark').classList.toggle('active', mode === 'dark');
+    document.body.classList.toggle('light-mode', mode === 'light');
+}
+
+// ---- Tamaño de letra ----
+document.addEventListener("DOMContentLoaded", () => {
+    const fontValue = document.getElementById('fontValue');
+    const root = document.documentElement;
+
+    const getFontScale = () => {
+        const val = getComputedStyle(root).getPropertyValue('--font-size').trim();
+        return parseFloat(val) || 1;
+    };
+
+    const updateFontDisplay = () => {
+        fontValue.textContent = Math.round(getFontScale() * 100) + '%';
+    };
+
+    document.getElementById('fontIncrease').addEventListener('click', () => {
+        const newSize = Math.min(getFontScale() + 0.1, 1.5);
+        root.style.setProperty('--font-size', `${newSize}em`);
+        updateFontDisplay();
+    });
+
+    document.getElementById('fontDecrease').addEventListener('click', () => {
+        const newSize = Math.max(getFontScale() - 0.1, 0.7);
+        root.style.setProperty('--font-size', `${newSize}em`);
+        updateFontDisplay();
+    });
+
+    updateFontDisplay();
+
+    // ---- Alto contraste ----
+    document.getElementById('contrastToggle').addEventListener('change', (e) => {
+        document.body.classList.toggle('high-contrast', e.target.checked);
+    });
+});

@@ -47,13 +47,64 @@
             <button class="create-post-btn">Publicar</button>
         </DIV>
 
-        <DIV CLASS="menu2">
-            <ul class="menulist">
-                <li><i class="ion-md-person"></i> Perfil</li>
-                <li><i class="ion-md-settings"></i> Configuracion</li>
+        <DIV CLASS="profile-menu" id="profileMenu">
+            <div class="profile-menu-header">
+                <div class="profile-menu-avatar">HO</div>
+                <div class="profile-menu-name">@nombreUsuario</div>
+            </div>
+
+            <button class="profile-menu-verperfil">
+                <i class="ion-md-person"></i> Ver perfil
+            </button>
+
+            <div class="profile-menu-divider"></div>
+
+            <ul class="profile-menu-list">
+                <li><i class="ion-md-help-circle"></i> Ayuda</li>
+                <li onclick="toggleAccessMenu(true)"><i class="ion-md-options"></i> Accesibilidad</li>
+               <li class="profile-menu-logout" onclick="window.location.href='login.html'"><i class="ion-md-log-out"></i> Cerrar sesión</li>
             </ul>
-            AQUI VAN LAS CONFIGURACIONES DEL PERFIL
         </DIV>
+        <DIV CLASS="access-menu" id="accessMenu">
+    <div class="access-menu-header">
+        <button class="access-back" onclick="toggleAccessMenu(false)">
+            <i class="ion-md-arrow-back"></i>
+        </button>
+        <span>Pantalla y accesibilidad</span>
+    </div>
+
+    <div class="access-section">
+        <div class="access-section-title"><i class="ion-md-moon"></i> Apariencia</div>
+        <div class="access-options">
+            <button class="access-chip" id="themeLight" onclick="setTheme('light')">
+                <i class="ion-md-sunny"></i> Claro
+            </button>
+            <button class="access-chip active" id="themeDark" onclick="setTheme('dark')">
+                <i class="ion-md-moon"></i> Oscuro
+            </button>
+        </div>
+    </div>
+
+    <div class="access-section">
+        <div class="access-section-title"><i class="ion-md-text"></i> Tamaño de letra</div>
+        <div class="access-fontsize-control">
+            <button class="access-font-btn" id="fontDecrease">A-</button>
+            <span class="access-font-value" id="fontValue">100%</span>
+            <button class="access-font-btn" id="fontIncrease">A+</button>
+        </div>
+    </div>
+
+    <div class="access-section">
+        <div class="access-section-title-row">
+            <div class="access-section-title"><i class="ion-md-contrast"></i> Alto contraste</div>
+            <label class="access-switch">
+                <input type="checkbox" id="contrastToggle">
+                <span class="access-switch-slider"></span>
+            </label>
+        </div>
+        <p class="access-desc">Aumenta el contraste de los textos para facilitar la lectura.</p>
+    </div>
+</DIV>
 
         <DIV CLASS="title">
             <button id="toggleMenu" class="hamburger" accesskey="M">☰</button>
@@ -62,7 +113,7 @@
             <div class="title-icons">
                 <i class="ion-md-notifications-outline"></i>
                 <i class="ion-md-mail-outline"></i>
-                <div class="profile">HO</div>
+                <div class="profile" id="profileTrigger" onclick="document.getElementById('profileMenu').classList.toggle('active')">HO</div>
             </div>
         </DIV>
 
