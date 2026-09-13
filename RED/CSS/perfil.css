@@ -1,0 +1,310 @@
+
+.profile-page{
+    flex-direction: column;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.profile-cover-section{
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: var(--radius, 24px);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.profile-cover{
+    height: 220px;
+    width: 100%;
+    background: linear-gradient(135deg, #3a2a5c, #1c1730, #00121a);
+    position: relative;
+}
+
+.profile-header{
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    padding: 0 32px;
+    margin-top: -55px;
+    position: relative;
+    z-index: 2;
+    flex-wrap: wrap;
+}
+
+.profile-avatar-lg{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #a855f7, #00e5ff);
+    border: 5px solid #16101f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+.profile-avatar-lg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-name-block{
+    flex: 1;
+    padding-bottom: 14px;
+    min-width: 200px;
+}
+.profile-name-block h1{
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 4px;
+}
+.profile-name-block p{
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+}
+
+.profile-edit-btn{
+    margin-bottom: 14px;
+    padding: 10px 22px !important;
+    font-size: 13px !important;
+    width: auto !important;
+}
+
+
+.profile-tabs{
+    display: flex;
+    gap: 8px;
+    padding: 20px 32px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: 16px;
+    overflow-x: auto;
+}
+
+.profile-tab{
+    padding: 12px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.55);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+.profile-tab:hover{
+    color: #fff;
+}
+.profile-tab.active{
+    color: #00e5ff;
+    border-bottom-color: #00e5ff;
+}
+
+.profile-content{
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.profile-left{
+    width: 340px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-right{
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media (max-width: 800px){
+    .profile-content{ flex-direction: column; }
+    .profile-left{ width: 100%; }
+}
+
+
+.dato-item{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+}
+.dato-item:last-child{ margin-bottom: 0; }
+.dato-item i{
+    font-size: 18px;
+    color: #00e5ff;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+
+.amigos-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.amigo-item{
+    text-align: center;
+}
+.amigo-foto{
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #3a2a5c, #1c1730);
+    margin-bottom: 6px;
+}
+.amigo-nombre{
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+}
+.ver-todos{
+    display: block;
+    text-align: center;
+    margin-top: 12px;
+    font-size: 12px;
+    color: #00e5ff;
+    text-decoration: none;
+    cursor: pointer;
+}
+.ver-todos:hover{ text-decoration: underline; }
+
+
+.galeria-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+.galeria-item{
+    aspect-ratio: 1/1;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #3a2a5c, #1c1730);
+    cursor: pointer;
+}
+
+
+.fab-publicar{
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #a855f7, #00e5ff);
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 900;
+    transition: transform 0.2s ease;
+}
+.fab-publicar:hover{
+    transform: scale(1.08);
+}
+
+.btn{
+    border: none;
+    border-radius: 200px;
+    padding: 10px 28px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: #fff;
+    background: linear-gradient(135deg, #a855f7, #00e5ff);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.btn:hover{
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+.profile-cover{
+    position: relative;
+    display: block;
+    cursor: pointer;
+    overflow: hidden;
+}
+.profile-cover-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+}
+.profile-cover-edit{
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    z-index: 3;
+}
+
+.profile-avatar-lg{
+    position: relative;
+    cursor: pointer;
+}
+.profile-avatar-lg img{
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+}
+.profile-avatar-cam{
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #a855f7, #00e5ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: #fff;
+    border: 3px solid #16101f;
+    z-index: 3;
+}
+
+
+.profile-tab{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.profile-tab i{ font-size: 16px; }
+
+.post-image img {
+    width: 50%;       
+    height: auto;    
+    display: block;   
+    margin: 15px auto;   
+}

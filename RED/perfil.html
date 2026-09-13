@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+<HTML>
+    <HEAD>
+        <meta charset="UTF-8">
+        <title>Mi Perfil</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/distribucion.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/movil.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/menus.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/perfil.css">
+    </HEAD>
+    <BODY>
+        <div class="fondo_cos">
+            <div class="gradi1"></div>
+            <div class="gradi2"></div>
+            <div class="gradi3"></div>
+            <div class="circulo1"></div>
+            <div class="circulo2"></div>
+            <div class="circulo3"></div>
+            <canvas id="particulas"></canvas>
+        </div>
+        <div class="figuras"></div>
+
+        <DIV CLASS="menu">
+            <div class="menu-logo">
+                <span><i class="ion-md-planet"></i> COSMIX</span>
+                <button class="hamburger hamburger-close" accesskey="M">☰</button>
+            </div>
+            <ul class="menulist">
+                <li><i class="ion-md-home"></i> Inicio</li>
+                <li><i class="ion-md-search"></i> Buscar</li>
+                <li><i class="ion-md-videocam"></i> Videos</li>
+                <li><i class="ion-md-mail"></i> Mensajes</li>
+                <li><i class="ion-md-notifications"></i> Notificaciones</li>
+                <li><i class="ion-md-bookmark"></i> Guardados</li>
+                <li><i class="ion-md-people"></i> Solicitudes de amistad</li>
+            </ul>
+            <button class="create-post-btn">Publicar</button>
+        </DIV>
+
+        <DIV CLASS="title">
+            <button id="toggleMenu" class="hamburger" accesskey="M">☰</button>
+            <div class="title-logo"><i class="ion-md-planet"></i> COSMIX</div>
+            <div class="search-box"><i class="ion-md-search"></i> Buscar</div>
+            <div class="title-icons">
+                <i class="ion-md-notifications-outline"></i>
+                <i class="ion-md-mail-outline"></i>
+                <div class="profile" id="profileTrigger" onclick="document.getElementById('profileMenu').classList.toggle('active')">HO</div>
+            </div>
+        </DIV>
+
+        <DIV CLASS="body profile-page">
+
+           
+            <div class="profile-cover-section">
+                <label for="coverUpload" class="profile-cover" id="coverLabel">
+                    <img id="coverPreview" class="profile-cover-img" style="display:none;">
+                    <div class="profile-cover-edit"><i class="ion-md-camera"></i> Editar portada</div>
+                </label>
+                <input type="file" id="coverUpload" accept="image/*" style="display:none;">
+
+                <div class="profile-header">
+                    <label for="avatarUpload" class="profile-avatar-lg" id="avatarLabel">
+                        <img id="avatarPreview" style="display:none;">
+                        <span id="avatarInitials">HO</span>
+                        <div class="profile-avatar-cam"><i class="ion-md-camera"></i></div>
+                    </label>
+                    <input type="file" id="avatarUpload" accept="image/*" style="display:none;">
+
+                    <div class="profile-name-block">
+                        <h1>Nombre Usuario</h1>
+                        <p>@usuario</p>
+                    </div>
+                    <button class="btn profile-edit-btn"><i class="ion-md-create"></i> Editar perfil</button>
+                </div>
+
+                <div class="profile-tabs">
+                    <div class="profile-tab active" data-tab="informacion"><i class="ion-md-information-circle"></i> Información</div>
+                    <div class="profile-tab" data-tab="amigos"><i class="ion-md-people"></i> Amigos</div>
+                    <div class="profile-tab" data-tab="galeria"><i class="ion-md-images"></i> Galería</div>
+                    <div class="profile-tab" data-tab="estadisticas"><i class="ion-md-stats"></i> Estadísticas</div>
+                 
+                </div>
+            </div>
+
+            <!--  Información  -->
+            <div class="tab-panel active" id="tab-informacion">
+                <div class="profile-content">
+
+                    <!--  Datos, Amigos, Galería -->
+                    <div class="profile-left">
+                        <div class="panel">
+                            <div class="panel-title">Datos personales</div>
+                            <div class="dato-item"><i class="ion-md-mail"></i> correo@ejemplo.com</div>
+                            <div class="dato-item"><i class="ion-md-calendar"></i> 17 de diciembre</div>
+                            <div class="dato-item"><i class="ion-md-male"></i> Hombre</div>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-title">Amigos</div>
+                            <div class="amigos-grid">
+                                <div class="amigo-item">
+                                    <div class="amigo-foto"></div>
+                                    <div class="amigo-nombre">@usuario1</div>
+                                </div>
+                                <div class="amigo-item">
+                                    <div class="amigo-foto"></div>
+                                    <div class="amigo-nombre">@usuario2</div>
+                                </div>
+                                <div class="amigo-item">
+                                    <div class="amigo-foto"></div>
+                                    <div class="amigo-nombre">@usuario3</div>
+                                </div>
+                                <div class="amigo-item">
+                                    <div class="amigo-foto"></div>
+                                    <div class="amigo-nombre">@usuario4</div>
+                                </div>
+                            </div>
+                            <a class="ver-todos" data-tab-link="amigos">Ver todos los amigos</a>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-title">Galería</div>
+                            <div class="galeria-grid">
+                                <div class="galeria-item"></div>
+                                <div class="galeria-item"></div>
+                                <div class="galeria-item"></div>
+                                <div class="galeria-item"></div>
+                                <div class="galeria-item"></div>
+                                <div class="galeria-item"></div>
+                            </div>
+                            <a class="ver-todos" data-tab-link="galeria">Ver toda la galería</a>
+                        </div>
+                    </div>
+
+                
+                    <div class="profile-right">
+                        <div class="panel crear-post"> 
+                            <img src="./resources/foto.jpg" alt="foto usuario" class="foto"> 
+                            <input type="text" class="inputs crear-post-input" placeholder="¿Qué está pasando por tu mente?"> 
+                            <div class="crear-post-icons"> <button class="icon-btn" title="Agregar foto"> <i class="ion-md-image">
+
+                            </i> </button> <button class="icon-btn" title="Agregar video"> <i class="ion-md-videocam"></i>
+                            </button> 
+                            </div> 
+                 </div>
+
+                        <div class="post">
+                            <div class="userinfo">
+                                <img src="./resources/foto.jpg" alt="no cargo" class="foto">
+                                <div class="username">
+                                    <p>Nombre Usuario</p>
+                                    <p>Hace 2 días</p>
+                                </div>
+                            </div>
+                            <div class="post-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                            </div>
+                            <div class="post-image"> <img src="./resources/noticia1.png" alt="Imagen de la publicación"> </div>
+                            <div class="post-actions">
+                                <span><i class="ion-md-heart-empty"></i> Me gusta</span>
+                                <span onclick="this.closest('.post').querySelector('.invisible').classList.toggle('active')"><i class="ion-md-chatbubbles"></i> Comentar</span>
+                                <span><i class="ion-md-share"></i> Compartir</span>
+                                <span><i class="ion-md-bookmark"></i> Guardar</span>
+                            </div>
+                            <div class="invisible">
+                                <form>
+                                    <input type="text" placeholder="Escribe tu comentario" class="inputs">
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="post">
+                            <div class="userinfo">
+                                <img src="./resources/foto.jpg" alt="no cargo" class="foto">
+                                <div class="username">
+                                    <p>Nombre Usuario</p>
+                                    <p>Hace 2 días</p>
+                                </div>
+                            </div>
+                            <div class="post-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                            </div>
+                            <div class="post-image"> <img src="./resources/noticia2.png" alt="Imagen de la publicación"> </div>
+                            <div class="post-actions">
+                                <span><i class="ion-md-heart-empty"></i> Me gusta</span>
+                                <span onclick="this.closest('.post').querySelector('.invisible').classList.toggle('active')"><i class="ion-md-chatbubbles"></i> Comentar</span>
+                                <span><i class="ion-md-share"></i> Compartir</span>
+                                <span><i class="ion-md-bookmark"></i> Guardar</span>
+                            </div>
+                            <div class="invisible">
+                                <form>
+                                    <input type="text" placeholder="Escribe tu comentario" class="inputs">
+                                </form>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+            </div>
+
+           
+
+    </BODY>
+    <FOOTER>
+        <SCRIPT SRC="./JS/buttons.js"></SCRIPT>
+        <SCRIPT SRC="./JS/particulas.js"></SCRIPT>
+    </FOOTER>
+</HTML>

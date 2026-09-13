@@ -95,3 +95,21 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.toggle('high-contrast', e.target.checked);
     });
 });
+
+function setupImageUpload(inputId, previewId, hideElementId){
+    const input = document.getElementById(inputId);
+    const preview = document.getElementById(previewId);
+    input.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if(!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+            preview.src = ev.target.result;
+            preview.style.display = 'block';
+            if(hideElementId) document.getElementById(hideElementId).style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+    });
+}
+setupImageUpload('coverUpload', 'coverPreview');
+setupImageUpload('avatarUpload', 'avatarPreview', 'avatarInitials');
