@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     parseFloat(getComputedStyle(document.documentElement)
       .getPropertyValue('--font-size'));
 
-  // Escuchar las teclas arriba y abajo
+  
   document.addEventListener('keydown', (e) => {
     const target = e.target;
     const isTyping = target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable;

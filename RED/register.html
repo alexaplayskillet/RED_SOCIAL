@@ -22,73 +22,128 @@
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/login.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/validaciones.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
     
         </head>
     <body>
+
+        <div class="fondo_cos fondo-login">
+            <div class="gradi1"></div>
+            <div class="gradi2"></div>
+            <div class="gradi3"></div>
+            <div class="circulo1"></div>
+            <div class="circulo2"></div>
+            <div class="circulo3"></div>
+            <div class="circulo4"></div>
+            <canvas id="particulas"></canvas>
+        </div>
+
         <DIV class="log">
-            <div class="formulario">
+            <div class="formulario formulario-registro">
                 <div class="cabecera">
+                    <div class="login-logo"><i class="ion-md-planet"></i> COSMIX</div>
                     <h1>Registro</h1>
                 </div>
                 <form action="login.html">
-                <label for="usuario"><small>Usuario</small></label>
-                <input type="text" id="usuario" name="usuario" Placeholder="John Doe" class="inp">
-                <DIV CLASS="validations">
-                    <small class="pls">Por favor ingresa usuario</small>
-                    <small class="error">El usuario debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
-                </DIV>
-                <label for="nombre"><small>Nombre</small></label>
-                <input type="text" id="nombre" Name="Nombre" Class="inp" placeholder="Nombre completo" Required tabindex="0">
-                <DIV CLASS="validations">
-                    <small class="pls">Por favor ingresa nombre</small>
-                    <small class="error">El nombre debe tener al menos 4 caracteres, NO DEBE incluir numeros y guiones bajos</small>
-                </DIV>
-                <label><small>Fecha de nacimiento</small></label>
-                <input type="date" Name="fecha" id="fecha" Class="inp" placeholder="Fecha de nacimiento" tabindex="0" required>
-                <DIV CLASS="validations">
-                    <small class="pls">Por favor ingresa la fecha de nacimiento</small>
-                    <small class="error">El usuario tiene que ser de mayor a 12 años</small>
-                </DIV>
-                <label for="foto"><small>Fotografia (opcional)</small></label>
-                <input type="file" Name="foto" Id="foto" Class="inp" text="fotografía" tabindex="0">
-                <br/>
-                <label for="gender"><small>Género</small></label><br>
-                <INPUT TYPE="radio" NAME="gender" VALUE="male" ID="male" REQUIRED>
-                <LABEL for="male"><small>Hombre</small></LABEL><BR/>
-                <INPUT TYPE="radio" NAME="gender" VALUE="female" ID="female" REQUIRED>
-                <LABEL for="female"><small>Mujer</small></LABEL><BR/>
-                <INPUT TYPE="radio" NAME="gender" VALUE="other" ID="other" REQUIRED>
-                <LABEL for="other"><small>Otro</small></LABEL><BR/>
-                <DIV CLASS="validations">
-                    <small class="pls">Por favor elija una de las opciones</small>
-                </DIV>
-                <label for="email"><small>Correo</small></label>
-                <INPUT TYPE="email" NAME="email" ID="email" CLASS="inp" placeholder="Correo" REQUIRED tabindex="0">
-                <DIV CLASS="validations">
-                    <small class="pls">Por favor ingresa correo</small>
-                    <small class="error">El correo debe tener al menos 4 caracteres incluyendo el @, puede incluir numeros y guiones bajos</small>
-                </DIV>
 
-                <Label for="password"><small>Contraseña</small></Label>
-                <INPUT TYPE="password" id="password" CLASS="inp" PLACEHOLDER="Password" REQUIRED tabindex="0">
-                <DIV CLASS="validations">
-                    <small class="pls">Por favor ingresa password</small>
-                    <small class="error">La contraseña debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
-                </DIV>
-                <label for="password2"><small>Confirmar contraseña</small></label>
-                <INPUT TYPE="password" NAME="password2" ID="password2" CLASS="inp" PLACEHOLDER="Confirmar Contraseña" REQUIRED tabindex="0">
-                <DIV CLASS="validations">
-                    <small class="pls">Por favor ingresa password</small>
-                    <small class="error">El password debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
-                    <small class="notsame">Las contraseñas no coinciden</small>
-                </DIV>
+                 
+                  <div class="foto-perfil-upload">
+                        <label for="foto" class="foto-perfil-label">
+                            <img id="fotoPreview" class="foto-perfil-preview" style="display:none;">
+                            <div class="foto-perfil-cam"><i class="ion-md-camera"></i></div>
+                        </label>
+                        <input type="file" name="foto" id="foto" class="foto-input-hidden" accept="image/*">
+                        <small class="foto-perfil-texto">Fotografía (opcional)</small>
+                    </div>
 
-                <DIV CLASS="enviar">
-                    <INPUT TYPE="submit" CLASS="btn" tabindex="0" VALUE="Enviar">
-                </DIV>
-            </form>
+                    <div class="form-grid">
+
+                        <!-- colum izq -->
+                        <div class="form-col">
+                            <div class="input-group">
+                                <i class="ion-md-at input-icon"></i>
+                                <input type="text" id="usuario" name="usuario" placeholder="Usuario" class="inp">
+                            </div>
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor ingresa usuario</small>
+                                <small class="error">El usuario debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
+                            </DIV>
+
+                            <div class="input-group">
+                                <i class="ion-md-contact input-icon"></i>
+                                <input type="text" id="nombre" name="Nombre" class="inp" placeholder="Nombre completo" required tabindex="0">
+                            </div>
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor ingresa nombre</small>
+                                <small class="error">El nombre debe tener al menos 4 caracteres, NO DEBE incluir numeros y guiones bajos</small>
+                            </DIV>
+
+                            <div class="input-group">
+                                <i class="ion-md-calendar input-icon"></i>
+                                <input type="date" name="fecha" id="fecha" class="inp" tabindex="0" required>
+                            </div>
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor ingresa la fecha de nacimiento</small>
+                                <small class="error">El usuario tiene que ser de mayor a 12 años</small>
+                            </DIV>
+
+        
+                        </div>
+
+                        <!-- colum derecha-->
+                        <div class="form-col">
+                            <div class="input-group">
+                                <i class="ion-md-mail input-icon"></i>
+                                <input type="email" name="email" id="email" class="inp" placeholder="Correo" required tabindex="0">
+                            </div>
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor ingresa correo</small>
+                                <small class="error">El correo debe tener al menos 4 caracteres incluyendo el @, puede incluir numeros y guiones bajos</small>
+                            </DIV>
+
+                            <div class="input-group">
+                                <i class="ion-md-lock input-icon"></i>
+                                <input type="password" id="password" class="inp" placeholder="Contraseña" required tabindex="0">
+                            </div>
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor ingresa password</small>
+                                <small class="error">La contraseña debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
+                            </DIV>
+
+                            <div class="input-group">
+                                <i class="ion-md-lock input-icon"></i>
+                                <input type="password" name="password2" id="password2" class="inp" placeholder="Confirmar Contraseña" required tabindex="0">
+                            </div>
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor ingresa password</small>
+                                <small class="error">El password debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
+                                <small class="notsame">Las contraseñas no coinciden</small>
+                            </DIV>
+                        </div>
+                    </div>
+                     <div class="genero-group">
+                                <label class="genero-title"><small>Género</small></label>
+                                <div class="genero-options">
+                                    <input type="radio" name="gender" value="male" id="male" required class="genero-radio">
+                                    <label for="male" class="genero-chip"><i class="ion-md-male"></i> Hombre</label>
+
+                                    <input type="radio" name="gender" value="female" id="female" required class="genero-radio">
+                                    <label for="female" class="genero-chip"><i class="ion-md-female"></i> Mujer</label>
+
+                                    <input type="radio" name="gender" value="other" id="other" required class="genero-radio">
+                                    <label for="other" class="genero-chip"><i class="ion-md-people"></i> Otro</label>
+                                </div>
+                                <DIV CLASS="validations">
+                                    <small class="pls">Por favor elija una de las opciones</small>
+                                </DIV>
+                            </div>
+
+                    <DIV CLASS="enviar">
+                        <INPUT TYPE="submit" CLASS="btn" tabindex="0" VALUE="Enviar">
+                    </DIV>
+                </form>
+                <a href="login.html" class="link-registro">¿Ya tienes cuenta? ¡Inicia sesión!</a>
             </div>
-            
         </DIV>
 
     </body>
