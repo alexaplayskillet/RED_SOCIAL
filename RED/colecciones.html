@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<HTML>
+    <HEAD>
+        <meta charset="UTF-8">
+        <title>Colecciones - Cosmix</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+     <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/distribucion.css">
+<LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/movil.css">
+<LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/menus.css">
+<LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
+<LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/colecciones.css">
+    </HEAD>
+
+    <BODY>
+
+        <div class="fondo_cos">
+            <div class="gradi1"></div>
+            <div class="gradi2"></div>
+            <div class="gradi3"></div>
+            <div class="circulo1"></div>
+            <div class="circulo2"></div>
+            <div class="circulo3"></div>
+            <canvas id="particulas"></canvas>
+        </div>
+
+        <div class="figuras"></div>
+
+        <DIV CLASS="bodyy colecciones-body">
+
+            <DIV CLASS="menulat">
+
+                <ul>
+                   <a href="./index.html" class="cosmix-inicio" title="Inicio">
+                        <ion-icon name="planet"></ion-icon>
+                    </a>
+
+                </ul>
+
+            </DIV>
+
+
+            <DIV CLASS="contenido-guardado">
+
+                <ASIDE CLASS="menu-guardado">
+
+                    <div class="guardado-titulo">
+                        <h1>Guardado</h1>
+
+                        <button class="configuracion">
+                            <ion-icon name="settings-outline"></ion-icon>
+                        </button>
+                    </div>
+
+
+                    <div class="elementos-guardado">
+
+                        <div class="elemento-principal activo">
+
+                            <div class="icono-elemento">
+                                <ion-icon name="bookmark"></ion-icon>
+                            </div>
+
+                            <div>
+                                <span>Elementos guardados</span>
+                                <small>24 publicaciones</small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="separador"></div>
+
+
+                    <div class="titulo-mis-colecciones">
+                        <h2>Mis colecciones</h2>
+                    </div>
+
+
+                    <div class="lista-colecciones" id="listaColecciones">
+
+                        <div class="coleccion-menu activo">
+
+                            <div class="mini-coleccion todos">
+                                <ion-icon name="bookmark"></ion-icon>
+                            </div>
+
+                            <div class="info-menu-coleccion">
+                                <span>Todos</span>
+                                <small>24 publicaciones</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="coleccion-menu">
+
+                            <div class="mini-coleccion">
+                                <img src="./resources/foto.jpg">
+                            </div>
+
+                            <div class="info-menu-coleccion">
+                                <span>Arte</span>
+                                <small>Solo yo</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="coleccion-menu">
+
+                            <div class="mini-coleccion">
+                                <img src="./resources/foto.jpg">
+                            </div>
+
+                            <div class="info-menu-coleccion">
+                                <span>Blender</span>
+                                <small>Solo yo</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="coleccion-menu">
+
+                            <div class="mini-coleccion">
+                                <img src="./resources/foto.jpg">
+                            </div>
+
+                            <div class="info-menu-coleccion">
+                                <span>Casas</span>
+                                <small>Solo yo</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="coleccion-menu">
+
+                            <div class="mini-coleccion">
+                                <img src="./resources/foto.jpg">
+                            </div>
+
+                            <div class="info-menu-coleccion">
+                                <span>Comida</span>
+                                <small>Solo yo</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="coleccion-menu">
+
+                            <div class="mini-coleccion">
+                                <img src="./resources/foto.jpg">
+                            </div>
+
+                            <div class="info-menu-coleccion">
+                                <span>Inspiración</span>
+                                <small>Solo yo</small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <button class="ver-mas">
+
+                        <span class="icono-ver-mas">
+                            <ion-icon name="ellipsis-horizontal"></ion-icon>
+                        </span>
+
+                        <span>Ver más</span>
+
+                    </button>
+
+
+                    <button class="crear-coleccion" id="abrirModal">
+
+                        <ion-icon name="add-outline"></ion-icon>
+
+                        <span>Crear colección</span>
+
+                    </button>
+
+                </ASIDE>
+
+
+                <MAIN CLASS="contenido-publicaciones">
+
+                    <div class="cabecera-publicaciones">
+
+                        <div>
+
+                            <h2>Todos</h2>
+
+                            <p>
+                                Tus publicaciones guardadas
+                            </p>
+
+                        </div>
+
+
+                        <button class="boton-filtros">
+
+                            <ion-icon name="options-outline"></ion-icon>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="lista-publicaciones">
+
+
+                        <article class="publicacion-guardada">
+
+                            <div class="imagen-publicacion">
+
+                                <img src="./resources/foto.jpg">
+
+                                <div class="play-publicacion">
+                                    <ion-icon name="play"></ion-icon>
+                                </div>
+
+                                <span class="duracion">05:24</span>
+
+                            </div>
+
+
+                            <div class="datos-publicacion">
+
+                                <h3>
+                                    Una publicación interesante de Cosmix
+                                </h3>
+
+                                <span class="tipo-publicacion">
+                                    Reels · Usuario
+                                </span>
+
+
+                                <div class="usuario-publicacion">
+
+                                    <img src="./resources/foto.jpg">
+
+                                    <span>
+                                        Se guardó desde la publicación de
+                                        <b>Usuario</b>
+                                    </span>
+
+                                </div>
+
+
+                                <div class="acciones-publicacion">
+
+                                    <button class="agregar-coleccion">
+
+                                        <ion-icon name="bookmark-outline"></ion-icon>
+
+                                        Agregar a colección
+
+                                    </button>
+
+
+                                    <button class="accion">
+
+                                        <ion-icon name="share-outline"></ion-icon>
+
+                                    </button>
+
+
+                                    <button class="accion">
+
+                                        <ion-icon name="ellipsis-horizontal"></ion-icon>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="publicacion-guardada">
+
+                            <div class="imagen-publicacion">
+
+                                <img src="./resources/foto.jpg">
+
+                                <div class="play-publicacion">
+                                    <ion-icon name="play"></ion-icon>
+                                </div>
+
+                                <span class="duracion">02:54</span>
+
+                            </div>
+
+
+                            <div class="datos-publicacion">
+
+                                <h3>
+                                    Ideas, recetas y cosas que quiero guardar
+                                </h3>
+
+                                <span class="tipo-publicacion">
+                                    Publicación · Cosmix
+                                </span>
+
+
+                                <div class="usuario-publicacion">
+
+                                    <img src="./resources/foto.jpg">
+
+                                    <span>
+                                        Se guardó desde la publicación de
+                                        <b>Cosmix</b>
+                                    </span>
+
+                                </div>
+
+
+                                <div class="acciones-publicacion">
+
+                                    <button class="agregar-coleccion">
+
+                                        <ion-icon name="bookmark-outline"></ion-icon>
+
+                                        Agregar a colección
+
+                                    </button>
+
+
+                                    <button class="accion">
+
+                                        <ion-icon name="share-outline"></ion-icon>
+
+                                    </button>
+
+
+                                    <button class="accion">
+
+                                        <ion-icon name="ellipsis-horizontal"></ion-icon>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="publicacion-guardada">
+
+                            <div class="imagen-publicacion">
+
+                                <img src="./resources/foto.jpg">
+
+                                <div class="play-publicacion">
+                                    <ion-icon name="play"></ion-icon>
+                                </div>
+
+                                <span class="duracion">09:30</span>
+
+                            </div>
+
+
+                            <div class="datos-publicacion">
+
+                                <h3>
+                                    Inspiración para mis próximos proyectos
+                                </h3>
+
+                                <span class="tipo-publicacion">
+                                    Reels · Cosmix
+                                </span>
+
+
+                                <div class="usuario-publicacion">
+
+                                    <img src="./resources/foto.jpg">
+
+                                    <span>
+                                        Se guardó desde la publicación de
+                                        <b>Cosmix</b>
+                                    </span>
+
+                                </div>
+
+
+                                <div class="acciones-publicacion">
+
+                                    <button class="agregar-coleccion">
+
+                                        <ion-icon name="bookmark-outline"></ion-icon>
+
+                                        Agregar a colección
+
+                                    </button>
+
+
+                                    <button class="accion">
+
+                                        <ion-icon name="share-outline"></ion-icon>
+
+                                    </button>
+
+
+                                    <button class="accion">
+
+                                        <ion-icon name="ellipsis-horizontal"></ion-icon>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="publicacion-guardada">
+
+                            <div class="imagen-publicacion">
+
+                                <img src="./resources/foto.jpg">
+
+                                <div class="play-publicacion">
+                                    <ion-icon name="play"></ion-icon>
+                                </div>
+
+                                <span class="duracion">04:18</span>
+
+                            </div>
+
+
+                            <div class="datos-publicacion">
+
+                                <h3>
+                                    Referencias y contenido para guardar
+                                </h3>
+
+                                <span class="tipo-publicacion">
+                                    Publicación · Usuario
+                                </span>
+
+
+                                <div class="usuario-publicacion">
+
+                                    <img src="./resources/foto.jpg">
+
+                                    <span>
+                                        Se guardó desde la publicación de
+                                        <b>Usuario</b>
+                                    </span>
+
+                                </div>
+
+
+                                <div class="acciones-publicacion">
+
+                                    <button class="agregar-coleccion">
+
+                                        <ion-icon name="bookmark-outline"></ion-icon>
+
+                                        Agregar a colección
+
+                                    </button>
+
+
+                                    <button class="accion">
+
+                                        <ion-icon name="share-outline"></ion-icon>
+
+                                    </button>
+
+
+                                    <button class="accion">
+
+                                        <ion-icon name="ellipsis-horizontal"></ion-icon>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </MAIN>
+
+            </DIV>
+
+        </DIV>
+
+
+        <div class="modal-fondo" id="modalColeccion">
+
+            <div class="modal-coleccion">
+
+                <button class="cerrar-modal" id="cerrarModal">
+
+                    <ion-icon name="close-outline"></ion-icon>
+
+                </button>
+
+
+                <div class="modal-icono">
+
+                    <ion-icon name="bookmark-outline"></ion-icon>
+
+                </div>
+
+
+                <h2>Crear colección</h2>
+
+                <p>
+                    Organiza tus publicaciones guardadas en una colección.
+                </p>
+
+
+                <div class="campo-modal">
+
+                    <label>Nombre</label>
+
+                    <input
+                        type="text"
+                        id="nombreColeccion"
+                        placeholder="Ej. Inspiración"
+                        maxlength="30"
+                    >
+
+                </div>
+
+
+                <div class="campo-modal">
+
+                    <label>Icono</label>
+
+                    <div class="emojis">
+
+                        <button class="emoji-opcion seleccionado">📁</button>
+                        <button class="emoji-opcion">🎨</button>
+                        <button class="emoji-opcion">❤️</button>
+                        <button class="emoji-opcion">⭐</button>
+                        <button class="emoji-opcion">✈️</button>
+                        <button class="emoji-opcion">🎮</button>
+                        <button class="emoji-opcion">💡</button>
+                        <button class="emoji-opcion">🍰</button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="botones-modal">
+
+                    <button class="btn-cancelar" id="cancelarModal">
+                        Cancelar
+                    </button>
+
+                    <button class="btn-confirmar" id="crearColeccion">
+                        Crear colección
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
+
+          <SCRIPT SRC="./JS/coleccion.js"></SCRIPT>
+
+    </BODY>
+
+    <FOOTER>
+    </FOOTER>
+
+</HTML>

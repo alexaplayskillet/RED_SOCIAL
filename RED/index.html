@@ -4,9 +4,12 @@
         <meta charset="UTF-8">
         <title>Pagina Principal</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
         <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/distribucion.css">
@@ -16,10 +19,12 @@
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/botella.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/crearpub.css">
-        
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/funcionalidades.css">
+         
     </HEAD>
+
     <BODY>
-            <!--Elementos para el fondo-->
+
         <div class="fondo_cos">
             <div class="gradi1"></div>
             <div class="gradi2"></div>
@@ -29,238 +34,1133 @@
             <div class="circulo3"></div>
             <canvas id="particulas"></canvas>
         </div>
+
         <div class="figuras"></div>
 
-        <!--Acomodamos los menus antes que el contenido que siempre se vera-->
         <DIV CLASS="menu">
+
             <div class="menu-logo">
                 <span><i class="ion-md-planet"></i> COSMIX</span>
-        <button class="hamburger hamburger-close" accesskey="M">☰</button>
-    </div>
-    <ul class="menulist">
-        <li class="active"><i class="ion-md-home"></i> Inicio</li>
-        <li><i class="ion-md-search"></i> Buscar</li>
-        <li><i class="ion-md-videocam"></i> Videos</li>
-        <li><i class="ion-md-mail"></i> Mensajes</li>
-        <li><i class="ion-md-notifications"></i> Notificaciones</li>
-        <li><i class="ion-md-bookmark"></i> Guardados</li>
-        <li><i class="ion-md-people"></i> Solicitudes de amistad</li>
-        <li class="movil"><i class="ion-md-newspaper"></i> Noticias</li>
-    </ul>
-    <button class="create-post-btn">Publicar</button>
-    </DIV>
-
-        <DIV CLASS="profile-menu" id="profileMenu">
-            <div class="profile-menu-header">
-                <div class="profile-menu-avatar">HO</div>
-                <div class="profile-menu-name">@nombreUsuario</div>
+                <button class="hamburger hamburger-close" accesskey="M">☰</button>
             </div>
 
-            <button class="profile-menu-verperfil">
+            <ul class="menulist">
+
+                <li class="active" onclick="window.location.href='index.html'">
+                    <i class="ion-md-home"></i> Inicio
+                </li>
+
+                <li onclick="window.location.href='messages.html'">
+                    <i class="ion-md-mail"></i> Chat
+                </li>
+
+                <li onclick="window.location.href='colecciones.html'">
+                    <i class="ion-md-bookmark"></i> Guardado
+                </li>
+
+                <li onclick="window.location.href='Solicitudes.html'">
+                    <i class="ion-md-people"></i> Solicitudes de amistad
+                </li>
+
+            </ul>
+
+            <button class="create-post-btn">Publicar</button>
+
+        </DIV>
+
+        <DIV CLASS="profile-menu" id="profileMenu">
+
+            <div class="profile-menu-header">
+
+                <div class="profile-menu-avatar">HO</div>
+
+                <div class="profile-menu-name">
+                    @nombreUsuario
+                </div>
+
+            </div>
+
+            <button class="profile-menu-verperfil" onclick="window.location.href='perfil.html'">
                 <i class="ion-md-person"></i> Ver perfil
             </button>
 
             <div class="profile-menu-divider"></div>
 
             <ul class="profile-menu-list">
-                <li><i class="ion-md-help-circle"></i> Ayuda</li>
-                <li onclick="toggleAccessMenu(true)"><i class="ion-md-options"></i> Accesibilidad</li>
-               <li class="profile-menu-logout" onclick="window.location.href='login.html'"><i class="ion-md-log-out"></i> Cerrar sesión</li>
+
+                <li>
+                    <i class="ion-md-help-circle"></i> Ayuda
+                </li>
+
+                <li onclick="toggleAccessMenu(true)">
+                    <i class="ion-md-options"></i> Accesibilidad
+                </li>
+
+                <li class="profile-menu-logout" onclick="window.location.href='login.html'">
+                    <i class="ion-md-log-out"></i> Cerrar sesión
+                </li>
+
             </ul>
+
         </DIV>
+
         <DIV CLASS="access-menu" id="accessMenu">
-    <div class="access-menu-header">
-        <button class="access-back" onclick="toggleAccessMenu(false)">
-            <i class="ion-md-arrow-back"></i>
-        </button>
-        <span>Pantalla y accesibilidad</span>
-    </div>
 
-    <div class="access-section">
-        <div class="access-section-title"><i class="ion-md-moon"></i> Apariencia</div>
-        <div class="access-options">
-            <button class="access-chip" id="themeLight" onclick="setTheme('light')">
-                <i class="ion-md-sunny"></i> Claro
-            </button>
-            <button class="access-chip active" id="themeDark" onclick="setTheme('dark')">
-                <i class="ion-md-moon"></i> Oscuro
-            </button>
-        </div>
-    </div>
+            <div class="access-menu-header">
 
-    <div class="access-section">
-        <div class="access-section-title"><i class="ion-md-text"></i> Tamaño de letra</div>
-        <div class="access-fontsize-control">
-            <button class="access-font-btn" id="fontDecrease">A-</button>
-            <span class="access-font-value" id="fontValue">100%</span>
-            <button class="access-font-btn" id="fontIncrease">A+</button>
-        </div>
-    </div>
+                <button class="access-back" onclick="toggleAccessMenu(false)">
+                    <i class="ion-md-arrow-back"></i>
+                </button>
 
-    <div class="access-section">
-        <div class="access-section-title-row">
-            <div class="access-section-title"><i class="ion-md-contrast"></i> Alto contraste</div>
-            <label class="access-switch">
-                <input type="checkbox" id="contrastToggle">
-                <span class="access-switch-slider"></span>
-            </label>
-        </div>
-        <p class="access-desc">Aumenta el contraste de los textos para facilitar la lectura.</p>
-    </div>
-</DIV>
+                <span>Pantalla y accesibilidad</span>
 
-        <DIV CLASS="title">
-            <button id="toggleMenu" class="hamburger" accesskey="M">☰</button>
-            <div class="title-logo"><i class="ion-md-planet"></i> COSMIX</div>
-            <div class="search-box"><i class="ion-md-search"></i> Buscar</div>
-            <div class="title-icons">
-                <i class="ion-md-notifications-outline"></i>
-                <i class="ion-md-mail-outline"></i>
-                <div class="profile" id="profileTrigger" onclick="document.getElementById('profileMenu').classList.toggle('active')">HO</div>
             </div>
-        </DIV>
-        <DIV CLASS="crear-publi">
-                    <h2>Crear publicación</h2>
-                    <hr>
-                    <form>
-                        <!--<LABEL FOR="texto">Escribe una publicación</LABEL>-->
-                        <br>
-                        <!--<INPUT TYPE="text" placeholder="Escribe tu texto">-->
-                        <textarea placeholder="Escribe cómo te sientes"></textarea>
-                        <br>
-                        <DIV CLASS="left">
-                            <ion-icon name="images-outline" class="icono"></ion-icon>
-                            <ion-icon name="videocam-outline" class="icono"></ion-icon>
-                            <ion-icon name="happy-outline" class="icono"></ion-icon>
-                        </DIV>
-                        
-                        
-                    </form>
-                </DIV>
-        <DIV CLASS="body">
-            <DIV CLASS="ctr">
-               <DIV CLASS="panel crear-post" id="crear">
-                    <img src="./resources/foto.jpg" alt="foto usuario" class="foto">
-                    <input type="text" class="inputs crear-post-input" placeholder="¿Qué está pasando por tu mente?">
-                    <div class="crear-post-icons">
-                    <button class="icon-btn" title="Agregar foto"><i class="ion-md-image"></i></button>
-                    <button class="icon-btn" title="Agregar video"><i class="ion-md-videocam"></i></button>
+
+            <div class="access-section">
+
+                <div class="access-section-title">
+                    <i class="ion-md-moon"></i> Apariencia
                 </div>
-            </DIV>
 
-               <DIV CLASS="panel">
-                    <div class="panel-title">Historias</div>
-                    <div class="stories-carousel">
-                    <button class="stories-flecha stories-flecha-izq" title="Anterior"><i class="ion-md-arrow-back"></i></button>
+                <div class="access-options">
 
-                    <div class="stories" id="storiesContainer">
-                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario1</span></div>
-                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario2</span></div>
-                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario3</span></div>
-                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario4</span></div>
-                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario5</span></div>
-                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario6</span></div>
-                     <div class="story"><div class="story-ring"><div></div></div><span>@usuario1</span></div>
-                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario2</span></div>
-                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario3</span></div>
-                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario4</span></div>
-                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario5</span></div>
-                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario6</span></div>
-                     <div class="story"><div class="story-ring"><div></div></div><span>@usuario1</span></div>
-                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario2</span></div>
-                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario3</span></div>
-                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario4</span></div>
-                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario5</span></div>
-                    <div class="story"><div class="story-ring"><div></div></div><span>@usuario6</span></div>
+                    <button class="access-chip" id="themeLight" onclick="setTheme('light')">
+                        <i class="ion-md-sunny"></i> Claro
+                    </button>
+
+                    <button class="access-chip active" id="themeDark" onclick="setTheme('dark')">
+                        <i class="ion-md-moon"></i> Oscuro
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="access-section">
+
+                <div class="access-section-title">
+                    <i class="ion-md-text"></i> Tamaño de letra
+                </div>
+
+                <div class="access-fontsize-control">
+
+                    <button class="access-font-btn" id="fontDecrease">
+                        A-
+                    </button>
+
+                    <span class="access-font-value" id="fontValue">
+                        100%
+                    </span>
+
+                    <button class="access-font-btn" id="fontIncrease">
+                        A+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="access-section">
+
+                <div class="access-section-title-row">
+
+                    <div class="access-section-title">
+                        <i class="ion-md-contrast"></i> Alto contraste
                     </div>
 
-                  <button class="stories-flecha stories-flecha-der" title="Siguiente"><i class="ion-md-arrow-forward"></i></button>
-                 </div>
+                    <label class="access-switch">
+
+                        <input type="checkbox" id="contrastToggle">
+
+                        <span class="access-switch-slider"></span>
+
+                    </label>
+
+                </div>
+
+                <p class="access-desc">
+                    Aumenta el contraste de los textos para facilitar la lectura.
+                </p>
+
+            </div>
+
+        </DIV>
+
+        <DIV CLASS="notif-menu" id="notifMenu">
+
+            <div class="notif-header">
+                <h3>Notificaciones</h3>
+            </div>
+
+            <div class="notif-tabs">
+
+                <div class="notif-tab active" data-notiftab="todas">
+                    Todas
+                </div>
+
+                <div class="notif-tab" data-notiftab="noleidas">
+                    No leídas
+                </div>
+
+            </div>
+
+            <div class="notif-aviso" id="notifAviso">
+
+                <div class="notif-aviso-top">
+
+                    <div>
+
+                        <p class="notif-aviso-titulo">
+                            Las notificaciones de mensaje a la deriva estan activadas
+                        </p>
+
+                        <p class="notif-aviso-desc">
+                            Desactiva en caso que lo necesites
+                        </p>
+
+                    </div>
+
+                    <button class="notif-aviso-cerrar" id="notifAvisoCerrar">
+                        <i class="ion-md-close"></i>
+                    </button>
+
+                </div>
+
+                <div class="notif-aviso-btns">
+
+                    <button class="btn-notif-activar">
+                        Desactivar
+                    </button>
+
+                    <button class="btn-notif-ahora-no" id="notifAhoraNo">
+                        Ahora no
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="notif-lista">
+
+                <div class="notif-grupo-titulo">
+
+                    <span>Nuevas</span>
+
+                    <a class="notif-ver-todo">
+                        Ver todo
+                    </a>
+
+                </div>
+
+                <div class="notif-item">
+
+                    <div class="notif-avatar">
+
+                        <img src="./resources/foto.jpg" alt="usuario">
+
+                        <span class="notif-badge notif-badge-insignia">
+                            <i class="ion-md-ribbon"></i>
+                        </span>
+
+                    </div>
+
+                    <div class="notif-texto">
+
+                        <p>
+                            <strong>¡Felicitaciones!</strong>
+                            Obtuviste una insignia de fan destacado.
+                        </p>
+
+                        <span class="notif-tiempo">
+                            2 días
+                        </span>
+
+                    </div>
+
+                    <span class="notif-dot"></span>
+
+                </div>
+
+                <div class="notif-item">
+
+                    <div class="notif-avatar">
+
+                        <img src="./resources/noticia1.png" alt="pagina">
+
+                        <span class="notif-badge notif-badge-campana">
+                            <i class="ion-md-notifications"></i>
+                        </span>
+
+                    </div>
+
+                    <div class="notif-texto">
+
+                        <p>
+                            <strong>Taste Buds with Yezi</strong>
+                            te invitó a que sigas su página.
+                        </p>
+
+                        <span class="notif-tiempo">
+                            2 días
+                        </span>
+
+                    </div>
+
+                    <span class="notif-dot"></span>
+
+                </div>
+
+                <div class="notif-grupo-titulo notif-grupo-anteriores">
+                    <span>Anteriores</span>
+                </div>
+
+                <div class="notif-item">
+
+                    <div class="notif-avatar">
+
+                        <img src="./resources/foto.jpg" alt="usuario">
+
+                        <span class="notif-badge notif-badge-insignia">
+                            <i class="ion-md-ribbon"></i>
+                        </span>
+
+                    </div>
+
+                    <div class="notif-texto">
+
+                        <p>
+                            <strong>¡Felicitaciones!</strong>
+                            Obtuviste una insignia de fan destacado.
+                        </p>
+
+                        <span class="notif-tiempo">
+                            3 días
+                        </span>
+
+                    </div>
+
+                    <span class="notif-dot"></span>
+
+                </div>
+
+                <div class="notif-item">
+
+                    <div class="notif-avatar">
+
+                        <img src="./resources/foto.jpg" alt="usuario">
+
+                        <span class="notif-badge notif-badge-personas">
+                            <i class="ion-md-people"></i>
+                        </span>
+
+                    </div>
+
+                    <div class="notif-texto">
+
+                        <p>
+                            Te damos la bienvenida a
+                            <strong>Personas que sé...</strong>
+                            Ahora puedes publicar contenido, conectarte...
+                        </p>
+
+                        <span class="notif-tiempo">
+                            5 días
+                        </span>
+
+                    </div>
+
+                    <span class="notif-dot"></span>
+
+                </div>
+
+            </div>
+
+        </DIV>
+
+        <DIV CLASS="title">
+
+            <button id="toggleMenu" class="hamburger" accesskey="M">
+                ☰
+            </button>
+
+            <div class="title-logo">
+                <i class="ion-md-planet"></i> COSMIX
+            </div>
+
+            <div class="search-box">
+                <i class="ion-md-search"></i> Buscar
+            </div>
+
+            <div class="title-icons">
+
+                <i class="ion-md-notifications-outline"
+                   id="notifTrigger"
+                   onclick="document.getElementById('notifMenu').classList.toggle('active')">
+                </i>
+
+                <i class="ion-md-mail-outline"></i>
+
+                <div class="profile"
+                     id="profileTrigger"
+                     onclick="document.getElementById('profileMenu').classList.toggle('active')">
+                    HO
+                </div>
+
+            </div>
+
+        </DIV>
+
+        <DIV CLASS="crear-publi">
+
+            <div class="crear-publi-header">
+
+                <div>
+
+                    <h2>
+                        Crear publicación
+                    </h2>
+
+                </div>
+
+                <button class="cerrar-publi" type="button">
+
+                    <i class="ion-md-close"></i>
+
+                </button>
+
+            </div>
+
+            <div class="crear-publi-usuario">
+
+                <img src="./resources/foto.jpg"
+                     alt="foto usuario">
+
+                <div>
+
+                    <strong>
+                        @nombreUsuario
+                    </strong>
+
+                    <span>
+                        Publicación pública
+                    </span>
+
+                </div>
+
+            </div>
+
+            <form>
+
+                <textarea
+                    placeholder="¿Qué está pasando por tu mente?"
+                    maxlength="500"></textarea>
+
+                <div class="crear-publi-footer">
+
+                    <div class="crear-publi-opciones">
+
+                        <button type="button"
+                                title="Agregar foto">
+
+                            <i class="ion-md-image"></i>
+
+                        </button>
+
+                        <button type="button"
+                                title="Agregar video">
+
+                            <i class="ion-md-videocam"></i>
+
+                        </button>
+
+                        <button type="button"
+                                title="Agregar emoji">
+
+                            <i class="ion-md-happy"></i>
+
+                        </button>
+
+                    </div>
+
+                    <button type="submit"
+                            class="btn-publicar">
+
+                        Publicar
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </DIV>
+
+        <DIV CLASS="body">
+
+            <DIV CLASS="ctr">
+
+                <DIV CLASS="panel crear-post" id="crear">
+
+                    <img src="./resources/foto.jpg"
+                         alt="foto usuario"
+                         class="foto">
+
+                    <input type="text"
+                           class="inputs crear-post-input"
+                           placeholder="¿Qué está pasando por tu mente?">
+
+                    <div class="crear-post-icons">
+
+                        <button class="icon-btn"
+                                title="Agregar foto">
+
+                            <i class="ion-md-image"></i>
+
+                        </button>
+
+                        <button class="icon-btn"
+                                title="Agregar video">
+
+                            <i class="ion-md-videocam"></i>
+
+                        </button>
+
+                    </div>
+
+                </DIV>
+
+                <DIV CLASS="panel">
+
+                    <div class="panel-title">
+                        Historias
+                    </div>
+
+                    <div class="stories-carousel">
+
+                        <button class="stories-flecha stories-flecha-izq"
+                                title="Anterior">
+
+                            <i class="ion-md-arrow-back"></i>
+
+                        </button>
+
+                        <div class="crear-historia-fija"
+                             onclick="abrirHistoria()">
+
+                            <div class="story-crear-contenido">
+
+                                <div class="story-crear-icono">
+                                    <i class="ion-md-add"></i>
+                                </div>
+
+                                <span>
+                                    Crear historia
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="stories" id="storiesContainer">
+
+                            <div class="story">
+
+                                <div class="story-ring">
+                                    <div></div>
+                                </div>
+
+                                <span>@usuario1</span>
+
+                            </div>
+
+                            <div class="story">
+
+                                <div class="story-ring">
+                                    <div></div>
+                                </div>
+
+                                <span>@usuario2</span>
+
+                            </div>
+
+                            <div class="story">
+
+                                <div class="story-ring">
+                                    <div></div>
+                                </div>
+
+                                <span>@usuario3</span>
+
+                            </div>
+
+                            <div class="story">
+
+                                <div class="story-ring">
+                                    <div></div>
+                                </div>
+
+                                <span>@usuario3</span>
+
+                            </div>
+
+                            <div class="story">
+
+                                <div class="story-ring">
+                                    <div></div>
+                                </div>
+
+                                <span>@usuario3</span>
+
+                            </div>
+
+                            <div class="story">
+
+                                <div class="story-ring">
+                                    <div></div>
+                                </div>
+
+                                <span>@usuario3</span>
+
+                            </div>
+
+                            <div class="story">
+
+                                <div class="story-ring">
+                                    <div></div>
+                                </div>
+
+                                <span>@usuario3</span>
+
+                            </div>
+
+                        </div>
+
+                        <button class="stories-flecha stories-flecha-der"
+                                title="Siguiente">
+
+                            <i class="ion-md-arrow-forward"></i>
+
+                        </button>
+
+                    </div>
+
+                </DIV>
+
+                <!-- Apartado filtrar publis funcionalidad 2 -->
+
+                <DIV CLASS="panel filtros-panel">
+
+                    <div class="filtros-wrapper">
+
+                        <button class="filtros-btn" id="filtrosBtn">
+                            <i class="ion-md-options"></i>
+                            Filtros
+                        </button>
+
+                        <div class="filtros-menu" id="filtrosMenu">
+
+                            <div class="filtro-opcion active" data-filtro="amigos">
+
+                                <i class="ion-md-people"></i>
+                                <span>Amigos</span>
+                                <i class="ion-md-checkmark filtro-check"></i>
+
+                            </div>
+
+                            <div class="filtro-opcion" data-filtro="recientes">
+
+                                <i class="ion-md-time"></i>
+                                <span>Más recientes</span>
+                                <i class="ion-md-checkmark filtro-check"></i>
+
+                            </div>
+
+                            <div class="filtro-opcion" data-filtro="likes">
+
+                                <i class="ion-md-heart"></i>
+                                <span>Mayor cantidad de likes</span>
+                                <i class="ion-md-checkmark filtro-check"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </DIV>
 
                 <DIV CLASS="post">
+
                     <DIV CLASS="userinfo">
-                        <img src="./resources/foto.jpg" alt="no cargo" class="foto">
+
+                        <img src="./resources/foto.jpg"
+                             alt="no cargo"
+                             class="foto">
+
                         <DIV class="username">
-                            <p>Usuario</p>
-                            <p>Hace 5 minutos</p>
+
+                            <p>
+                                Usuario
+                            </p>
+
+                            <p>
+                                Hace 5 minutos
+                            </p>
+
                         </DIV>
+
                     </DIV>
+
                     <div class="post-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur.
+
                     </div>
 
                     <DIV CLASS="post-actions">
-                        <span><i class="ion-md-heart-empty"></i> Me gusta</span>
-                        <span onclick="this.closest('.post').querySelector('.invisible').classList.toggle('active')"><i class="ion-md-chatbubbles"></i> Comentar</span>
-                        <span><i class="ion-md-share"></i> Compartir</span>
-                        <span><i class="ion-md-bookmark"></i> Guardar</span>
+
+                        <span>
+                            <i class="ion-md-heart-empty"></i>
+                            Me gusta
+                        </span>
+
+                        <span onclick="this.closest('.post').querySelector('.invisible').classList.toggle('active')">
+
+                            <i class="ion-md-chatbubbles"></i>
+                            Comentar
+
+                        </span>
+
+                        <span>
+
+                            <i class="ion-md-share"></i>
+                            Compartir
+
+                        </span>
+
+                        <span>
+
+                            <i class="ion-md-bookmark"></i>
+                            Guardar
+
+                        </span>
+
                     </DIV>
 
                     <DIV CLASS="invisible">
+
                         <FORM>
-                            <INPUT TYPE="text" PLACEHOLDER="Escribe tu comentario" CLASS="inputs">
+
+                            <INPUT TYPE="text"
+                                   PLACEHOLDER="Escribe tu comentario"
+                                   CLASS="inputs">
+
                         </FORM>
+
                     </DIV>
+
                 </DIV>
-            </DIV>
-        <DIV CLASS="right">
-            <DIV CLASS="panel">
-                <div class="panel-title">Sugerencias para ti</div>
-                <div class="suggestion">
-                    <div class="foto"></div>
-                    <div class="suggestion-info"><p>@usuario4</p><p>Recomendado</p></div>
-                    <button class="follow-btn">Seguir</button>
-                </div>
-                <div class="suggestion">
-                    <div class="foto"></div>
-                    <div class="suggestion-info"><p>@usuario5</p><p>Recomendado</p></div>
-                    <button class="follow-btn">Seguir</button>
-                </div>
+
             </DIV>
 
-            <DIV CLASS="panel">
-                <div class="panel-title">Noticias</div>
+            <DIV CLASS="right">
 
-                <div class="noticia-item">
-                    <img src="./resources/noticia1.png" alt="noticia" class="noticia-thumb">
-                    <div class="noticia-info">
-                        <p class="noticia-titulo">New Jax and Gloink Queen Plushes!</p>
-                        <p class="noticia-descrip">Coleccion limitada de peluches inspirados en el universo Digital Circus.</p>
-                        <p class="noticia-fuente">glitchproductions.store</p>
+                <DIV CLASS="panel">
+
+                    <div class="panel-title">
+                        Sugerencias para ti
                     </div>
-                </div>
 
-                <div class="noticia-item">
-                    <img src="./resources/noticia2.png" alt="noticia" class="noticia-thumb">
-                    <div class="noticia-info">
-                        <p class="noticia-titulo">Prueba gratis de Acrobat Pro por 7 dias</p>
-                        <p class="noticia-descrip">Edita, firma y envia documentos PDF desde cualquier dispositivo.</p>
-                        <p class="noticia-fuente">adobe.com</p>
+                    <div class="suggestion">
+
+                        <div class="foto"></div>
+
+                        <div class="suggestion-info">
+
+                            <p>
+                                @usuario4
+                            </p>
+
+                            <p>
+                                Recomendado
+                            </p>
+
+                        </div>
+
+                        <button class="follow-btn">
+                            Seguir
+                        </button>
+
                     </div>
-                </div>
-            </DIV>
-        </DIV>
-        <div id="botella-flotante" title="Mensaje a la deriva">🍾</div>
 
-        <div id="mensaje-card">
-            <h4>Mensaje a la deriva</h4>
-            <p id="mensaje-texto">Cargando...</p>
-            <div class="acciones">
-                <button id="btn-devolver" class="btn-devolver">Devolver al mar</button>
-                <button id="btn-cerrar" class="btn-cerrar">Recoger la botella</button>
+                    <div class="suggestion">
+
+                        <div class="foto"></div>
+
+                        <div class="suggestion-info">
+
+                            <p>
+                                @usuario5
+                            </p>
+
+                            <p>
+                                Recomendado
+                            </p>
+
+                        </div>
+
+                        <button class="follow-btn">
+                            Seguir
+                        </button>
+
+                    </div>
+
+                </DIV>
+
+                <DIV CLASS="panel">
+
+                    <div class="panel-title">
+                        Noticias
+                    </div>
+
+                    <div class="noticia-item">
+
+                        <img src="./resources/noticia1.png"
+                             alt="noticia"
+                             class="noticia-thumb">
+
+                        <div class="noticia-info">
+
+                            <p class="noticia-titulo">
+                                New Jax and Gloink Queen Plushes!
+                            </p>
+
+                            <p class="noticia-descrip">
+                                Coleccion limitada de peluches inspirados
+                                en el universo Digital Circus.
+                            </p>
+
+                            <p class="noticia-fuente">
+                                glitchproductions.store
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="noticia-item">
+
+                        <img src="./resources/noticia2.png"
+                             alt="noticia"
+                             class="noticia-thumb">
+
+                        <div class="noticia-info">
+
+                            <p class="noticia-titulo">
+                                Prueba gratis de Acrobat Pro por 7 dias
+                            </p>
+
+                            <p class="noticia-descrip">
+                                Edita, firma y envia documentos PDF
+                                desde cualquier dispositivo.
+                            </p>
+
+                            <p class="noticia-fuente">
+                                adobe.com
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </DIV>
+
+            </DIV>
+
+            <div id="botella-flotante"
+                 title="Mensaje a la deriva">
+
+                🍾
+
             </div>
+
+            <div id="mensaje-card">
+
+                <h4>
+                    Mensaje a la deriva
+                </h4>
+
+                <p id="mensaje-texto">
+                    Cargando...
+                </p>
+
+                <div class="acciones">
+
+                    <button id="btn-devolver"
+                            class="btn-devolver">
+
+                        Devolver al mar
+
+                    </button>
+
+                    <button id="btn-cerrar"
+                            class="btn-cerrar">
+
+                        Recoger la botella
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </DIV>
+
+        <div id="contador-tiempo"
+             title="Tiempo navegando en COSMIX">
+
+            <i class="ion-md-time"></i>
+
+            <span id="contador-valor">
+                00:00:00
+            </span>
+                    
         </div>
 
-    </DIV>
-        <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
+        <DIV CLASS="historia-overlay"
+             id="historiaOverlay">
+
+            <DIV CLASS="historia-modal">
+
+                <!-- Encabezado -->
+
+                <div class="historia-modal-header">
+
+                    <div>
+
+                        <h2>
+                            Crear una historia
+                        </h2>
+
+                        <span>
+                            Comparte algo con tus amigos
+                        </span>
+
+                    </div>
+
+                    <button class="historia-cerrar"
+                            onclick="cerrarHistoria">
+
+                        <i class="ion-md-close"></i>
+
+                    </button>
+
+                </div>
+
+                <!-- Usuario -->
+
+                <div class="historia-usuario">
+
+                    <img src="./resources/foto.jpg"
+                         alt="foto usuario">
+
+                    <div>
+
+                        <strong>
+                            @nombreUsuario
+                        </strong>
+
+                        <span>
+                            Tu historia
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- Opciones para subir imagen o video -->
+
+                <div class="historia-opciones"
+                     id="historiaOpciones">
+
+                    <label class="historia-opcion historia-imagen">
+
+                        <input type="file"
+                               id="historiaImagen"
+                               accept="image/*"
+                               onchange="seleccionarHistoria(this, 'imagen')">
+
+                        <div class="historia-opcion-icono">
+
+                            <i class="ion-md-image"></i>
+
+                        </div>
+
+                        <strong>
+                            Imagen
+                        </strong>
+
+                        <span>
+                            Comparte una foto
+                        </span>
+
+                    </label>
+
+                    <label class="historia-opcion historia-video">
+
+                        <input type="file"
+                               id="historiaVideo"
+                               accept="video/*"
+                               onchange="seleccionarHistoria(this, 'video')">
+
+                        <div class="historia-opcion-icono">
+
+                            <i class="ion-md-videocam"></i>
+
+                        </div>
+
+                        <strong>
+                            Video
+                        </strong>
+
+                        <span>
+                            Comparte un video
+                        </span>
+
+                    </label>
+
+                </div>
+
+                <!-- Previsualización -->
+
+                <div class="historia-preview"
+                     id="historiaPreview">
+
+                    <div class="historia-preview-contenido"
+                         id="historiaPreviewContenido">
+                    </div>
+
+                </div>
+
+                <!-- ===== FILTROS ===== -->
+
+                <div class="historia-filtros"
+                     id="historiaFiltros">
+
+                    <div class="historia-filtros-linea"></div>
+
+                    <h3>
+                        Filtro
+                    </h3>
+
+                    <div class="historia-filtros-grid">
+
+                        <button class="historia-filtro-btn active"
+                                data-filtro="original"
+                                type="button">
+
+                            Original
+
+                        </button>
+
+                        <button class="historia-filtro-btn"
+                                data-filtro="brillo"
+                                type="button">
+
+                            Brillo
+
+                        </button>
+
+                        <button class="historia-filtro-btn"
+                                data-filtro="grises"
+                                type="button">
+
+                            Blanco y negro
+
+                        </button>
+
+                        <button class="historia-filtro-btn"
+                                data-filtro="sepia"
+                                type="button">
+
+                            Sepia
+
+                        </button>
+
+                    </div>
+
+                    <button class="historia-aplicar-filtro"
+                            id="historiaAplicarFiltro"
+                            type="button">
+
+                        Aplicar filtro
+
+                    </button>
+                    <button class="historia-borrar-filtro"
+                            id="historiaBorrarFiltro"
+                            type="button">
+
+                        Borrar
+
+                    </button>
+
+                    <div class="historia-filtros-linea"></div>
+
+                </div>
+
+                <!-- Botones finales -->
+
+                <div class="historia-footer"
+                     id="historiaFooter">
+
+                    <button class="historia-cancelar"
+                            onclick="cerrarHistoria()"
+                            type="button">
+
+                        Cancelar
+
+                    </button>
+
+                    <button class="historia-publicar"
+                            id="historiaPublicar"
+                            disabled
+                            onclick="publicarHistoria()"
+                            type="button">
+
+                        Compartir historia
+
+                    </button>
+
+                </div>
+
+            </DIV>
+
+        </DIV>
+
+        <script type="module"
+                src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js">
+        </script>
+
+        <script nomodule
+                src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js">
+        </script>
+
     </BODY>
+
     <FOOTER>
+
         <SCRIPT SRC="./JS/buttons.js"></SCRIPT>
         <SCRIPT SRC="./JS/particulas.js"></SCRIPT>
         <SCRIPT SRC="./JS/deriva.js"></SCRIPT>
         <script src="./JS/crearpub.js"></script>
-        
+        <SCRIPT SRC="./JS/stories.js"></SCRIPT>
+        <SCRIPT SRC="./JS/contador.js"></SCRIPT>
+        <SCRIPT SRC="./JS/funcionalidades.js"></SCRIPT>
     </FOOTER>
+
 </HTML>
+```
+

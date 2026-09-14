@@ -1,4 +1,13 @@
-// Pool de mensajes de ejemplo — en tu proyecto real vendrían de tu backend/BD
+(function () {
+
+  // Si está desactivado en localStorage, remover elementos y no iniciar nada
+  if (localStorage.getItem("cosmix_deriva_activa") === "false") {
+    document.getElementById("botella-flotante")?.remove();
+    document.getElementById("mensaje-card")?.remove();
+    return; // salir de la función
+  }
+
+  // Pool de mensajes de ejemplo — en tu proyecto real vendrían de tu backend/BD
   const mensajes = [
     "A veces el silencio dice más que cualquier post que subamos.",
     "¿Alguien más siente que este año pasó volando?",
@@ -28,7 +37,8 @@
 
   botella.addEventListener('click', abrirBotella);
   btnCerrar.addEventListener('click', cerrarCard);
-  btnDevolver.addEventListener('click', cerrarCard); // acá podrías, por ej, marcar "descartado" en tu backend
+  btnDevolver.addEventListener('click', cerrarCard); 
+  // acá podrías, por ej, marcar "descartado" en tu backend
 
   // Opcional: que la botella "avise" con un pulso cada cierto tiempo,
   // simulando que llegó un mensaje nuevo (sin abrir la tarjeta sola)
@@ -37,3 +47,5 @@
     void botella.offsetWidth; // fuerza reinicio de animación
     botella.style.animation = 'flotar 3s ease-in-out infinite, aparecer 0.6s ease-out';
   }, 15000);
+
+})();

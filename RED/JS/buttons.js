@@ -165,3 +165,40 @@ document.getElementById('btnGenerarReporte').addEventListener('click', () => {
         }
     }
 });
+
+//Notificaciones
+/* Panel de notificaciones */
+const notifMenu = document.getElementById('notifMenu');
+const notifTrigger = document.getElementById('notifTrigger');
+
+if(notifTrigger){
+    notifTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        notifMenu.classList.toggle('active');
+    });
+}
+
+document.addEventListener('click', (e) => {
+    const isClickInside = e.target.closest('.notif-menu') || e.target.closest('#notifTrigger');
+    if(notifMenu && !isClickInside && notifMenu.classList.contains('active')){
+        notifMenu.classList.remove('active');
+    }
+});
+
+/* Pestañas Todas / No leídas */
+document.querySelectorAll('.notif-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.notif-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        // aquí luego puedes filtrar .notif-item según tab.dataset.notiftab
+    });
+});
+
+/* Cerrar aviso de notificaciones push */
+const notifAviso = document.getElementById('notifAviso');
+document.getElementById('notifAvisoCerrar')?.addEventListener('click', () => {
+    notifAviso.style.display = 'none';
+});
+document.getElementById('notifAhoraNo')?.addEventListener('click', () => {
+    notifAviso.style.display = 'none';
+});
