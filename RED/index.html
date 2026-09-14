@@ -14,6 +14,9 @@
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/menus.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/botella.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/crearpub.css">
+        
     </HEAD>
     <BODY>
             <!--Elementos para el fondo-->
@@ -35,17 +38,17 @@
         <button class="hamburger hamburger-close" accesskey="M">☰</button>
     </div>
     <ul class="menulist">
-                <li class="active"><i class="ion-md-home"></i> Inicio</li>
-                <li><i class="ion-md-search"></i> Buscar</li>
-                <li><i class="ion-md-videocam"></i> Videos</li>
-                <li><i class="ion-md-mail"></i> Mensajes</li>
-                <li><i class="ion-md-notifications"></i> Notificaciones</li>
-                <li><i class="ion-md-bookmark"></i> Guardados</li>
-                <li><i class="ion-md-people"></i> Solicitudes de amistad</li>
-                <li class="movil"><i class="ion-md-newspaper"></i> Noticias</li>
-            </ul>
-            <button class="create-post-btn">Publicar</button>
-        </DIV>
+        <li class="active"><i class="ion-md-home"></i> Inicio</li>
+        <li><i class="ion-md-search"></i> Buscar</li>
+        <li><i class="ion-md-videocam"></i> Videos</li>
+        <li><i class="ion-md-mail"></i> Mensajes</li>
+        <li><i class="ion-md-notifications"></i> Notificaciones</li>
+        <li><i class="ion-md-bookmark"></i> Guardados</li>
+        <li><i class="ion-md-people"></i> Solicitudes de amistad</li>
+        <li class="movil"><i class="ion-md-newspaper"></i> Noticias</li>
+    </ul>
+    <button class="create-post-btn">Publicar</button>
+    </DIV>
 
         <DIV CLASS="profile-menu" id="profileMenu">
             <div class="profile-menu-header">
@@ -116,10 +119,27 @@
                 <div class="profile" id="profileTrigger" onclick="document.getElementById('profileMenu').classList.toggle('active')">HO</div>
             </div>
         </DIV>
-
+        <DIV CLASS="crear-publi">
+                    <h2>Crear publicación</h2>
+                    <hr>
+                    <form>
+                        <!--<LABEL FOR="texto">Escribe una publicación</LABEL>-->
+                        <br>
+                        <!--<INPUT TYPE="text" placeholder="Escribe tu texto">-->
+                        <textarea placeholder="Escribe cómo te sientes"></textarea>
+                        <br>
+                        <DIV CLASS="left">
+                            <ion-icon name="images-outline" class="icono"></ion-icon>
+                            <ion-icon name="videocam-outline" class="icono"></ion-icon>
+                            <ion-icon name="happy-outline" class="icono"></ion-icon>
+                        </DIV>
+                        
+                        
+                    </form>
+                </DIV>
         <DIV CLASS="body">
             <DIV CLASS="ctr">
-               <DIV CLASS="panel crear-post">
+               <DIV CLASS="panel crear-post" id="crear">
                     <img src="./resources/foto.jpg" alt="foto usuario" class="foto">
                     <input type="text" class="inputs crear-post-input" placeholder="¿Qué está pasando por tu mente?">
                     <div class="crear-post-icons">
@@ -184,49 +204,63 @@
                     </DIV>
                 </DIV>
             </DIV>
-<DIV CLASS="right">
-    <DIV CLASS="panel">
-        <div class="panel-title">Sugerencias para ti</div>
-        <div class="suggestion">
-            <div class="foto"></div>
-            <div class="suggestion-info"><p>@usuario4</p><p>Recomendado</p></div>
-            <button class="follow-btn">Seguir</button>
-        </div>
-        <div class="suggestion">
-            <div class="foto"></div>
-            <div class="suggestion-info"><p>@usuario5</p><p>Recomendado</p></div>
-            <button class="follow-btn">Seguir</button>
-        </div>
-    </DIV>
+        <DIV CLASS="right">
+            <DIV CLASS="panel">
+                <div class="panel-title">Sugerencias para ti</div>
+                <div class="suggestion">
+                    <div class="foto"></div>
+                    <div class="suggestion-info"><p>@usuario4</p><p>Recomendado</p></div>
+                    <button class="follow-btn">Seguir</button>
+                </div>
+                <div class="suggestion">
+                    <div class="foto"></div>
+                    <div class="suggestion-info"><p>@usuario5</p><p>Recomendado</p></div>
+                    <button class="follow-btn">Seguir</button>
+                </div>
+            </DIV>
 
-    <DIV CLASS="panel">
-        <div class="panel-title">Noticias</div>
+            <DIV CLASS="panel">
+                <div class="panel-title">Noticias</div>
 
-        <div class="noticia-item">
-            <img src="./resources/noticia1.png" alt="noticia" class="noticia-thumb">
-            <div class="noticia-info">
-                <p class="noticia-titulo">New Jax and Gloink Queen Plushes!</p>
-                <p class="noticia-descrip">Coleccion limitada de peluches inspirados en el universo Digital Circus.</p>
-                <p class="noticia-fuente">glitchproductions.store</p>
-            </div>
-        </div>
+                <div class="noticia-item">
+                    <img src="./resources/noticia1.png" alt="noticia" class="noticia-thumb">
+                    <div class="noticia-info">
+                        <p class="noticia-titulo">New Jax and Gloink Queen Plushes!</p>
+                        <p class="noticia-descrip">Coleccion limitada de peluches inspirados en el universo Digital Circus.</p>
+                        <p class="noticia-fuente">glitchproductions.store</p>
+                    </div>
+                </div>
 
-        <div class="noticia-item">
-            <img src="./resources/noticia2.png" alt="noticia" class="noticia-thumb">
-            <div class="noticia-info">
-                <p class="noticia-titulo">Prueba gratis de Acrobat Pro por 7 dias</p>
-                <p class="noticia-descrip">Edita, firma y envia documentos PDF desde cualquier dispositivo.</p>
-                <p class="noticia-fuente">adobe.com</p>
-            </div>
-        </div>
-    </DIV>
-</DIV>
-                </DIV>
+                <div class="noticia-item">
+                    <img src="./resources/noticia2.png" alt="noticia" class="noticia-thumb">
+                    <div class="noticia-info">
+                        <p class="noticia-titulo">Prueba gratis de Acrobat Pro por 7 dias</p>
+                        <p class="noticia-descrip">Edita, firma y envia documentos PDF desde cualquier dispositivo.</p>
+                        <p class="noticia-fuente">adobe.com</p>
+                    </div>
+                </div>
             </DIV>
         </DIV>
+        <div id="botella-flotante" title="Mensaje a la deriva">🍾</div>
+
+        <div id="mensaje-card">
+            <h4>Mensaje a la deriva</h4>
+            <p id="mensaje-texto">Cargando...</p>
+            <div class="acciones">
+                <button id="btn-devolver" class="btn-devolver">Devolver al mar</button>
+                <button id="btn-cerrar" class="btn-cerrar">Recoger la botella</button>
+            </div>
+        </div>
+
+    </DIV>
+        <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
     </BODY>
     <FOOTER>
         <SCRIPT SRC="./JS/buttons.js"></SCRIPT>
         <SCRIPT SRC="./JS/particulas.js"></SCRIPT>
+        <SCRIPT SRC="./JS/deriva.js"></SCRIPT>
+        <script src="./JS/crearpub.js"></script>
+        
     </FOOTER>
 </HTML>

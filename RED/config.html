@@ -1,160 +1,150 @@
+<!DOCTYPE HTML>
 <HTML>
     <HEAD>
-        <title>Configuración del perfil</title>
+        <meta charset="UTF-8">
+        <title>Mi Perfil</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--Aqui iran las ligas de elementos externos como iconos y tipografias-->
-        <!--aqui van las ligas externas-->
-            <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-			<link rel="preconnect" href="https://fonts.googleapis.com">
-			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-			<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-			<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-            
-        <!--Aqui iran las ligas de los elementos de css-->
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/distribucion.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/movil.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/menus.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/perfil.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/crearpub.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/login.css">
-        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/validaciones.css">
-        
-        
+            <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/validaciones.css">
     </HEAD>
     <BODY>
-        <!--Acomodamos los menus antes que el contenido que siempre se vera-->
+        <div class="fondo_cos">
+            <div class="gradi1"></div>
+            <div class="gradi2"></div>
+            <div class="gradi3"></div>
+            <div class="circulo1"></div>
+            <div class="circulo2"></div>
+            <div class="circulo3"></div>
+            <canvas id="particulas"></canvas>
+        </div>
+        <div class="figuras"></div>
+
         <DIV CLASS="menu">
+            <div class="menu-logo">
+                <span><i class="ion-md-planet"></i> COSMIX</span>
+                <button class="hamburger hamburger-close" accesskey="M">☰</button>
+            </div>
             <ul class="menulist">
-                <li>Inicio</li>
-                <li>Buscar</li>
-                <li>Videos</li>
-                <li>Mensajes</li>
-                <li>Notificaciones</li>
-                <li>Guardados</li>
-                <li>Solicitudes de amistad</li>
-                <!--opciones disponibles solo en modo de movil-->
-                <li class="movil">Noticias</li>
-                
+                <li><i class="ion-md-home"></i> Inicio</li>
+                <li><i class="ion-md-search"></i> Buscar</li>
+                <li><i class="ion-md-videocam"></i> Videos</li>
+                <li><i class="ion-md-mail"></i> Mensajes</li>
+                <li><i class="ion-md-notifications"></i> Notificaciones</li>
+                <li><i class="ion-md-bookmark"></i> Guardados</li>
+                <li><i class="ion-md-people"></i> Solicitudes de amistad</li>
             </ul>
-        </DIV>
-        
-        <DIV CLASS="menu2">
-            <ul class="menulist">
-                <li>Perfil</li>
-                <li>Configuracion</li>
-            </ul>
-            AQUI VAN LAS CONFIGURACIONES DEL PERFIL
+            <button class="create-post-btn">Publicar</button>
         </DIV>
 
-        <!--colocar la barra principal-->
         <DIV CLASS="title">
             <button id="toggleMenu" class="hamburger" accesskey="M">☰</button>
-            <h1>PRUEBA</h1>
-            <button class="profile">Configuracion</button>
+            <div class="title-logo"><i class="ion-md-planet"></i> COSMIX</div>
+            <div class="search-box"><i class="ion-md-search"></i> Buscar</div>
+            <div class="title-icons">
+                <i class="ion-md-notifications-outline"></i>
+                <i class="ion-md-mail-outline"></i>
+                <div class="profile" id="profileTrigger" onclick="document.getElementById('profileMenu').classList.toggle('active')">HO</div>
+            </div>
         </DIV>
-        <DIV CLASS="body">
-            <DIV CLASS="ctr w100">
-                <DIV CLASS="dual">
-                    <DIV CLASS="Cpost">
-                        <div CLASS="username">
-                            <H3>USERNAME</H3>
-                            <label>@User</label>
-                        </div>
-                    </DIV>
-                    <DIV CLASS="Cpost">
-                        <form>
-                            <label for="foto">Subir fotografía</label><br/>
-                            <input type="file" class="inp" id="foto" name="foto">
-                        </form>
-                    </DIV>
-                    <DIV CLASS="Cpost">
-                        <form class="form-identidad">
-                            <label for="usuario">Usuario</label>
-                            <input type="text" name="usuario" id="usuario" placeholder="Usuario" class="inp">
-                            <DIV CLASS="validations">
-                                <small class="pls">Por favor ingresa el usuario</small>
-                                <small class="error">El usuario debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
-                            </DIV>
-                            <label for="@user">Usuario</label>
-                            <input type="text" name="@user" id="@user" placeholder="@Usuario" class="inp">
-                            <DIV CLASS="validations">
-                                <small class="pls">Por favor ingresa el tag de usuario</small>
-                                <small class="error">El tag de usuario debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
-                            </DIV>
-                            <BR>
-                            <DIV CLASS="enviar2">
-                                <input type="submit" class="btn" tabindex="0" value="Confirmar">
-                            </DIV>
-                        </form>
-                    </DIV>
-                    <DIV CLASS="Cpost">
-                        <!--<DIV CLASS="formulario">-->
-                        <H2>Configuración de datos</H2>
-                        <FORM class="form-configuracion">
-                            <INPUT TYPE="TEXT" NAME="nombre" CLASS="inp" PLACEHOLDER="Nombre completo" REQUIRED tabindex="0">
-                            <DIV CLASS="validations">
-                                <small class="pls">Por favor ingresa nombre</small>
-                                <small class="error">El usuario debe tener al menos 4 caracteres, NO DEBE incluir numeros y guiones bajos</small>
-                            </DIV>
-                            <LABEL><SMALL>Fecha de nacimiento</SMALL></LABEL>
-                            <INPUT TYPE="date" NAME="Fecha" CLASS="inp" PLACEHOLDER="Fecha de nacimiento" REQUIRED tabindex="0">
-                            <DIV CLASS="validations">
-                                <small class="pls">Por favor ingresa la fecha de nacimiento</small>
-                                <small class="error">El usuario tiene que ser de mayor a 12 años</small>
-                            </DIV>
-                            <LABEL><SMALL>Género</SMALL></LABEL><BR>
-                            <DIV CLASS="enviar2">
-                                <INPUT TYPE="radio" NAME="gender" VALUE="male" ID="male" REQUIRED>
-                                <LABEL for="male"><small>Hombre</small></LABEL><BR>
-                                <INPUT TYPE="radio" NAME="gender" VALUE="female" ID="female" REQUIRED>
-                                <LABEL for="female"><small>Mujer</small></LABEL><BR>
-                                <INPUT TYPE="radio" NAME="gender" VALUE="other" ID="other" REQUIRED>
-                                <LABEL for="other"><small>Otro</small></LABEL><BR>
-                            </DIV>
-                            <DIV CLASS="validations">
-                                <small class="pls">Por favor elija una de las opciones</small>
-                            </DIV>
-                            <INPUT TYPE="email" NAME="email" CLASS="inp" placeholder="Correo" id="Correo" REQUIRED tabindex="0">
-                            <DIV CLASS="validations">
-                                <small class="pls">Por favor ingresa correo</small>
-                                <small class="error">El correo debe tener al menos 4 caracteres antes del @, puede incluir numeros y guiones bajos</small>
-                            </DIV>
-                            <BR>
-                            <INPUT TYPE="password" NAME="password" CLASS="inp" PLACEHOLDER="Contraseña" REQUIRED tabindex="0">
-                            <DIV CLASS="validations">
-                                <small class="pls">Por favor ingresa password</small>
-                                <small class="error">El password debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
-                            </DIV>
-                            <BR>
-                            <INPUT TYPE="password" NAME="password2" CLASS="inp" PLACEHOLDER="Confirmar Contraseña" REQUIRED tabindex="0">
-                            <DIV CLASS="validations">
-                                <small class="pls">Por favor ingresa password</small>
-                                <small class="error">El password debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
-                                <small class="notsame">Las contraseñas no coinciden</small>
-                            </DIV>
-                            <DIV CLASS="enviar2">
-                                <INPUT TYPE="submit" CLASS="btn" tabindex="0" VALUE="Enviar">
-                            </DIV>
-                        </FORM>
-                    </DIV>
 
-                    <!--</DIV>-->
-                    
-                </DIV>
-            </DIV>
-            <!--
-            <DIV CLASS="right">
-                <DIV>
-                    AQUI VAN LAS SUGERENCIAS Y NOTICIAS RELEVANTES
-                </DIV>
-            </DIV>-->
-        </DIV>
+        <DIV CLASS="body profile-page">
+
+           
+            <div class="profile-cover-section">
+                <label for="coverUpload" class="profile-cover" id="coverLabel">
+                    <img id="coverPreview" class="profile-cover-img" style="display:none;">
+                    <div class="profile-cover-edit"><i class="ion-md-camera"></i> Editar portada</div>
+                </label>
+                <input type="file" id="coverUpload" accept="image/*" style="display:none;">
+
+                <div class="profile-header">
+                    <label for="avatarUpload" class="profile-avatar-lg" id="avatarLabel">
+                        <img id="avatarPreview" style="display:none;">
+                        <span id="avatarInitials">HO</span>
+                        <div class="profile-avatar-cam"><i class="ion-md-camera"></i></div>
+                    </label>
+                    <input type="file" id="avatarUpload" accept="image/*" style="display:none;">
+
+                    <div class="profile-name-block">
+                        <h1>Nombre Usuario</h1>
+                        <p>@usuario</p>
+                    </div>
+                    <button class="btn profile-edit-btn"><i class="ion-md-create"></i> Editar perfil</button>
+                </div>
+
+                <div class="profile-tabs">
+                    <div class="profile-tab active" data-tab="informacion"><i class="ion-md-information-circle"></i> Información</div>
+                    <div class="profile-tab" data-tab="amigos"><i class="ion-md-people"></i> Amigos</div>
+                    <div class="profile-tab" data-tab="galeria"><i class="ion-md-images"></i> Galería</div>
+                    <div class="profile-tab" data-tab="estadisticas"><i class="ion-md-stats"></i> Estadísticas</div>
+                 
+                </div>
+            </div>
+
+            <!--  Información  -->
+            <div class="tab-panel active" id="tab-informacion">
+                <div class="profile-content">
+
+                    <!--  Datos, Amigos, Galería -->
+                    <div class="profile-left">
+                        <div class="panel">
+                            <div class="panel-title">Información</div>
+                            <ul>
+                                <li class="dato-item">Datos Personales</li>
+                                <li class="dato-item">Contacto</li>
+                                <li class="dato-item">Intereses</li>
+                                <li class="dato-item">Más Información</li>
+                                <li class="dato-item">Privacidad</li>
+                            </ul>
+                            <!--<div class="dato-item"><i class="ion-md-mail"></i>Datos Personales</div>
+                            <div class="dato-item"><i class="ion-md-calendar"></i>Contacto</div>
+                            <div class="dato-item"><i class="ion-md-male"></i>Más información</div>
+                            <div class="dato-item"><i class="ion-md-male"></i>Intereses</div>-->
+                            
+                        </div>
+
+                    </div>
+                    <div class="cetr">
+                        <div class="formulario2">
+                            <form>
+                                <label for="user">Nombre del usuario</label>
+                                <input type="text" id="user" class="inp" placeholder="John Doe">
+                                <div class="validations">
+                                    <small class="pls">Por favor ingresa usuario</small>
+                                    <small class="error">El usuario debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
+                                </div>
+                                <label for="tag">Tag del usuario</label>
+                                <input type="text" id="tag" class="inp" placeholder="@John Doe">
+                                <div class="validations">
+                                    <small class="pls">Por favor ingresa usuario</small>
+                                    <small class="error">El tag de usuario debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
+                                </div>
+                                
+                            </form>
+                        </div>
+                    </div>
+
+                 </div>
+            </div>
+
+           
+
     </BODY>
     <FOOTER>
-        <!--colocar los scripts-->
         <SCRIPT SRC="./JS/buttons.js"></SCRIPT>
-        <SCRIPT src="./JS/Confvalidate.js"></SCRIPT>
+        <SCRIPT SRC="./JS/particulas.js"></SCRIPT>
+        <SCRIPT SRC="./JS/config.js"></SCRIPT>
     </FOOTER>
 </HTML>

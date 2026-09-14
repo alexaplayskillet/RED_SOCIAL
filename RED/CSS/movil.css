@@ -1,3 +1,4 @@
+/*cosas de movil*/
 @media (max-width: 768px){
     .right{
         display: none;
@@ -31,5 +32,56 @@
 
     .Cpost{
         width: 100% !important;
+    }
+
+    .crear-publi{
+        left: 20%;
+        width: 70%;
+    }
+
+    .soli{
+        flex: 0 1 320px;
+        height: auto;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .CajaSoli{
+        justify-content: center;
+        text-align: center;
+    }
+
+    .chats{
+        display: none;
+    }
+
+    .conv{
+        width: 100%;
+        margin-left: 78px;
+    }
+}
+/*cosas de pc*/
+@media (min-width: 769px){
+    .crear-publi{
+        left: 30%;
+        width: 40%;
+    }
+
+    .CajaSoli{
+        /*display: flex;*/
+        flex-direction: row;
+    }
+
+    .soli{
+        width: auto;
+        height: auto;
+    }
+
+    .chats{
+        display: block;
+    }
+
+    .conv{
+        width: 60%;
     }
 }
