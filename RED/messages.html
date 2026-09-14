@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<HTML>
+    <HEAD>
+         <meta charset="UTF-8">
+        <title>Pagina Principal</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/distribucion.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/movil.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/menus.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/botella.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/crearpub.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/messages.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/login.css">
+        
+    </HEAD>
+    <BODY>
+           <!--Elementos para el fondo-->
+        <div class="fondo_cos">
+            <div class="gradi1"></div>
+            <div class="gradi2"></div>
+            <div class="gradi3"></div>
+            <div class="circulo1"></div>
+            <div class="circulo2"></div>
+            <div class="circulo3"></div>
+            <canvas id="particulas"></canvas>
+        </div>
+        <div class="figuras"></div>
+        <!--CONTENEDOR DE LOS 3 PANELES-->
+        <DIV CLASS="bodyy">
+            <DIV CLASS="menulat">
+            <ul>
+                <li><ion-icon name="chatbubble-ellipses-outline"></ion-icon></li>
+                <li>🍾</li>
+            </ul>
+            </DIV>
+            <DIV CLASS="chats">
+                <h3>Chats</h3>
+                <ul>
+                    <li><img src="./resources/foto.jpg" class="foto">
+                        <DIV CLASS="blok">
+                            <p>Chat 1</p> 
+                            <small>Hola papu</small>
+                        </DIV>
+                    </li>
+                    <li><img src="./resources/foto.jpg" class="foto">
+                        <DIV CLASS="blok">
+                            <p>Chat 1</p> 
+                            <small>Hola papu</small>
+                        </DIV>
+                    </li>
+                    <li><img src="./resources/foto.jpg" class="foto">
+                        <DIV CLASS="blok">
+                            <p>Chat 1</p> 
+                            <small>Hola papu</small>
+                        </DIV>
+                    </li>
+                    <li><img src="./resources/foto.jpg" class="foto">
+                        <DIV CLASS="blok">
+                            <p>Chat 1</p> 
+                            <small>Hola papu</small>
+                        </DIV>
+                    </li>
+                    <li><img src="./resources/foto.jpg" class="foto">
+                        <DIV CLASS="blok">
+                            <p>Chat 1</p> 
+                            <small>Hola papu</small>
+                        </DIV>
+                    </li>
+                    <li><img src="./resources/foto.jpg" class="foto">
+                        <DIV CLASS="blok">
+                            <p>Chat 1</p> 
+                            <small>Hola papu</small>
+                        </DIV>
+                    </li>
+                    <li><img src="./resources/foto.jpg" class="foto">
+                        <DIV CLASS="blok">
+                            <p>Chat 1</p> 
+                            <small>Hola papu</small>
+                        </DIV>
+                    </li>
+                    <li><img src="./resources/foto.jpg" class="foto">
+                        <DIV CLASS="blok">
+                            <p>Chat 1</p> 
+                            <small>Hola papu</small>
+                        </DIV>
+                    </li>
+                </ul>
+            </DIV>
+            <DIV CLASS="conv">
+               <DIV CLASS="userinfo">
+                        <img src="./resources/foto.jpg" alt="no cargo" class="foto">
+                        <DIV class="username">
+                            <p>Usuario</p>
+                            <p>Hace 5 minutos</p>
+                        </DIV>
+                    </DIV>
+                <DIV CLASS="mensajes">
+                        <DIV CLASS="enviado">
+                            <p>Hola</p>
+                        </DIV>
+                        <DIV CLASS="recibido">
+                            <p>holaaa</p>
+                        </DIV>
+                        <DIV CLASS="enviado">
+                            <p>Hola</p>
+                        </DIV>
+                        <DIV CLASS="recibido">
+                            <p>holaaa</p>
+                        </DIV>
+                        <DIV CLASS="enviado">
+                            <p>Hola</p>
+                        </DIV>
+                        <DIV CLASS="recibido">
+                            <p>holaaa</p>
+                        </DIV>
+                        <DIV CLASS="enviado">
+                            <p>Hola</p>
+                        </DIV>
+                        <DIV CLASS="recibido">
+                            <p>holaaa</p>
+                        </DIV>
+                        <DIV CLASS="enviado">
+                            <p>Hola</p>
+                        </DIV>
+                        <DIV CLASS="recibido">
+                            <p>holaaa</p>
+                        </DIV>
+                </DIV>
+                
+                <form>
+                    <input class="inp" placeholder="Escribe tu mensaje">
+                    <ion-icon name="send-outline">
+                </form>
+            </DIV>
+        </DIV>
+        
+        <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
+    </BODY>
+    <FOOTER>
+
+    </FOOTER>
+</HTML>

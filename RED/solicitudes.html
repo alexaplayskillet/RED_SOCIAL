@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<HTML>
+    <HEAD>
+        <meta charset="UTF-8">
+        <title>Pagina Principal</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/distribucion.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/movil.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/menus.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/botella.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/crearpub.css">
+        
+    </HEAD>
+    <BODY>
+            <!--Elementos para el fondo-->
+        <div class="fondo_cos">
+            <div class="gradi1"></div>
+            <div class="gradi2"></div>
+            <div class="gradi3"></div>
+            <div class="circulo1"></div>
+            <div class="circulo2"></div>
+            <div class="circulo3"></div>
+            <canvas id="particulas"></canvas>
+        </div>
+        <div class="figuras"></div>
+
+        <!--Acomodamos los menus antes que el contenido que siempre se vera-->
+        <DIV CLASS="menu">
+            <div class="menu-logo">
+                <span><i class="ion-md-planet"></i> COSMIX</span>
+        <button class="hamburger hamburger-close" accesskey="M">☰</button>
+    </div>
+    <ul class="menulist">
+        <li class="active"><i class="ion-md-home"></i> Inicio</li>
+        <li><i class="ion-md-search"></i> Buscar</li>
+        <li><i class="ion-md-videocam"></i> Videos</li>
+        <li><i class="ion-md-mail"></i> Mensajes</li>
+        <li><i class="ion-md-notifications"></i> Notificaciones</li>
+        <li><i class="ion-md-bookmark"></i> Guardados</li>
+        <li><i class="ion-md-people"></i> Solicitudes de amistad</li>
+        <li class="movil"><i class="ion-md-newspaper"></i> Noticias</li>
+    </ul>
+    <button class="create-post-btn">Publicar</button>
+    </DIV>
+
+        <DIV CLASS="profile-menu" id="profileMenu">
+            <div class="profile-menu-header">
+                <div class="profile-menu-avatar">HO</div>
+                <div class="profile-menu-name">@nombreUsuario</div>
+            </div>
+
+            <button class="profile-menu-verperfil">
+                <i class="ion-md-person"></i> Ver perfil
+            </button>
+
+            <div class="profile-menu-divider"></div>
+
+            <ul class="profile-menu-list">
+                <li><i class="ion-md-help-circle"></i> Ayuda</li>
+                <li onclick="toggleAccessMenu(true)"><i class="ion-md-options"></i> Accesibilidad</li>
+               <li class="profile-menu-logout" onclick="window.location.href='login.html'"><i class="ion-md-log-out"></i> Cerrar sesión</li>
+            </ul>
+        </DIV>
+        <DIV CLASS="access-menu" id="accessMenu">
+    <div class="access-menu-header">
+        <button class="access-back" onclick="toggleAccessMenu(false)">
+            <i class="ion-md-arrow-back"></i>
+        </button>
+        <span>Pantalla y accesibilidad</span>
+    </div>
+
+    <div class="access-section">
+        <div class="access-section-title"><i class="ion-md-moon"></i> Apariencia</div>
+        <div class="access-options">
+            <button class="access-chip" id="themeLight" onclick="setTheme('light')">
+                <i class="ion-md-sunny"></i> Claro
+            </button>
+            <button class="access-chip active" id="themeDark" onclick="setTheme('dark')">
+                <i class="ion-md-moon"></i> Oscuro
+            </button>
+        </div>
+    </div>
+
+    <div class="access-section">
+        <div class="access-section-title"><i class="ion-md-text"></i> Tamaño de letra</div>
+        <div class="access-fontsize-control">
+            <button class="access-font-btn" id="fontDecrease">A-</button>
+            <span class="access-font-value" id="fontValue">100%</span>
+            <button class="access-font-btn" id="fontIncrease">A+</button>
+        </div>
+    </div>
+
+    <div class="access-section">
+        <div class="access-section-title-row">
+            <div class="access-section-title"><i class="ion-md-contrast"></i> Alto contraste</div>
+            <label class="access-switch">
+                <input type="checkbox" id="contrastToggle">
+                <span class="access-switch-slider"></span>
+            </label>
+        </div>
+        <p class="access-desc">Aumenta el contraste de los textos para facilitar la lectura.</p>
+    </div>
+</DIV>
+
+        <DIV CLASS="title">
+            <button id="toggleMenu" class="hamburger" accesskey="M">☰</button>
+            <div class="title-logo"><i class="ion-md-planet"></i> COSMIX</div>
+            <div class="search-box"><i class="ion-md-search"></i> Buscar</div>
+            <div class="title-icons">
+                <i class="ion-md-notifications-outline"></i>
+                <i class="ion-md-mail-outline"></i>
+                <div class="profile" id="profileTrigger" onclick="document.getElementById('profileMenu').classList.toggle('active')">HO</div>
+            </div>
+        </DIV>
+        <DIV CLASS="body">
+            <DIV CLASS="CajaSoli w100">
+                <DIV CLASS="soli">
+                    <img src="./resources/foto.jpg">
+                    <p>Nombre del usuario</p>
+                    <p><small>2 Amigos en comun</small></p>
+                    <button class="btn-cerrar mar">Aceptar</button><br>
+                    <button class="btn-devolver mar">Rechazar</button>
+                </DIV>
+                <DIV CLASS="soli">
+                    <img src="./resources/foto.jpg">
+                    <p>Nombre del usuario</p>
+                    <p><small>2 Amigos en comun</small></p>
+                    <button class="btn-cerrar mar">Aceptar</button><br>
+                    <button class="btn-devolver mar">Rechazar</button>
+                </DIV>
+                <DIV CLASS="soli">
+                    <img src="./resources/foto.jpg">
+                    <p>Nombre del usuario</p>
+                    <p><small>2 Amigos en comun</small></p>
+                    <button class="btn-cerrar mar">Aceptar</button><br>
+                    <button class="btn-devolver mar">Rechazar</button>
+                </DIV>
+                <DIV CLASS="soli">
+                    <img src="./resources/foto.jpg">
+                    <p>Nombre del usuario</p>
+                    <p><small>2 Amigos en comun</small></p>
+                    <button class="btn-cerrar mar">Aceptar</button><br>
+                    <button class="btn-devolver mar">Rechazar</button>
+                </DIV>
+                <DIV CLASS="soli">
+                    <img src="./resources/foto.jpg">
+                    <p>Nombre del usuario</p>
+                    <p><small>2 Amigos en comun</small></p>
+                    <button class="btn-cerrar mar">Aceptar</button><br>
+                    <button class="btn-devolver mar">Rechazar</button>
+                </DIV>
+                <DIV CLASS="soli">
+                    <img src="./resources/foto.jpg">
+                    <p>Nombre del usuario</p>
+                    <p><small>2 Amigos en comun</small></p>
+                    <button class="btn-cerrar mar">Aceptar</button><br>
+                    <button class="btn-devolver mar">Rechazar</button>
+                </DIV>
+                <DIV CLASS="soli">
+                    <img src="./resources/foto.jpg">
+                    <p>Nombre del usuario</p>
+                    <p><small>2 Amigos en comun</small></p>
+                    <button class="btn-cerrar mar">Aceptar</button><br>
+                    <button class="btn-devolver mar">Rechazar</button>
+                </DIV>
+                <DIV CLASS="soli">
+                    <img src="./resources/foto.jpg">
+                    <p>Nombre del usuario</p>
+                    <p><small>2 Amigos en comun</small></p>
+                    <button class="btn-cerrar mar">Aceptar</button><br>
+                    <button class="btn-devolver mar">Rechazar</button>
+                </DIV>
+            </DIV>
+               
+            <div id="mensaje-card">
+                <h4>Mensaje a la deriva</h4>
+                <p id="mensaje-texto">Cargando...</p>
+                <div class="acciones">
+                    <button id="btn-devolver">Devolver al mar</button>
+                    <button id="btn-cerrar">Recoger la botella</button>
+                </div>
+            </div>
+
+        </DIV>
+        <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
+    </BODY>
+    <FOOTER>
+        <SCRIPT SRC="./JS/buttons.js"></SCRIPT>
+        <SCRIPT SRC="./JS/particulas.js"></SCRIPT>
+        <SCRIPT SRC="./JS/deriva.js"></SCRIPT>
+        <script src="./JS/crearpub.js"></script>
+        
+    </FOOTER>
+</HTML>

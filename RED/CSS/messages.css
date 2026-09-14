@@ -1,0 +1,178 @@
+html, body{
+    overflow-y: hidden; /* nadie scrollea la página entera */
+    margin: 0;
+    height: 100%;
+}
+
+.bodyy{
+    display: flex;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+    transition: margin-left 0.5s ease;
+
+}
+
+.menulat{
+    width: 10%;
+    /*background-color: red;*/
+    /*background:
+        radial-gradient(circle at 15% 20%, rgba(0, 229, 255, 0.12), transparent 20%),
+        radial-gradient(circle at 85% 60%, rgba(255, 0, 200, 0.12), transparent 25%),
+        rgba(18, 12, 34, 0.75);*/
+    background-color: #3d286b47;
+    backdrop-filter: blur(14px);
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+    max-width: 90px;
+    min-width: 70px;
+    list-style-type: none;
+    position: fixed;
+    height: 100%;
+}
+
+.menulat ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.menulat li{
+    width: 100%;
+    list-style: none;
+    font-size: 2em;
+    align-items: center;
+    /*margin-left: 0;
+    margin-top: 10px;*/
+    margin: 10px 0 0 0;
+    border-radius: 20px;
+}
+
+.menulat li:hover{
+    background-color: rgba(189, 208, 238, 0.232);
+}
+
+.chats{
+    /*background-color: antiquewhite;*/
+    background-color: #1c195472;
+    width: 35%;
+    /*margin: 0;*/
+    margin: 0 0 0 90px;
+    padding: 10px;
+    height: 100vh;
+    overflow-y: auto; /* el scroll pasa a vivir acá adentro */
+}
+
+.chats ul{
+    list-style: none;
+    padding: 0px;
+}
+
+.chats li{
+    margin-top: 10px;
+    background-color: rgba(0, 115, 255, 0.105);
+    padding: 15px;
+    border-radius: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.chats li:hover{
+    background-color: rgba(0, 115, 255, 0.273);
+}
+
+.blok{
+    display: block;
+}
+
+.conv{
+    background: linear-gradient(135deg, #a955f71f, #00e5ff22);
+    padding: 10px;
+    box-sizing: border-box;
+    
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* ocupa toda la altura visible */
+}
+
+.chats li small{
+    font-size: 10px;
+}
+
+.mensajes{
+    flex: 1; /* toma todo el espacio disponible, empujando el form hacia abajo */
+    overflow-y: auto; /* si hay muchos mensajes, scrollea acá, no toda la pantalla */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.enviado, .recibido{
+    width: fit-content; /* se achica/agranda según el texto que contenga */
+    max-width: 70%; /* nunca ocupa más del 70% del ancho, aunque el texto sea largo */
+    padding: 0px 14px;
+    border-radius: 14px;
+    word-wrap: break-word;
+}
+
+.enviado{
+    align-self: flex-end; /* alinea la burbuja a la derecha del contenedor */
+    background-color: #d400ff33;
+}
+
+.recibido{
+    align-self: flex-start; /* alinea la burbuja a la izquierda */
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.conv form{
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    gap: 15px;
+}
+
+.conv .inp{
+    width: 75%;
+    box-sizing: border-box;
+}
+
+.conv ion-icon{
+    margin-top: 12px;
+    font-size: 2em;
+}
+
+.conv ion-icon:hover{
+    color: aquamarine;
+    font-size: 2.5em;
+}
+
+/* Chrome, Edge, Safari */
+.chats::-webkit-scrollbar,
+.mensajes::-webkit-scrollbar{
+    width: 8px;
+}
+
+.chats::-webkit-scrollbar-track,
+.mensajes::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+.chats::-webkit-scrollbar-thumb,
+.mensajes::-webkit-scrollbar-thumb{
+    background: linear-gradient(180deg, #a955f7, #00e5ff);
+    border-radius: 10px;
+}
+
+.chats::-webkit-scrollbar-thumb:hover,
+.mensajes::-webkit-scrollbar-thumb:hover{
+    background: linear-gradient(180deg, #c084fc, #22d3ee);
+}
+
+/* Firefox */
+.chats,
+.mensajes{
+    scrollbar-width: thin;
+    scrollbar-color: #a955f7 transparent;
+}
