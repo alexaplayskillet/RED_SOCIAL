@@ -67,12 +67,14 @@
                 <input type="file" id="coverUpload" accept="image/*" style="display:none;">
 
                 <div class="profile-header">
-                    <label for="avatarUpload" class="profile-avatar-lg" id="avatarLabel">
+                 <label for="avatarUpload" class="profile-avatar-lg" id="avatarLabel">
+                    <div class="profile-avatar-inner">
                         <img id="avatarPreview" style="display:none;">
                         <span id="avatarInitials">HO</span>
-                        <div class="profile-avatar-cam"><i class="ion-md-camera"></i></div>
-                    </label>
-                    <input type="file" id="avatarUpload" accept="image/*" style="display:none;">
+                    </div>
+                    <div class="profile-avatar-edit"><i class="ion-md-create"></i></div>
+                </label>
+                <input type="file" id="avatarUpload" accept="image/*" style="display:none;">
 
                     <div class="profile-name-block">
                         <h1>Nombre Usuario</h1>
@@ -206,6 +208,148 @@
 
                 </div>
             </div>
+
+            <!-- Amigos -->
+<div class="tab-panel" id="tab-amigos">
+    <div class="panel amigos-panel-full">
+        <div class="amigos-header">
+            <h2>Amigos</h2>
+            <p class="amigos-subtitulo">846 amigos</p>
+            <div class="amigos-search">
+                <i class="ion-md-search"></i>
+                <input type="text" placeholder="Buscar amigos">
+                
+           </div>
+    </div>
+     
+             
+        
+           <div class="amigos-toolbar-btns">
+            <button class="btn btn-secundario btn-toolbar" id="btnSolicitudes">
+                <i class="ion-md-people"></i> Solicitudes de amistad
+            </button>
+            
+        </div>
+
+        
+</div>
+        <div class="amigos-grid-full">
+            <div class="amigo-card">
+                <div class="amigo-card-foto"></div>
+                <div class="amigo-card-nombre">@usuario1</div>
+                <div class="amigo-card-mutuos">12 amigos en común</div>
+                <button class="btn btn-secundario">Amigos</button>
+            </div>
+            <div class="amigo-card">
+                <div class="amigo-card-foto"></div>
+                <div class="amigo-card-nombre">@usuario2</div>
+                <div class="amigo-card-mutuos">8 amigos en común</div>
+                <button class="btn btn-secundario">Amigos</button>
+            </div>
+            <div class="amigo-card">
+                <div class="amigo-card-foto"></div>
+                <div class="amigo-card-nombre">@usuario3</div>
+                <div class="amigo-card-mutuos">5 amigos en común</div>
+                <button class="btn btn-secundario">Amigos</button>
+            </div>
+            <div class="amigo-card">
+                <div class="amigo-card-foto"></div>
+                <div class="amigo-card-nombre">@usuario4</div>
+                <div class="amigo-card-mutuos">3 amigos en común</div>
+                <button class="btn btn-secundario">Amigos</button>
+            </div>
+        </div>
+  </div>
+    
+<!-- Galería / Fotos -->
+<DIV class="tab-panel" id="tab-galeria">
+    <div class="panel fotos-panel-full">
+        <div class="fotos-header">
+            <h2>Fotos</h2>
+            <div class="fotos-header-actions">
+                <a class="link-accion" id="btnAgregarFotos"><i class="ion-md-add"></i> Agregar fotos/video</a>
+                <button class="icon-btn-round" id="btnMasFotos"><i class="ion-md-more"></i></button>
+            </div>
+        </div>
+
+        <div class="fotos-subtabs-row">
+            <div class="fotos-subtabs">
+                <div class="fotos-subtab active" data-subtab="apareces">Fotos en las que apareces</div>
+                <div class="fotos-subtab" data-subtab="tuyas">Tus fotos</div>
+                <div class="fotos-subtab" data-subtab="albumes">Álbumes</div>
+            </div>
+            <button class="icon-btn-round" id="btnBuscarFotos"><i class="ion-md-search"></i></button>
+        </div>
+
+        <div class="fotos-grid-full">
+            <div class="foto-card"><div class="foto-card-edit"><i class="ion-md-create"></i></div></div>
+            <div class="foto-card"><div class="foto-card-edit"><i class="ion-md-create"></i></div></div>
+            <div class="foto-card"><div class="foto-card-edit"><i class="ion-md-create"></i></div></div>
+            <div class="foto-card"><div class="foto-card-edit"><i class="ion-md-create"></i></div></div>
+            <div class="foto-card"><div class="foto-card-edit"><i class="ion-md-create"></i></div></div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Estadísticas -->
+<div class="tab-panel" id="tab-estadisticas">
+    <div class="panel estadisticas-panel-full">
+        <div class="estadisticas-header">
+            <h2>Estadísticas</h2>
+            <p class="estadisticas-subtitulo">Tu actividad y crecimiento en Cosmix</p>
+        </div>
+
+        <!-- Tarjetas resumen -->
+        <div class="stats-cards">
+            <div class="stat-card">
+                <div class="stat-card-icon"><i class="ion-md-heart"></i></div>
+                <div class="stat-card-valor" id="statLikes">0</div>
+                <div class="stat-card-label">Me gusta recibidos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-icon"><i class="ion-md-chatbubbles"></i></div>
+                <div class="stat-card-valor" id="statComentarios">0</div>
+                <div class="stat-card-label">Comentarios recibidos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-icon"><i class="ion-md-people"></i></div>
+                <div class="stat-card-valor" id="statAmigosMes">0</div>
+                <div class="stat-card-label">Amigos nuevos este mes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card-icon"><i class="ion-md-create"></i></div>
+                <div class="stat-card-valor" id="statPostsMes">0</div>
+                <div class="stat-card-label">Publicaciones este mes</div>
+            </div>
+        </div>
+
+        <div class="reporte-selector">
+    <div class="reporte-selector-texto">
+        <span class="reporte-selector-titulo">Generar reporte de estadísticas</span>
+        <span class="reporte-selector-desc">Elige qué quieres consultar y genera tu reporte</span>
+    </div>
+
+    <div class="reporte-controles">
+        <select class="reporte-select" id="tipoReporte">
+            <option value="general">Resumen general</option>
+            <option value="amigos">Amigos agregados (mes)</option>
+            <option value="publicaciones">Publicaciones creadas (mes)</option>
+        </select>
+        <button class="btn btn-generar-reporte" id="btnGenerarReporte">
+            <i class="ion-md-stats"></i> Generar reporte
+        </button>
+    </div>
+</div>
+
+<div class="reporte-placeholder" id="reportePlaceholder">
+    <i class="ion-md-bar-chart"></i>
+    <p>Selecciona un tipo de reporte y presiona "Generar reporte" para ver los resultados.</p>
+</div>
+
+     
+</div>
+
 
            
 

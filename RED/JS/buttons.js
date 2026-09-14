@@ -113,3 +113,55 @@ function setupImageUpload(inputId, previewId, hideElementId){
 }
 setupImageUpload('coverUpload', 'coverPreview');
 setupImageUpload('avatarUpload', 'avatarPreview', 'avatarInitials');
+
+document.querySelectorAll('.profile-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Quitar "active" de todas las pestañas y ponerlo solo en la clickeada
+        document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        // Ocultar todos los paneles y mostrar solo el correspondiente
+        const nombre = tab.dataset.tab;
+        document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+        const panelDestino = document.getElementById('tab-' + nombre);
+        if (panelDestino) panelDestino.classList.add('active');
+    });
+});
+
+// Para los links "Ver todos los amigos" / "Ver toda la galería"
+document.querySelectorAll('[data-tab-link]').forEach(link => {
+    link.addEventListener('click', () => {
+        const nombre = link.dataset.tabLink;
+        const tabCorrespondiente = document.querySelector(`.profile-tab[data-tab="${nombre}"]`);
+        if (tabCorrespondiente) tabCorrespondiente.click();
+    });
+});
+
+document.querySelectorAll('.fotos-subtab').forEach(subtab => {
+    subtab.addEventListener('click', () => {
+        document.querySelectorAll('.fotos-subtab').forEach(t => t.classList.remove('active'));
+        subtab.classList.add('active');
+        // aquí luego puedes cargar/filtrar el contenido según subtab.dataset.subtab
+    });
+});
+
+
+//Reportes estadisticas
+document.getElementById('btnGenerarReporte').addEventListener('click', () => {
+    const tipoSeleccionado = document.getElementById('tipoReporte').value;
+
+    // Oculta el placeholder
+    document.getElementById('reportePlaceholder').style.display = 'none';
+
+    // Oculta todos los reportes y muestra solo el elegido
+    document.querySelectorAll('.reporte-contenido').forEach(p => p.classList.remove('active'));
+    const panelElegido = document.querySelector(`[data-reporte-panel="${tipoSeleccionado}"]`);
+    if(panelElegido){
+        panelElegido.classList.add('active');
+
+        // Si es el reporte general, inicializa contadores y gráfico
+        if(tipoSeleccionado === 'general'){
+            inicializarEstadisticas();
+        }
+    }
+});
