@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<HTML>
+    <HEAD>
+        <meta charset="UTF-8">
+        <title>Mi Perfil</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link href="./LIBS/bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/distribucion.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/movil.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/menus.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/perfil.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/crearpub.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/login.css">
+            <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/validaciones.css">
+    </HEAD>
+    <BODY>
+        <div class="fondo_cos">
+            <div class="gradi1"></div>
+            <div class="gradi2"></div>
+            <div class="gradi3"></div>
+            <div class="circulo1"></div>
+            <div class="circulo2"></div>
+            <div class="circulo3"></div>
+            <canvas id="particulas"></canvas>
+        </div>
+        <div class="figuras"></div>
+
+        <DIV CLASS="menu">
+            <div class="menu-logo">
+                <span><i class="ion-md-planet"></i> COSMIX</span>
+                <button class="hamburger hamburger-close" accesskey="M">☰</button>
+            </div>
+            <ul class="menulist">
+                <li><i class="ion-md-home"></i> Inicio</li>
+                <li><i class="ion-md-search"></i> Buscar</li>
+                <li><i class="ion-md-videocam"></i> Videos</li>
+                <li><i class="ion-md-mail"></i> Mensajes</li>
+                <li><i class="ion-md-notifications"></i> Notificaciones</li>
+                <li><i class="ion-md-bookmark"></i> Guardados</li>
+                <li><i class="ion-md-people"></i> Solicitudes de amistad</li>
+            </ul>
+            <button class="create-post-btn">Publicar</button>
+        </DIV>
+
+        <DIV CLASS="title">
+            <button id="toggleMenu" class="hamburger" accesskey="M">☰</button>
+            <div class="title-logo"><i class="ion-md-planet"></i> COSMIX</div>
+            <div class="search-box"><i class="ion-md-search"></i> Buscar</div>
+            <div class="title-icons">
+                <i class="ion-md-notifications-outline"></i>
+                <i class="ion-md-mail-outline"></i>
+                <div class="profile" id="profileTrigger" onclick="document.getElementById('profileMenu').classList.toggle('active')">HO</div>
+            </div>
+        </DIV>
+
+        <DIV CLASS="body profile-page">
+
+           
+            <div class="profile-cover-section">
+                <label for="coverUpload" class="profile-cover" id="coverLabel">
+                    <img id="coverPreview" class="profile-cover-img" style="display:none;">
+                    <div class="profile-cover-edit"><i class="ion-md-camera"></i> Editar portada</div>
+                </label>
+                <input type="file" id="coverUpload" accept="image/*" style="display:none;">
+
+                <div class="profile-header">
+                    <label for="avatarUpload" class="profile-avatar-lg" id="avatarLabel">
+                        <img id="avatarPreview" style="display:none;">
+                        <span id="avatarInitials">HO</span>
+                        <div class="profile-avatar-cam"><i class="ion-md-camera"></i></div>
+                    </label>
+                    <input type="file" id="avatarUpload" accept="image/*" style="display:none;">
+
+                    <div class="profile-name-block">
+                        <h1>Nombre Usuario</h1>
+                        <p>@usuario</p>
+                    </div>
+                    <button class="btn profile-edit-btn"><i class="ion-md-create"></i> Editar perfil</button>
+                </div>
+
+                <div class="profile-tabs">
+                    <div class="profile-tab active" data-tab="informacion"><i class="ion-md-information-circle"></i> Información</div>
+                    <div class="profile-tab" data-tab="amigos"><i class="ion-md-people"></i> Amigos</div>
+                    <div class="profile-tab" data-tab="galeria"><i class="ion-md-images"></i> Galería</div>
+                    <div class="profile-tab" data-tab="estadisticas"><i class="ion-md-stats"></i> Estadísticas</div>
+                 
+                </div>
+            </div>
+
+            <!--  Información  -->
+            <div class="tab-panel active" id="tab-informacion">
+                <div class="profile-content">
+
+                    <!--  Datos, Amigos, Galería -->
+                    <div class="profile-left">
+                        <div class="panel">
+                            <div class="panel-title">Información</div>
+                            <ul>
+                                <li class="dato-item">Datos Personales</li>
+                                <li class="dato-item">Contacto</li>
+                                <li class="dato-item">Intereses</li>
+                                <li class="dato-item">Más Información</li>
+                                <li class="dato-item">Privacidad</li>
+                            </ul>
+                            <!--<div class="dato-item"><i class="ion-md-mail"></i>Datos Personales</div>
+                            <div class="dato-item"><i class="ion-md-calendar"></i>Contacto</div>
+                            <div class="dato-item"><i class="ion-md-male"></i>Más información</div>
+                            <div class="dato-item"><i class="ion-md-male"></i>Intereses</div>-->
+                            
+                        </div>
+
+                    </div>
+                    <div class="cetr">
+                        <div class="formulario2">
+                            <form>
+                                <label for="user">Nombre del usuario</label>
+                                <input type="text" id="user" class="inp" placeholder="John Doe">
+                                <div class="validations">
+                                    <small class="pls">Por favor ingresa usuario</small>
+                                    <small class="error">El usuario debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
+                                </div>
+                                <label for="tag">Tag del usuario</label>
+                                <input type="text" id="tag" class="inp" placeholder="@John Doe">
+                                <div class="validations">
+                                    <small class="pls">Por favor ingresa usuario</small>
+                                    <small class="error">El tag de usuario debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
+                                </div>
+                                
+                            </form>
+                        </div>
+                    </div>
+
+                 </div>
+            </div>
+            <script src="./LIBS/jquery-4.0.0.min.js"></script>
+       
+            <script src="./LIBS/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+            <SCRIPT SRC="./JS/buttons.js"></SCRIPT>
+            <SCRIPT SRC="./JS/particulas.js"></SCRIPT>
+            <SCRIPT SRC="./JS/config.js"></SCRIPT>
+     
+            
+    </BODY>
+    <FOOTER>
+        
+    </FOOTER>
+</HTML>

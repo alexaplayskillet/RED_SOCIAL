@@ -1,0 +1,172 @@
+<?php
+    session_start();
+    $error = $_SESSION['error_registro'] ?? '';
+    unset($_SESSION['error_registro']);
+?>
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registro de usuario</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Aqui iran las ligas de elementos externos como iconos y tipografias-->
+        <!--aqui van las ligas externas-->
+            <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+			<link rel="preconnect" href="https://fonts.googleapis.com">
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+            
+        <!--Aqui iran las ligas de los elementos de css-->
+        <link href="./LIBS/bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/distribucion.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/movil.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/menus.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/login.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/validaciones.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
+    
+        </head>
+    <body>
+        <?php if ($error !== ''): ?>
+            <p class="error"><?= htmlspecialchars($error) ?></p>
+        <?php endif; ?>
+
+        <div class="fondo_cos fondo-login">
+            <div class="gradi1"></div>
+            <div class="gradi2"></div>
+            <div class="gradi3"></div>
+            <div class="circulo1"></div>
+            <div class="circulo2"></div>
+            <div class="circulo3"></div>
+            <div class="circulo4"></div>
+            <canvas id="particulas"></canvas>
+        </div>
+
+        <DIV class="log">
+            <div class="formulario formulario-registro">
+                <div class="cabecera">
+                    <div class="login-logo"><i class="ion-md-planet"></i> COSMIX</div>
+                    <h1>Registro</h1>
+                </div>
+                
+                <form action="../Controllers/RegisterController.php" method="POST">
+                 
+                  <div class="foto-perfil-upload">
+                        <label for="foto" class="foto-perfil-label">
+                            <img id="fotoPreview" class="foto-perfil-preview" style="display:none;">
+                            <div class="foto-perfil-cam"><i class="ion-md-camera"></i></div>
+                        </label>
+                        <input type="file" name="foto" id="foto" class="foto-input-hidden" accept="image/*">
+                        <small class="foto-perfil-texto">Fotografía (opcional)</small>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <!-- colum izq -->
+                        <div class="form-col">
+                            <div class="input-group">
+                                <i class="ion-md-at input-icon"></i>
+                                <input type="text" id="usuario" name="usuario" placeholder="Usuario" class="inp">
+                            </div>
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor ingresa usuario</small>
+                                <small class="error">El usuario debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
+                            </DIV>
+
+                            <div class="input-group">
+                                <i class="ion-md-contact input-icon"></i>
+                                <input type="text" id="nombre" name="nombre" class="inp" placeholder="Nombre completo" required tabindex="0">
+                            </div>
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor ingresa nombre</small>
+                                <small class="error">El nombre debe tener al menos 4 caracteres, NO DEBE incluir numeros y guiones bajos</small>
+                            </DIV>
+
+                            <div class="input-group">
+                                <i class="ion-md-calendar input-icon"></i>
+                                <input type="date" name="fecha" id="fecha" class="inp" tabindex="0" required>
+                            </div>
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor ingresa la fecha de nacimiento</small>
+                                <small class="error">El usuario tiene que ser de mayor a 12 años</small>
+                            </DIV>
+
+        
+                        </div>
+
+                        <!-- colum derecha-->
+                        <div class="form-col">
+                            <div class="input-group">
+                                <i class="ion-md-mail input-icon"></i>
+                                <input type="email" name="email" id="email" class="inp" placeholder="Correo" required tabindex="0">
+                            </div>
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor ingresa correo</small>
+                                <small class="error">El correo debe tener al menos 4 caracteres incluyendo el @, puede incluir numeros y guiones bajos</small>
+                            </DIV>
+
+                            <div class="input-group">
+                                <i class="ion-md-lock input-icon"></i>
+                                <input type="password" name="password" id="password" class="inp" placeholder="Contraseña" required tabindex="0">
+                            </div>
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor ingresa password</small>
+                                <small class="error">La contraseña debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
+                            </DIV>
+
+                            <div class="input-group">
+                                <i class="ion-md-lock input-icon"></i>
+                                <input type="password" name="password2" id="password2" class="inp" placeholder="Confirmar Contraseña" required tabindex="0">
+                            </div>
+                            <DIV CLASS="validations">
+                                <small class="pls">Por favor ingresa password</small>
+                                <small class="error">El password debe tener al menos 4 caracteres, puede incluir numeros y guiones bajos</small>
+                                <small class="notsame">Las contraseñas no coinciden</small>
+                            </DIV>
+                        </div>
+                    </div>
+                    <!--
+                     <div class="genero-group">
+                                <label class="genero-title"><small>Género</small></label>
+                                <div class="genero-options">
+                                    <input type="radio" name="gender" value="male" id="male" required class="genero-radio">
+                                    <label for="male" class="genero-chip"><i class="ion-md-male"></i> Hombre</label>
+
+                                    <input type="radio" name="gender" value="female" id="female" required class="genero-radio">
+                                    <label for="female" class="genero-chip"><i class="ion-md-female"></i> Mujer</label>
+
+                                    <input type="radio" name="gender" value="other" id="other" required class="genero-radio">
+                                    <label for="other" class="genero-chip"><i class="ion-md-people"></i> Otro</label>
+                                </div>
+                                <DIV CLASS="validations">
+                                    <small class="pls">Por favor elija una de las opciones</small>
+                                </DIV>
+                            </div>
+-->
+                    <DIV CLASS="enviar">
+                        <INPUT TYPE="submit" CLASS="btn" tabindex="0" VALUE="Enviar">
+                    </DIV>
+                </form>
+                <a href="login.php" class="link-registro">¿Ya tienes cuenta? ¡Inicia sesión!</a>
+            </div>
+        </DIV>
+        <!--añadir ligas externas-->
+        <script src="./LIBS/jquery-4.0.0.min.js"></script>
+       
+        <script src="./LIBS/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+        <SCRIPT SRC="./JS/Regvalidate.js"></SCRIPT>
+       
+        
+    </body>
+    <footer>
+        
+    </footer>
+</html>

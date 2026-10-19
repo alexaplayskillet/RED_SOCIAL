@@ -108,15 +108,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
     form.addEventListener("submit", e => {
-      e.preventDefault(); // Siempre prevenimos el envío nativo del form
+    inputs.forEach(input => validarFormulario({ target: input }));
 
-      inputs.forEach(input => validarFormulario({ target: input }));
-
-      if (!campos.usuario || !campos.password) {
-          alert("Por favor completa correctamente los campos.");
-      } else {
-          // Todo válido -> redirigir al index
-          window.location.href = "index.html";
-      }
-  });
+    if (!campos.usuario || !campos.password) {
+        e.preventDefault();
+        alert("Por favor completa correctamente los campos.");
+    }
+    // si todo es válido, el formulario se envía solo por POST
+});
 });

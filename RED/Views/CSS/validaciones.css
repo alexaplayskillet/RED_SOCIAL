@@ -20,10 +20,10 @@
     display: none;
 }
 
-.invisible{
+.caja_com{
   display: none
 }
 
-.post.active .invisible{
+.post.active .caja_com{
   display: block;
 }
