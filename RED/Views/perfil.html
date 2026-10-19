@@ -16,6 +16,14 @@
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/perfil.css">
+<link rel="stylesheet" href="./CSS/modo-claro.css">
+
+             <script>
+                const temaInicial = localStorage.getItem("cosmix-tema") || "dark";
+                document.documentElement.classList.add(
+                    temaInicial === "light" ? "modo-claro" : "modo-oscuro"
+                );
+            </script>
     </HEAD>
     <BODY>
         <div class="fondo_cos">
@@ -35,7 +43,7 @@
                 <button class="hamburger hamburger-close" accesskey="M">☰</button>
             </div>
             <ul class="menulist">
-                <li class="active" onclick="window.location.href='index.html'"><i class="ion-md-home"></i> Inicio</li>
+                <li class="active" onclick="window.location.href='index.php'"><i class="ion-md-home"></i> Inicio</li>
                 <li onclick="window.location.href='messages.html'"><i class="ion-md-mail"></i> Chat</li>
                 <li><i class="ion-md-bookmark"></i> Guardados</li>
                 <li onclick="window.location.href='Solicitudes.html'"><i class="ion-md-people"></i> Solicitudes de amistad</li>
@@ -387,7 +395,7 @@
         <SCRIPT SRC="./JS/particulas.js"></SCRIPT>
         <SCRIPT SRC="./JS/configuracion.js"></SCRIPT>
         <script src="./LIBS/jquery-4.0.0.min.js"></script>
-        
+        <script src="./JS/tema.js"></script>
     </BODY>
     <FOOTER>
         

@@ -19,7 +19,14 @@
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/crearpub.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/messages.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/login.css">
-        
+        <link rel="stylesheet" href="./CSS/modo-claro.css">
+
+             <script>
+                const temaInicial = localStorage.getItem("cosmix-tema") || "dark";
+                document.documentElement.classList.add(
+                    temaInicial === "light" ? "modo-claro" : "modo-oscuro"
+                );
+            </script>
     </HEAD>
     <BODY>
            <!--Elementos para el fondo-->
@@ -37,7 +44,7 @@
         <DIV CLASS="bodyy">
             <DIV CLASS="menulat">
             <ul>
-                 <a href="./index.html" class="cosmix-inicio" title="Inicio">
+                 <a href="./index.php" class="cosmix-inicio" title="Inicio">
                         <ion-icon name="planet"></ion-icon>
                     </a>
                 <li><ion-icon name="chatbubble-ellipses-outline"></ion-icon></li>
@@ -169,7 +176,7 @@
         <script src="./LIBS/jquery-4.0.0.min.js"></script>
        
         <script src="./LIBS/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
-       
+          <script src="./JS/tema.js"></script>
         
     </BODY>
     <FOOTER>
