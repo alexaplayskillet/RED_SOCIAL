@@ -1,0 +1,185 @@
+#contador-tiempo{
+    position: fixed;
+    top: calc(var(--header-height) + 16px);
+    right: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: rgba(18, 12, 34, 0.55);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 30px;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+    z-index: 940;
+    user-select: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#contador-tiempo:hover{
+    transform: translateY(2px);
+    box-shadow: 0 6px 22px rgba(0, 229, 255, 0.25);
+}
+
+#contador-tiempo i{
+    font-size: 16px;
+    color: #00e5ff;
+}
+
+#contador-valor{
+    font-variant-numeric: tabular-nums;
+    background: linear-gradient(135deg, #a855f7, #00e5ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+}
+
+/*Filtros publis*/
+.filtros-panel{
+    background: none;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    padding: 0;
+    margin-top: -11px;
+    margin-bottom: -75px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.filtros-wrapper{
+    position: relative;
+}
+
+.filtros-btn{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    min-width: 200px;
+    height: 35px;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 30px;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.filtros-btn i{
+    font-size: 16px;
+    color: #00e5ff;
+}
+
+.filtros-btn:hover{
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.filtros-btn.active{
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(0, 229, 255, 0.25));
+    border-color: rgba(0, 229, 255, 0.35);
+}
+
+.filtros-menu{
+    position: absolute;
+    top: 46px;
+    right: 0;
+    min-width: 240px;
+    background: rgba(18, 12, 34, 0.85);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    z-index: 500;
+}
+
+.filtros-menu.active{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.filtro-opcion{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.75);
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+    position: relative;
+}
+
+.filtro-opcion i:first-child{
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.5);
+    flex-shrink: 0;
+}
+
+.filtro-opcion span{
+    flex: 1;
+}
+
+.filtro-opcion .filtro-check{
+    font-size: 15px;
+    color: #00e5ff;
+    opacity: 0;
+    flex-shrink: 0;
+}
+
+.filtro-opcion:hover{
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+}
+
+.filtro-opcion.active{
+    background: rgba(0, 229, 255, 0.1);
+    color: #fff;
+}
+
+.filtro-opcion.active i:first-child{
+    color: #00e5ff;
+}
+
+.filtro-opcion.active .filtro-check{
+    opacity: 1;
+}
+
+
+
+@media (max-width: 600px){
+    #contador-tiempo{
+        bottom: 90px;
+        right: 16px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+     .filtros-menu{
+        min-width: 200px;
+        right: 0;
+    }
+
+    .filtros-btn{
+        font-size: 12px;
+        padding: 8px 14px;
+    }
+}
