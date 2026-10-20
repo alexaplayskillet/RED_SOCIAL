@@ -31,6 +31,14 @@
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/login.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/validaciones.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
+        <link rel="stylesheet" TYPE="TEXT/CSS" href="./CSS/modo-claro.css">
+
+         <script>
+            const temaInicial = localStorage.getItem("cosmix-tema") || "dark";
+            document.documentElement.classList.add(
+                temaInicial === "light" ? "modo-claro" : "modo-oscuro"
+            );
+        </script>
     
         </head>
     <body>
@@ -89,7 +97,7 @@
         <script src="./LIBS/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
         <SCRIPT SRC="./JS/Logvalidate.js"></SCRIPT>
         <SCRIPT SRC="./JS/particulas.js"></SCRIPT>
-       
+        <script src="./JS/tema.js"></script>
         
     </body>
     <footer>
