@@ -16,7 +16,7 @@
 
         //recupero los datos
 
-        $nombre = trim($_POST['Nombre']);
+        $nombre = trim($_POST['nombre']);
         $tag = trim($_POST['usuario']);
         $fechaNac = $_POST['fecha'];
         $correo = trim($_POST['email']);

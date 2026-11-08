@@ -20,7 +20,14 @@
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/botella.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/crearpub.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/funcionalidades.css">
+            <link rel="stylesheet" href="./CSS/modo-claro.css">
          
+            <script>
+                const temaInicial = localStorage.getItem("cosmix-tema") || "dark";
+                document.documentElement.classList.add(
+                    temaInicial === "light" ? "modo-claro" : "modo-oscuro"
+                );
+            </script>
     </HEAD>
 
     <BODY>
@@ -1159,6 +1166,7 @@
         <SCRIPT SRC="./JS/stories.js"></SCRIPT>
         <SCRIPT SRC="./JS/contador.js"></SCRIPT>
         <SCRIPT SRC="./JS/funcionalidades.js"></SCRIPT>
+        <script src="./JS/tema.js"></script>
     </FOOTER>
 
 </HTML>

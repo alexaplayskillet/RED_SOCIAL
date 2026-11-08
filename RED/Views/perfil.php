@@ -1,3 +1,43 @@
+<?php
+session_start();
+if (!isset($_SESSION["id_usuario"])) {
+    header("Location: login.php");
+    exit;
+}
+
+require_once __DIR__ . "/../model/conexion.php";
+require_once __DIR__ . "/../model/UsuarioModelo.php";
+
+$modelo = new UsuarioModelo($conexion);
+$perfil = $modelo->obtenerPerfil((int) $_SESSION["id_usuario"]);
+
+if (!$perfil) {
+    session_destroy();
+    header("Location: login.php");
+    exit;
+}
+
+function h($texto) {
+    return htmlspecialchars((string) $texto, ENT_QUOTES, "UTF-8");
+}
+
+require_once __DIR__ . "/usuario_header.php";
+$v = time();
+$tag = $perfil["tag"];
+$nombre = trim($perfil["nombre"]) !== "" ? $perfil["nombre"] : $tag;
+
+$partes = preg_split("/\s+/", trim($nombre));
+if (count($partes) > 1) {
+    $iniciales = mb_strtoupper(mb_substr($partes[0], 0, 1) . mb_substr($partes[1], 0, 1));
+} else {
+    $iniciales = mb_strtoupper(mb_substr($nombre, 0, 2));
+}
+
+$meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
+          "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+$fecha = new DateTime($perfil["fecha_nac"]);
+$fechaNac = $fecha->format("j") . " de " . $meses[(int) $fecha->format("n") - 1] . " de " . $fecha->format("Y");
+?>
 <!DOCTYPE HTML>
 <HTML>
     <HEAD>
@@ -15,7 +55,19 @@
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/menus.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/crearpub.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/perfil.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/editarPerfil.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/amigos.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/galeria.css">
+<link rel="stylesheet" href="./CSS/modo-claro.css">
+
+             <script>
+                const temaInicial = localStorage.getItem("cosmix-tema") || "dark";
+                document.documentElement.classList.add(
+                    temaInicial === "light" ? "modo-claro" : "modo-oscuro"
+                );
+            </script>
     </HEAD>
     <BODY>
         <div class="fondo_cos">
@@ -35,13 +87,15 @@
                 <button class="hamburger hamburger-close" accesskey="M">☰</button>
             </div>
             <ul class="menulist">
-                <li class="active" onclick="window.location.href='index.html'"><i class="ion-md-home"></i> Inicio</li>
+                <li class="active" onclick="window.location.href='index.php'"><i class="ion-md-home"></i> Inicio</li>
                 <li onclick="window.location.href='messages.html'"><i class="ion-md-mail"></i> Chat</li>
                 <li><i class="ion-md-bookmark"></i> Guardados</li>
-                <li onclick="window.location.href='Solicitudes.html'"><i class="ion-md-people"></i> Solicitudes de amistad</li>
+                <li onclick="window.location.href='Solicitudes.php'"><i class="ion-md-people"></i> Solicitudes de amistad</li>
             </ul>
             <button class="create-post-btn">Publicar</button>
         </DIV>
+
+        <?php require __DIR__ . "/menu_usuario.php"; ?>
 
         <DIV CLASS="title">
             <button id="toggleMenu" class="hamburger" accesskey="M">☰</button>
@@ -50,34 +104,52 @@
             <div class="title-icons">
                 <i class="ion-md-notifications-outline"></i>
                 <i class="ion-md-mail-outline"></i>
-                <div class="profile" id="profileTrigger" onclick="document.getElementById('profileMenu').classList.toggle('active')">HO</div>
+                <div class="profile" id="profileTrigger" style="overflow:hidden;" onclick="document.getElementById('profileMenu').classList.toggle('active')">
+                    <img id="headerAvatar" class="profile-foto" alt="Foto de perfil"
+                         src="../Controllers/ImagenController.php?tipo=foto&v=<?= $v ?>"
+                         style="display:none; width:100%; height:100%; object-fit:cover; border-radius:50%;"
+                         onload="this.style.display='block'; document.getElementById('headerIniciales').style.display='none'"
+                         onerror="this.style.display='none'">
+                    <span id="headerIniciales"><?= h($iniciales) ?></span>
+                </div>
             </div>
         </DIV>
 
         <DIV CLASS="body profile-page">
 
             <div class="profile-cover-section">
+                <button type="button" class="profile-cover-delete" id="btnEliminarPortada" title="Eliminar portada">
+                    <i class="ion-md-trash"></i>
+                </button>
                 <label for="coverUpload" class="profile-cover" id="coverLabel">
-                    <img id="coverPreview" class="profile-cover-img" style="display:none;">
+                    <img id="coverPreview" class="profile-cover-img" alt="Portada"
+                         src="../Controllers/ImagenController.php?tipo=portada&v=<?= $v ?>"
+                         style="display:none;"
+                         onload="this.style.display='block'"
+                         onerror="this.style.display='none'">
                     <div class="profile-cover-edit"><i class="ion-md-camera"></i> Editar portada</div>
                 </label>
-                <input type="file" id="coverUpload" accept="image/*" style="display:none;">
+                <input type="file" id="coverUpload" accept="image/jpeg,image/png,image/webp" style="display:none;">
 
                 <div class="profile-header">
                     <label for="avatarUpload" class="profile-avatar-lg" id="avatarLabel">
                         <div class="profile-avatar-inner">
-                            <img id="avatarPreview" style="display:none;">
-                            <span id="avatarInitials">HO</span>
+                            <img id="avatarPreview" alt="Foto de perfil"
+                                 src="../Controllers/ImagenController.php?tipo=foto&v=<?= $v ?>"
+                                 style="display:none;"
+                                 onload="this.style.display='block'; document.getElementById('avatarInitials').style.display='none'"
+                                 onerror="this.style.display='none'">
+                            <span id="avatarInitials"><?= h($iniciales) ?></span>
                         </div>
                         <div class="profile-avatar-edit"><i class="ion-md-create"></i></div>
                     </label>
-                    <input type="file" id="avatarUpload" accept="image/*" style="display:none;">
+                    <input type="file" id="avatarUpload" accept="image/jpeg,image/png,image/webp" style="display:none;">
 
                     <div class="profile-name-block">
-                        <h1>Nombre Usuario</h1>
-                        <p>@usuario</p>
+                        <h1><?= h($nombre) ?></h1>
+                        <p>@<?= h($tag) ?></p>
                     </div>
-                    <button class="btn profile-edit-btn"><i class="ion-md-create"></i> Editar perfil</button>
+                    <button type="button" class="btn profile-edit-btn" id="btnEditarPerfil"><i class="ion-md-create"></i> Editar perfil</button>
                 </div>
 
                 <div class="profile-tabs">
@@ -95,44 +167,21 @@
                     <div class="profile-left">
                         <div class="panel">
                             <div class="panel-title">Datos personales</div>
-                            <div class="dato-item"><i class="ion-md-mail"></i> correo@ejemplo.com</div>
-                            <div class="dato-item"><i class="ion-md-calendar"></i> 17 de diciembre</div>
-                            <div class="dato-item"><i class="ion-md-male"></i> Hombre</div>
+                            <div class="dato-item"><i class="ion-md-mail"></i> <?= h($perfil["correo"]) ?></div>
+                            <div class="dato-item"><i class="ion-md-calendar"></i> <?= h($fechaNac) ?></div>
                         </div>
 
                         <div class="panel">
                             <div class="panel-title">Amigos</div>
-                            <div class="amigos-grid">
-                                <div class="amigo-item">
-                                    <div class="amigo-foto"></div>
-                                    <div class="amigo-nombre">@usuario1</div>
-                                </div>
-                                <div class="amigo-item">
-                                    <div class="amigo-foto"></div>
-                                    <div class="amigo-nombre">@usuario2</div>
-                                </div>
-                                <div class="amigo-item">
-                                    <div class="amigo-foto"></div>
-                                    <div class="amigo-nombre">@usuario3</div>
-                                </div>
-                                <div class="amigo-item">
-                                    <div class="amigo-foto"></div>
-                                    <div class="amigo-nombre">@usuario4</div>
-                                </div>
-                            </div>
+                            <div class="amigos-grid" id="amigosRecientes"></div>
+                            <p class="amigos-vacio" id="amigosRecientesVacio">Aún no tienes amigos agregados.</p>
                             <a class="ver-todos" data-tab-link="amigos">Ver todos los amigos</a>
                         </div>
 
                         <div class="panel">
                             <div class="panel-title">Galería</div>
-                            <div class="galeria-grid">
-                                <div class="galeria-item"></div>
-                                <div class="galeria-item"></div>
-                                <div class="galeria-item"></div>
-                                <div class="galeria-item"></div>
-                                <div class="galeria-item"></div>
-                                <div class="galeria-item"></div>
-                            </div>
+                            <div class="galeria-grid" id="galeriaRecientes"></div>
+                            <p class="galeria-vacio" id="galeriaRecientesVacio">Aún no has publicado fotos.</p>
                             <a class="ver-todos" data-tab-link="galeria">Ver toda la galería</a>
                         </div>
                     </div>
@@ -206,74 +255,29 @@
                 <div class="panel amigos-panel-full">
                     <div class="amigos-header">
                         <h2>Amigos</h2>
-                        <p class="amigos-subtitulo">846 amigos</p>
+                        <p class="amigos-subtitulo" id="amigosSubtitulo">0 amigos</p>
                         <div class="amigos-search">
                             <i class="ion-md-search"></i>
-                            <input type="text" placeholder="Buscar amigos">
+                            <input type="text" id="amigosBuscar" placeholder="Buscar amigos" autocomplete="off">
                         </div>
                     </div>
 
-                    <div class="amigos-toolbar-btns">
-                        <button class="btn btn-secundario btn-toolbar" id="btnSolicitudes">
-                            <i class="ion-md-people"></i> Solicitudes de amistad
-                        </button>
-                    </div>
-
-                    <div class="amigos-grid-full">
-                        <div class="amigo-card">
-                            <div class="amigo-card-foto"></div>
-                            <div class="amigo-card-nombre">@usuario1</div>
-                            <div class="amigo-card-mutuos">12 amigos en común</div>
-                            <button class="btn btn-secundario">Amigos</button>
-                        </div>
-                        <div class="amigo-card">
-                            <div class="amigo-card-foto"></div>
-                            <div class="amigo-card-nombre">@usuario2</div>
-                            <div class="amigo-card-mutuos">8 amigos en común</div>
-                            <button class="btn btn-secundario">Amigos</button>
-                        </div>
-                        <div class="amigo-card">
-                            <div class="amigo-card-foto"></div>
-                            <div class="amigo-card-nombre">@usuario3</div>
-                            <div class="amigo-card-mutuos">5 amigos en común</div>
-                            <button class="btn btn-secundario">Amigos</button>
-                        </div>
-                        <div class="amigo-card">
-                            <div class="amigo-card-foto"></div>
-                            <div class="amigo-card-nombre">@usuario4</div>
-                            <div class="amigo-card-mutuos">3 amigos en común</div>
-                            <button class="btn btn-secundario">Amigos</button>
-                        </div>
-                    </div>
+                    <div class="amigos-grid-full" id="amigosGrid"></div>
+                    <p class="amigos-vacio" id="amigosVacio"></p>
                 </div>
             </div>
 
             <div class="tab-panel" id="tab-galeria">
                 <div class="panel fotos-panel-full">
                     <div class="fotos-header">
-                        <h2>Fotos</h2>
+                        <h2>Tus fotos</h2>
                         <div class="fotos-header-actions">
                             <a class="link-accion" id="btnAgregarFotos"><i class="ion-md-add"></i> Agregar fotos/video</a>
-                            <button class="icon-btn-round" id="btnMasFotos"><i class="ion-md-more"></i></button>
                         </div>
                     </div>
 
-                    <div class="fotos-subtabs-row">
-                        <div class="fotos-subtabs">
-                            <div class="fotos-subtab active" data-subtab="apareces">Fotos en las que apareces</div>
-                            <div class="fotos-subtab" data-subtab="tuyas">Tus fotos</div>
-                            <div class="fotos-subtab" data-subtab="albumes">Álbumes</div>
-                        </div>
-                        <button class="icon-btn-round" id="btnBuscarFotos"><i class="ion-md-search"></i></button>
-                    </div>
-
-                    <div class="fotos-grid-full">
-                        <div class="foto-card"><div class="foto-card-edit"><i class="ion-md-create"></i></div></div>
-                        <div class="foto-card"><div class="foto-card-edit"><i class="ion-md-create"></i></div></div>
-                        <div class="foto-card"><div class="foto-card-edit"><i class="ion-md-create"></i></div></div>
-                        <div class="foto-card"><div class="foto-card-edit"><i class="ion-md-create"></i></div></div>
-                        <div class="foto-card"><div class="foto-card-edit"><i class="ion-md-create"></i></div></div>
-                    </div>
+                    <div class="fotos-grid-full" id="galeriaGrid"></div>
+                    <p class="galeria-vacio" id="galeriaVacio">Aún no has publicado fotos.</p>
                 </div>
             </div>
 
@@ -380,14 +384,103 @@
             </div>
 
         </DIV>
+        <div class="editar-overlay" id="editarPerfilOverlay">
+            <div class="editar-modal" role="dialog" aria-modal="true" aria-labelledby="editarPerfilTitulo">
+                <button type="button" class="editar-cerrar" id="cerrarEditarPerfil" aria-label="Cerrar">
+                    <i class="ion-md-close"></i>
+                </button>
+                <h2 id="editarPerfilTitulo">Editar perfil</h2>
+                <p class="editar-sub">Actualiza tus datos personales.</p>
+
+                <form id="formEditarPerfil">
+                    <label for="editNombre">Nombre completo</label>
+                    <input type="text" id="editNombre" name="nombre" maxlength="100"
+                           value="<?= h($perfil["nombre"]) ?>" required>
+
+                    <label for="editTag">Usuario</label>
+                    <input type="text" id="editTag" name="tag" maxlength="16" pattern="[A-Za-z0-9_\-]{4,16}"
+                           value="<?= h($tag) ?>" required>
+                    <small>Es el que usas para iniciar sesión. De 4 a 16 caracteres.</small>
+
+                    <label for="editCorreo">Correo</label>
+                    <input type="email" id="editCorreo" name="correo" maxlength="100"
+                           value="<?= h($perfil["correo"]) ?>" required>
+
+                    <label for="editFecha">Fecha de nacimiento</label>
+                    <input type="date" id="editFecha" name="fecha"
+                           value="<?= h($perfil["fecha_nac"]) ?>" required>
+
+                    <p class="editar-mensaje" id="editarPerfilMensaje"></p>
+
+                    <div class="editar-acciones">
+                        <button type="button" class="btn btn-secundario" id="cancelarEditarPerfil">Cancelar</button>
+                        <button type="submit" class="btn">Guardar cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+                <div class="editar-overlay" id="confirmarAmigoOverlay">
+            <div class="editar-modal">
+                <button type="button" class="editar-cerrar" id="confirmarAmigoCerrar"><i class="ion-md-close"></i></button>
+                <h2>Eliminar amigo</h2>
+                <p class="editar-sub">Esta acción quitará la amistad de ambos perfiles.</p>
+                <p class="confirmar-texto" id="confirmarAmigoTexto"></p>
+                <p class="editar-mensaje" id="confirmarAmigoMensaje"></p>
+                <div class="editar-acciones">
+                    <button type="button" class="btn btn-secundario" id="confirmarAmigoCancelar">Cancelar</button>
+                    <button type="button" class="btn btn-peligro" id="confirmarAmigoAceptar">Eliminar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="editar-overlay" id="editarFotoOverlay">
+            <div class="editar-modal">
+                <button type="button" class="editar-cerrar" id="editarFotoCerrar"><i class="ion-md-close"></i></button>
+                <h2>Editar foto</h2>
+                <p class="editar-sub">Cambia el texto que acompaña a tu foto.</p>
+                <label for="editarFotoTexto">Texto</label>
+                <textarea id="editarFotoTexto" maxlength="255" placeholder="Escribe algo sobre esta foto"></textarea>
+                <p class="editar-mensaje" id="editarFotoMensaje"></p>
+                <div class="editar-acciones">
+                    <button type="button" class="btn btn-secundario" id="editarFotoCancelar">Cancelar</button>
+                    <button type="button" class="btn" id="editarFotoGuardar">Guardar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="editar-overlay" id="eliminarFotoOverlay">
+            <div class="editar-modal">
+                <button type="button" class="editar-cerrar" id="eliminarFotoCerrar"><i class="ion-md-close"></i></button>
+                <h2>Eliminar foto</h2>
+                <p class="editar-sub">Esta acción no se puede deshacer.</p>
+                <p class="confirmar-texto">¿Quieres eliminar esta foto? También se borrarán sus likes y comentarios.</p>
+                <p class="editar-mensaje" id="eliminarFotoMensaje"></p>
+                <div class="editar-acciones">
+                    <button type="button" class="btn btn-secundario" id="eliminarFotoCancelar">Cancelar</button>
+                    <button type="button" class="btn btn-peligro" id="eliminarFotoAceptar">Eliminar</button>
+                </div>
+            </div>
+        </div>
+
+        <?php require __DIR__ . "/crear_publicacion.php"; ?>
+
+        <div class="visor-foto" id="visorFoto">
+            <button type="button" class="visor-foto-cerrar" id="visorFotoCerrar"><i class="ion-md-close"></i></button>
+            <img id="visorFotoImg" alt="Foto">
+            <p class="visor-foto-texto" id="visorFotoTexto"></p>
+        </div>
+
         <script src="./LIBS/jquery-4.0.0.min.js"></script>
-       
         <script src="./LIBS/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
         <SCRIPT SRC="./JS/buttons.js"></SCRIPT>
+        <SCRIPT SRC="./JS/editar_perfil.js"></SCRIPT>
+        <SCRIPT SRC="./JS/amigos.js"></SCRIPT>
+        <SCRIPT SRC="./JS/galeria.js"></SCRIPT>
+        <SCRIPT SRC="./JS/abrirPublicacion.js"></SCRIPT>
         <SCRIPT SRC="./JS/particulas.js"></SCRIPT>
         <SCRIPT SRC="./JS/configuracion.js"></SCRIPT>
-        <script src="./LIBS/jquery-4.0.0.min.js"></script>
-        
+        <script src="./JS/tema.js"></script>
     </BODY>
     <FOOTER>
         

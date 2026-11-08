@@ -1,11 +1,4 @@
-<?php
-    session_start();//para recordar quién inició sesión
-    //que incluya la conexion antes de hacer nada
-    if (!isset($_SESSION['id_usuario'])) {
-      header("Location: login.php");
-      exit();
-  }
-?>
+<?php require_once __DIR__ . "/usuario_header.php"; ?>
 
 <!DOCTYPE HTML>
 <HTML>
@@ -29,9 +22,15 @@
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/botella.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/crearpub.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/funcionalidades.css">
-        
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/solicitudes.css">
+         <link rel="stylesheet" href="./CSS/modo-claro.css">
 
-         
+             <script>
+                const temaInicial = localStorage.getItem("cosmix-tema") || "dark";
+                document.documentElement.classList.add(
+                    temaInicial === "light" ? "modo-claro" : "modo-oscuro"
+                );
+            </script>
     </HEAD>
 
     <BODY>
@@ -57,7 +56,7 @@
 
             <ul class="menulist">
 
-                <li class="active" onclick="window.location.href='index.html'">
+                <li class="active" onclick="window.location.href='index.php'">
                     <i class="ion-md-home"></i> Inicio
                 </li>
 
@@ -69,7 +68,7 @@
                     <i class="ion-md-bookmark"></i> Guardado
                 </li>
 
-                <li onclick="window.location.href='Solicitudes.html'">
+                <li onclick="window.location.href='Solicitudes.php'">
                     <i class="ion-md-people"></i> Solicitudes de amistad
                 </li>
 
@@ -79,123 +78,7 @@
 
         </DIV>
 
-        <DIV CLASS="profile-menu" id="profileMenu">
-
-            <div class="profile-menu-header">
-
-                <div class="profile-menu-avatar">HO</div>
-
-                <div class="profile-menu-name">
-                    @nombreUsuario
-                </div>
-
-            </div>
-
-            <button class="profile-menu-verperfil" onclick="window.location.href='perfil.html'">
-                <i class="ion-md-person"></i> Ver perfil
-            </button>
-
-            <div class="profile-menu-divider"></div>
-
-            <ul class="profile-menu-list">
-
-                <li>
-                    <i class="ion-md-help-circle"></i> Ayuda
-                </li>
-
-                <li onclick="toggleAccessMenu(true)">
-                    <i class="ion-md-options"></i> Accesibilidad
-                </li>
-
-                <li class="profile-menu-logout" onclick="window.location.href='login.php'">
-                    <i class="ion-md-log-out"></i> Cerrar sesión
-                </li>
-
-            </ul>
-
-        </DIV>
-
-        <DIV CLASS="access-menu" id="accessMenu">
-
-            <div class="access-menu-header">
-
-                <button class="access-back" onclick="toggleAccessMenu(false)">
-                    <i class="ion-md-arrow-back"></i>
-                </button>
-
-                <span>Pantalla y accesibilidad</span>
-
-            </div>
-
-            <div class="access-section">
-
-                <div class="access-section-title">
-                    <i class="ion-md-moon"></i> Apariencia
-                </div>
-
-                <div class="access-options">
-
-                    <button class="access-chip" id="themeLight" onclick="setTheme('light')">
-                        <i class="ion-md-sunny"></i> Claro
-                    </button>
-
-                    <button class="access-chip active" id="themeDark" onclick="setTheme('dark')">
-                        <i class="ion-md-moon"></i> Oscuro
-                    </button>
-
-                </div>
-
-            </div>
-
-            <div class="access-section">
-
-                <div class="access-section-title">
-                    <i class="ion-md-text"></i> Tamaño de letra
-                </div>
-
-                <div class="access-fontsize-control">
-
-                    <button class="access-font-btn" id="fontDecrease">
-                        A-
-                    </button>
-
-                    <span class="access-font-value" id="fontValue">
-                        100%
-                    </span>
-
-                    <button class="access-font-btn" id="fontIncrease">
-                        A+
-                    </button>
-
-                </div>
-
-            </div>
-
-            <div class="access-section">
-
-                <div class="access-section-title-row">
-
-                    <div class="access-section-title">
-                        <i class="ion-md-contrast"></i> Alto contraste
-                    </div>
-
-                    <label class="access-switch">
-
-                        <input type="checkbox" id="contrastToggle">
-
-                        <span class="access-switch-slider"></span>
-
-                    </label>
-
-                </div>
-
-                <p class="access-desc">
-                    Aumenta el contraste de los textos para facilitar la lectura.
-                </p>
-
-            </div>
-
-        </DIV>
+        <?php require __DIR__ . "/menu_usuario.php"; ?>
 
         <DIV CLASS="notif-menu" id="notifMenu">
 
@@ -412,99 +295,16 @@
                 <i class="ion-md-mail-outline"></i>
 
                 <div class="profile"
-                     id="profileTrigger"
+                     id="profileTrigger" style="overflow:hidden;"
                      onclick="document.getElementById('profileMenu').classList.toggle('active')">
-                    HO
+                    <?= avatarUsuario("headerAvatar","headerIniciales",$inicialesHeader,$v) ?>
                 </div>
 
             </div>
 
         </DIV>
 
-        <DIV CLASS="crear-publi">
-
-            <div class="crear-publi-header">
-
-                <div>
-
-                    <h2>
-                        Crear publicación
-                    </h2>
-
-                </div>
-
-                <button class="cerrar-publi" type="button">
-
-                    <i class="ion-md-close"></i>
-
-                </button>
-
-            </div>
-
-            <div class="crear-publi-usuario">
-
-                <img src="./resources/foto.jpg"
-                     alt="foto usuario">
-
-                <div>
-
-                    <strong>
-                        @nombreUsuario
-                    </strong>
-
-                    <span>
-                        Publicación pública
-                    </span>
-
-                </div>
-
-            </div>
-
-            <form>
-
-                <textarea
-                    placeholder="¿Qué está pasando por tu mente?"
-                    maxlength="500"></textarea>
-
-                <div class="crear-publi-footer">
-
-                    <div class="crear-publi-opciones">
-
-                        <button type="button"
-                                title="Agregar foto">
-
-                            <i class="ion-md-image"></i>
-
-                        </button>
-
-                        <button type="button"
-                                title="Agregar video">
-
-                            <i class="ion-md-videocam"></i>
-
-                        </button>
-
-                        <button type="button"
-                                title="Agregar emoji">
-
-                            <i class="ion-md-happy"></i>
-
-                        </button>
-
-                    </div>
-
-                    <button type="submit"
-                            class="btn-publicar">
-
-                        Publicar
-
-                    </button>
-
-                </div>
-
-            </form>
-
-        </DIV>
+        <?php require __DIR__ . "/crear_publicacion.php"; ?>
 
         <DIV CLASS="body">
 
@@ -785,49 +585,11 @@
                         Sugerencias para ti
                     </div>
 
-                    <div class="suggestion">
+                    <div id="sugerenciasLista"></div>
 
-                        <div class="foto"></div>
+                    <p class="solicitudes-msg" id="solicitudesMensaje"></p>
 
-                        <div class="suggestion-info">
-
-                            <p>
-                                @usuario4
-                            </p>
-
-                            <p>
-                                Recomendado
-                            </p>
-
-                        </div>
-
-                        <button class="follow-btn">
-                            Seguir
-                        </button>
-
-                    </div>
-
-                    <div class="suggestion">
-
-                        <div class="foto"></div>
-
-                        <div class="suggestion-info">
-
-                            <p>
-                                @usuario5
-                            </p>
-
-                            <p>
-                                Recomendado
-                            </p>
-
-                        </div>
-
-                        <button class="follow-btn">
-                            Seguir
-                        </button>
-
-                    </div>
+                    <a class="ver-mas-sugerencias" href="sugerencias.php">Ver más sugerencias</a>
 
                 </DIV>
 
@@ -981,7 +743,7 @@
                     <div>
 
                         <strong>
-                            @nombreUsuario
+                            @<?= h($tagHeader) ?>
                         </strong>
 
                         <span>
@@ -1167,12 +929,12 @@
         <script src="./JS/crearpub.js"></script>
         <SCRIPT SRC="./JS/stories.js"></SCRIPT>
         <SCRIPT SRC="./JS/contador.js"></SCRIPT>
+        <SCRIPT SRC="./JS/solicitudes.js"></SCRIPT>
         <SCRIPT SRC="./JS/funcionalidades.js"></SCRIPT>
+          <script src="./JS/tema.js"></script>
     </BODY>
 
     <FOOTER>
     </FOOTER>
 
 </HTML>
-
-
