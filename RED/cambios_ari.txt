@@ -1,0 +1,329 @@
+﻿commit abd9312bca7ac7d81ab05a665082b43d245fdb33
+Author: arantzaDeLaVega <arantza.glz1309@mail.com>
+Date:   Mon Oct 19 17:36:35 2026 -0600
+
+    Modo claro oscuro y navegacion
+
+diff --git a/RED/HTML respaldo/index.html b/RED/HTML respaldo/index.html
+index 959d1a0..df70e0a 100644
+--- a/RED/HTML respaldo/index.html	
++++ b/RED/HTML respaldo/index.html	
+@@ -20,7 +20,14 @@
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/botella.css">
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/crearpub.css">
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/funcionalidades.css">
++            <link rel="stylesheet" href="./CSS/modo-claro.css">
+          
++            <script>
++                const temaInicial = localStorage.getItem("cosmix-tema") || "dark";
++                document.documentElement.classList.add(
++                    temaInicial === "light" ? "modo-claro" : "modo-oscuro"
++                );
++            </script>
+     </HEAD>
+ 
+     <BODY>
+@@ -1159,6 +1166,7 @@
+         <SCRIPT SRC="./JS/stories.js"></SCRIPT>
+         <SCRIPT SRC="./JS/contador.js"></SCRIPT>
+         <SCRIPT SRC="./JS/funcionalidades.js"></SCRIPT>
++        <script src="./JS/tema.js"></script>
+     </FOOTER>
+ 
+ </HTML>
+diff --git a/RED/Views/JS/tema.js b/RED/Views/JS/tema.js
+new file mode 100644
+index 0000000..f0aafef
+--- /dev/null
++++ b/RED/Views/JS/tema.js
+@@ -0,0 +1,51 @@
++
++const THEME_KEY = "cosmix-tema";
++
++
++function aplicarTema(tema) {
++    const esClaro = tema === "light";
++
++    document.documentElement.classList.toggle("modo-claro", esClaro);
++    document.documentElement.classList.toggle("modo-oscuro", !esClaro);
++
++    // Actualizar los botones si existen
++    const botonClaro = document.getElementById("themeLight");
++    const botonOscuro = document.getElementById("themeDark");
++
++    if (botonClaro) {
++        botonClaro.classList.toggle("active", esClaro);
++        botonClaro.setAttribute("aria-pressed", String(esClaro));
++    }
++
++    if (botonOscuro) {
++        botonOscuro.classList.toggle("active", !esClaro);
++        botonOscuro.setAttribute("aria-pressed", String(!esClaro));
++    }
++}
++
++
++function setTheme(tema) {
++    if (tema !== "light" && tema !== "dark") return;
++
++    localStorage.setItem(THEME_KEY, tema);
++    aplicarTema(tema);
++}
++
++
++function cargarTema() {
++    const temaGuardado = localStorage.getItem(THEME_KEY) || "dark";
++    aplicarTema(temaGuardado);
++}
++
++if (document.readyState === "loading") {
++    document.addEventListener("DOMContentLoaded", cargarTema);
++} else {
++    cargarTema();
++}
++
++
++window.addEventListener("storage", function(event) {
++    if (event.key === THEME_KEY) {
++        cargarTema();
++    }
++});
+diff --git a/RED/Views/colecciones.html b/RED/Views/colecciones.html
+index 4858667..436dd78 100644
+--- a/RED/Views/colecciones.html
++++ b/RED/Views/colecciones.html
+@@ -17,6 +17,14 @@
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/menus.css">
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/colecciones.css">
++            <link rel="stylesheet" href="./CSS/modo-claro.css">
++
++             <script>
++                const temaInicial = localStorage.getItem("cosmix-tema") || "dark";
++                document.documentElement.classList.add(
++                    temaInicial === "light" ? "modo-claro" : "modo-oscuro"
++                );
++            </script>
+     </HEAD>
+ 
+     <BODY>
+@@ -38,7 +46,7 @@
+             <DIV CLASS="menulat">
+ 
+                 <ul>
+-                   <a href="./index.html" class="cosmix-inicio" title="Inicio">
++                   <a href="./index.php" class="cosmix-inicio" title="Inicio">
+                         <ion-icon name="planet"></ion-icon>
+                     </a>
+ 
+@@ -589,7 +597,7 @@
+        
+         <script src="./LIBS/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+         <SCRIPT SRC="./JS/coleccion.js"></SCRIPT>
+-        
++          <script src="./JS/tema.js"></script>
+         
+     </BODY>
+ 
+diff --git a/RED/Views/index.php b/RED/Views/index.php
+index 617ec53..019565c 100644
+--- a/RED/Views/index.php
++++ b/RED/Views/index.php
+@@ -29,9 +29,14 @@
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/botella.css">
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/crearpub.css">
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/funcionalidades.css">
+-        
+-
+-         
++         <link rel="stylesheet" href="./CSS/modo-claro.css">
++
++             <script>
++                const temaInicial = localStorage.getItem("cosmix-tema") || "dark";
++                document.documentElement.classList.add(
++                    temaInicial === "light" ? "modo-claro" : "modo-oscuro"
++                );
++            </script>
+     </HEAD>
+ 
+     <BODY>
+@@ -1168,6 +1173,7 @@
+         <SCRIPT SRC="./JS/stories.js"></SCRIPT>
+         <SCRIPT SRC="./JS/contador.js"></SCRIPT>
+         <SCRIPT SRC="./JS/funcionalidades.js"></SCRIPT>
++          <script src="./JS/tema.js"></script>
+     </BODY>
+ 
+     <FOOTER>
+diff --git a/RED/Views/login.php b/RED/Views/login.php
+index 97c247d..86073ff 100644
+--- a/RED/Views/login.php
++++ b/RED/Views/login.php
+@@ -31,7 +31,14 @@
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/login.css">
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/validaciones.css">
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
+-    
++      <link rel="stylesheet" href="./CSS/modo-claro.css">
++
++             <script>
++                const temaInicial = localStorage.getItem("cosmix-tema") || "dark";
++                document.documentElement.classList.add(
++                    temaInicial === "light" ? "modo-claro" : "modo-oscuro"
++                );
++            </script>
+         </head>
+     <body>
+        <?php if ($error !== ''): ?>
+@@ -89,7 +96,7 @@
+         <script src="./LIBS/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+         <SCRIPT SRC="./JS/Logvalidate.js"></SCRIPT>
+         <SCRIPT SRC="./JS/particulas.js"></SCRIPT>
+-       
++        <script src="./JS/tema.js"></script>
+         
+     </body>
+     <footer>
+diff --git a/RED/Views/messages.html b/RED/Views/messages.html
+index 13c93c3..30f1222 100644
+--- a/RED/Views/messages.html
++++ b/RED/Views/messages.html
+@@ -19,7 +19,14 @@
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/crearpub.css">
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/messages.css">
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/login.css">
+-        
++        <link rel="stylesheet" href="./CSS/modo-claro.css">
++
++             <script>
++                const temaInicial = localStorage.getItem("cosmix-tema") || "dark";
++                document.documentElement.classList.add(
++                    temaInicial === "light" ? "modo-claro" : "modo-oscuro"
++                );
++            </script>
+     </HEAD>
+     <BODY>
+            <!--Elementos para el fondo-->
+@@ -37,7 +44,7 @@
+         <DIV CLASS="bodyy">
+             <DIV CLASS="menulat">
+             <ul>
+-                 <a href="./index.html" class="cosmix-inicio" title="Inicio">
++                 <a href="./index.php" class="cosmix-inicio" title="Inicio">
+                         <ion-icon name="planet"></ion-icon>
+                     </a>
+                 <li><ion-icon name="chatbubble-ellipses-outline"></ion-icon></li>
+@@ -169,7 +176,7 @@
+         <script src="./LIBS/jquery-4.0.0.min.js"></script>
+        
+         <script src="./LIBS/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+-       
++          <script src="./JS/tema.js"></script>
+         
+     </BODY>
+     <FOOTER>
+diff --git a/RED/Views/perfil.html b/RED/Views/perfil.html
+index 9c8ab27..6335323 100644
+--- a/RED/Views/perfil.html
++++ b/RED/Views/perfil.html
+@@ -16,6 +16,14 @@
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/perfil.css">
++<link rel="stylesheet" href="./CSS/modo-claro.css">
++
++             <script>
++                const temaInicial = localStorage.getItem("cosmix-tema") || "dark";
++                document.documentElement.classList.add(
++                    temaInicial === "light" ? "modo-claro" : "modo-oscuro"
++                );
++            </script>
+     </HEAD>
+     <BODY>
+         <div class="fondo_cos">
+@@ -35,7 +43,7 @@
+                 <button class="hamburger hamburger-close" accesskey="M">Ôÿ░</button>
+             </div>
+             <ul class="menulist">
+-                <li class="active" onclick="window.location.href='index.html'"><i class="ion-md-home"></i> Inicio</li>
++                <li class="active" onclick="window.location.href='index.php'"><i class="ion-md-home"></i> Inicio</li>
+                 <li onclick="window.location.href='messages.html'"><i class="ion-md-mail"></i> Chat</li>
+                 <li><i class="ion-md-bookmark"></i> Guardados</li>
+                 <li onclick="window.location.href='Solicitudes.html'"><i class="ion-md-people"></i> Solicitudes de amistad</li>
+@@ -387,7 +395,7 @@
+         <SCRIPT SRC="./JS/particulas.js"></SCRIPT>
+         <SCRIPT SRC="./JS/configuracion.js"></SCRIPT>
+         <script src="./LIBS/jquery-4.0.0.min.js"></script>
+-        
++        <script src="./JS/tema.js"></script>
+     </BODY>
+     <FOOTER>
+         
+diff --git a/RED/Views/register.php b/RED/Views/register.php
+index 0b695e6..de455d3 100644
+--- a/RED/Views/register.php
++++ b/RED/Views/register.php
+@@ -21,7 +21,14 @@
+             <link rel="preconnect" href="https://fonts.googleapis.com">
+ 			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ 			<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+-
++            <link rel="stylesheet" href="./CSS/modo-claro.css">
++
++             <script>
++                const temaInicial = localStorage.getItem("cosmix-tema") || "dark";
++                document.documentElement.classList.add(
++                    temaInicial === "light" ? "modo-claro" : "modo-oscuro"
++                );
++            </script>
+             
+         <!--Aqui iran las ligas de los elementos de css-->
+         <link href="./LIBS/bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet">
+@@ -163,7 +170,7 @@
+        
+         <script src="./LIBS/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+         <SCRIPT SRC="./JS/Regvalidate.js"></SCRIPT>
+-       
++         <script src="./JS/tema.js"></script>
+         
+     </body>
+     <footer>
+diff --git a/RED/Views/solicitudes.html b/RED/Views/solicitudes.html
+index 9b98a1b..1d2aba8 100644
+--- a/RED/Views/solicitudes.html
++++ b/RED/Views/solicitudes.html
+@@ -18,7 +18,14 @@
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/botella.css">
+         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/crearpub.css">
+-        
++        <link rel="stylesheet" href="./CSS/modo-claro.css">
++
++             <script>
++                const temaInicial = localStorage.getItem("cosmix-tema") || "dark";
++                document.documentElement.classList.add(
++                    temaInicial === "light" ? "modo-claro" : "modo-oscuro"
++                );
++            </script>
+     </HEAD>
+     <BODY>
+             <!--Elementos para el fondo-->
+@@ -41,7 +48,7 @@
+     </div>
+     <ul class="menulist">
+         
+-        <li class="active" onclick="window.location.href='index.html'"><i class="ion-md-home"></i> Inicio</li>
++        <li class="active" onclick="window.location.href='index.php'"><i class="ion-md-home"></i> Inicio</li>
+          <li onclick="window.location.href='messages.html'"><i class="ion-md-mail"></i> Chat</li>
+         <li><i class="ion-md-bookmark"></i> Guardados</li>
+         <li onclick="window.location.href='Solicitudes.html'"><i class="ion-md-people"></i> Solicitudes de amistad</li>
+@@ -208,7 +215,7 @@
+         <SCRIPT SRC="./JS/particulas.js"></SCRIPT>
+         <SCRIPT SRC="./JS/deriva.js"></SCRIPT>
+         <script src="./JS/crearpub.js"></script>
+-        
++        <script src="./JS/tema.js"></script>
+         
+     </FOOTER>
+ </HTML>
+\ No newline at end of file
