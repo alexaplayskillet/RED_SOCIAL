@@ -27,8 +27,8 @@
             return $resultado;
         }
 
-        public function CargarComentarios($id){
-            $consulta = $this->cone->prepare("SELECT * FROM v_cargaComentarios WHERE id_pubC = ? ORDER BY fecha_pub DESC");
+          public function CargarPublicacionesPropias($id){
+            $consulta = $this->cone->prepare("SELECT * FROM v_cargaPublicaciones WHERE id_usuario = ? ORDER BY fecha_pub DESC");
             $consulta -> bind_param("i", $id);
             $consulta->execute();
             $resultado = $consulta->get_result();
@@ -37,5 +37,6 @@
 
             return $resultado;
         }
+
     }
 ?>

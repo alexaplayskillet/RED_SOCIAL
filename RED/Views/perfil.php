@@ -7,6 +7,7 @@ if (!isset($_SESSION["id_usuario"])) {
 
 require_once __DIR__ . "/../model/conexion.php";
 require_once __DIR__ . "/../model/UsuarioModelo.php";
+require_once __DIR__ . "/../Controllers/ShowOwnPostsController.php";
 
 $modelo = new UsuarioModelo($conexion);
 $perfil = $modelo->obtenerPerfil((int) $_SESSION["id_usuario"]);
@@ -196,55 +197,86 @@ $fechaNac = $fecha->format("j") . " de " . $meses[(int) $fecha->format("n") - 1]
                             </div>
                         </div>
 
-                        <div class="post">
-                            <div class="userinfo">
-                                <img src="./resources/foto.jpg" alt="no cargo" class="foto">
-                                <div class="username">
-                                    <p>Nombre Usuario</p>
-                                    <p>Hace 2 días</p>
-                                </div>
-                            </div>
-                            <div class="post-text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
-                            </div>
-                            <div class="post-image"><img src="./resources/noticia1.png" alt="Imagen de la publicación"></div>
-                            <div class="post-actions">
-                                <span><i class="ion-md-heart-empty"></i> Me gusta</span>
-                                <span onclick="this.closest('.post').querySelector('.caja_com').classList.toggle('active')"><i class="ion-md-chatbubbles"></i> Comentar</span>
-                                <span><i class="ion-md-share"></i> Compartir</span>
-                                <span><i class="ion-md-bookmark"></i> Guardar</span>
-                            </div>
-                            <div class="caja_com">
-                                <form>
-                                    <input type="text" placeholder="Escribe tu comentario" class="inputs">
-                                </form>
-                            </div>
-                        </div>
+                         <?php foreach ($publicaciones as $publicacion): ?>
+                   
+                    <article CLASS="post" data-id-pub="<?= (int)$publicacion['id_pub'] ?>">
 
-                        <div class="post">
-                            <div class="userinfo">
-                                <img src="./resources/foto.jpg" alt="no cargo" class="foto">
-                                <div class="username">
-                                    <p>Nombre Usuario</p>
-                                    <p>Hace 2 días</p>
-                                </div>
-                            </div>
-                            <div class="post-text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
-                            </div>
-                            <div class="post-image"><img src="./resources/noticia2.png" alt="Imagen de la publicación"></div>
-                            <div class="post-actions">
-                                <span><i class="ion-md-heart-empty"></i> Me gusta</span>
-                                <span onclick="this.closest('.post').querySelector('.caja_com').classList.toggle('active')"><i class="ion-md-chatbubbles"></i> Comentar</span>
-                                <span><i class="ion-md-share"></i> Compartir</span>
-                                <span><i class="ion-md-bookmark"></i> Guardar</span>
-                            </div>
-                            <div class="caja_com">
-                                <form>
-                                    <input type="text" placeholder="Escribe tu comentario" class="inputs">
-                                </form>
-                            </div>
+                        <DIV CLASS="userinfo">
+
+                            <img src="<?= $publicacion['foto_src']?>"
+                                alt="no cargo"
+                                class="foto">
+
+                            <DIV class="username">
+
+                                <p>
+                                    <?= htmlspecialchars($publicacion['nombre'])?>
+
+                                </p>
+
+                                <p>
+                                    <a href="verPublicacion.php?id=<?= (int)$publicacion['id_pub'] ?>"
+                                    class="post-enlace">
+                                        <?= htmlspecialchars($publicacion['fecha_pub']) ?>
+                                    </a>
+                                </p>
+
+                            </DIV>
+
+                        </DIV>
+
+                        <div class="post-text">
+
+                            <?= htmlspecialchars($publicacion['texto'])?>
+                            <img src="<?= $publicacion['media_src']?>" alt="no hay archivo multimedia">
                         </div>
+                    
+                        <DIV CLASS="post-actions">
+
+                            <span>
+                                <i class="ion-md-heart-empty"></i>
+                                <?= htmlspecialchars($publicacion['likes'])?>
+                            </span>
+
+                            <span onclick="this.closest('.post').querySelector('.caja_com').classList.toggle('active')">
+
+                                <i class="ion-md-chatbubbles"></i>
+                            <?= htmlspecialchars($publicacion['comentarios'])?>
+
+                            </span>
+
+                            <span>
+
+                                <i class="ion-md-share"></i>
+                            <?= htmlspecialchars($publicacion['compartidos'])?>
+
+                            </span>
+
+                            <span>
+
+                                <i class="ion-md-bookmark"></i>
+                                <?= htmlspecialchars($publicacion['guardados'])?>
+
+                            </span>
+
+                        </DIV>
+
+                        <DIV CLASS="caja_com">
+
+                            <FORM>
+
+                                <INPUT TYPE="text"
+                                    PLACEHOLDER="Escribe tu comentario"
+                                    CLASS="inputs">
+
+                            </FORM>
+
+                        </DIV>
+                        
+                </article>
+                    <?php endforeach; ?>
+                
+           
 
                     </div>
 
@@ -480,10 +512,7 @@ $fechaNac = $fecha->format("j") . " de " . $meses[(int) $fecha->format("n") - 1]
         <SCRIPT SRC="./JS/abrirPublicacion.js"></SCRIPT>
         <SCRIPT SRC="./JS/particulas.js"></SCRIPT>
         <SCRIPT SRC="./JS/configuracion.js"></SCRIPT>
-<<<<<<< HEAD:RED/Views/perfil.html
-        <script src="./LIBS/jquery-4.0.0.min.js"></script>
-=======
->>>>>>> d3004661e632d09cd5396e6433028b21ad0a8fb8:RED/Views/perfil.php
+        <SCRIPT SRC="./JS/abrirPub.js"></SCRIPT>
         <script src="./JS/tema.js"></script>
     </BODY>
     <FOOTER>

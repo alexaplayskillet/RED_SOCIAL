@@ -6,6 +6,8 @@
       exit();
   }
 
+  $id = $_SESSION['id_usuario'];
+    require_once 'usuario_header.php';
   require_once '../Controllers/ShowPublicationsController.php';
 ?>
 
