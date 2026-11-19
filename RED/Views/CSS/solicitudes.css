@@ -1,0 +1,97 @@
+.solicitudes-msg{
+    margin: 8px 0 0;
+    font-size: 12px;
+    min-height: 16px;
+    color: rgba(255, 255, 255, 0.55);
+}
+.solicitudes-msg.ok{ color: #3fe0b5; }
+.solicitudes-msg.error{ color: #ff6b81; }
+
+.solicitudes-page .solicitudes-msg{
+    margin-left: 60px;
+    margin-top: 14px;
+}
+
+.suggestion .foto{
+    position: relative;
+    overflow: hidden;
+}
+.suggestion .foto img{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.follow-btn:disabled{
+    opacity: 0.6;
+    cursor: default;
+}
+.follow-btn.enviada{
+    border-color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.ver-mas-sugerencias{
+    display: block;
+    margin-top: 14px;
+    text-align: center;
+    font-size: 12px;
+    color: #00e5ff;
+    text-decoration: none;
+    cursor: pointer;
+}
+.ver-mas-sugerencias:hover{
+    text-decoration: underline;
+    color: #00e5ff;
+}
+
+.soli .soli-foto{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #3a2a5c, #1c1730);
+    color: #fff;
+    font-size: 48px;
+    font-weight: 600;
+}
+.soli .soli-foto img{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    object-fit: cover;
+}
+.soli{
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.soli.saliendo{
+    opacity: 0;
+    transform: scale(0.95);
+}
+.soli button:disabled{
+    opacity: 0.6;
+    cursor: default;
+}
+.soli p small{
+    display: block;
+}
+
+.solicitudes-vacio{
+    display: none;
+    margin: 30px 0 0 60px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+html.modo-claro .solicitudes-msg,
+html.modo-claro .solicitudes-vacio{ color: #d0c1e3; }
+html.modo-claro .solicitudes-msg.ok{ color: #7dffd9; }
+html.modo-claro .solicitudes-msg.error{ color: #ffb3c0; }
