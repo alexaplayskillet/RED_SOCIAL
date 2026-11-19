@@ -23,7 +23,7 @@
     padding: 0;
     margin: 0;
 
-    font-size: 0.85em;
+    font-size: 0.85rem;
     overflow: hidden;
 
     display: none;
@@ -53,14 +53,15 @@
 .crear-publi-header h2 {
     margin: 0;
     color: white;
-    font-size: 21px;
+    /*font-size: 21px;*/
+    font-size: 1.2rem;
     font-weight: 600;
 }
 
 .crear-publi-header p {
     margin: 4px 0 0;
     color: rgba(255, 255, 255, 0.45);
-    font-size: 0.75em;
+    font-size: 0.75rem;
 }
 
 
@@ -80,7 +81,7 @@
     align-items: center;
     justify-content: center;
 
-    font-size: 1.1em;
+    font-size: 1.1rem;
 }
 
 .cerrar-publi:hover {
@@ -118,12 +119,12 @@
 
 .crear-publi-usuario strong {
     color: white;
-    font-size: 0.85em;
+    font-size: 0.85rem;
 }
 
 .crear-publi-usuario span {
     color: rgba(255, 255, 255, 0.45);
-    font-size: 0.7em;
+    font-size: 0.7rem;
 }
 
 
@@ -151,7 +152,7 @@
     padding: 15px 2px;
 
     font-family: 'Poppins', sans-serif;
-    font-size: 0.9em;
+    font-size: 0.9rem;
 }
 
 .crear-publi textarea::placeholder {
@@ -186,7 +187,7 @@
 
     color: rgba(255, 255, 255, 0.65);
 
-    font-size: 1.1em;
+    font-size: 1.1rem;
 
     cursor: pointer;
 }
@@ -214,7 +215,7 @@
     color: white;
 
     font-family: 'Poppins', sans-serif;
-    font-size: 0.78em;
+    font-size: 0.78rem;
     font-weight: 600;
 
     cursor: pointer;
@@ -345,7 +346,8 @@
 
     font-family: 'Poppins', sans-serif;
 
-    font-size: 15px;
+    /*font-size: 15px;*/
+    font-size: 0.9rem;
     font-weight: 500;
 }
 
@@ -354,7 +356,8 @@
 
     font-family: 'Poppins', sans-serif;
 
-    font-size: 13px;
+    /*font-size: 13px;*/
+    font-size: 0.8125rem;
     font-weight: 400;
 }
 .mar {
@@ -378,7 +381,8 @@
 
     font-family: 'Poppins', sans-serif;
 
-    font-size: 14px;
+    /*font-size: 14px;*/
+    font-size: 0.875rem;
     font-weight: 500;
 
     cursor: pointer;
@@ -408,7 +412,8 @@
 
     font-family: 'Poppins', sans-serif;
 
-    font-size: 14px;
+    /*font-size: 14px;*/
+    font-size: 0.875rem;
     font-weight: 400;
 
     cursor: pointer;

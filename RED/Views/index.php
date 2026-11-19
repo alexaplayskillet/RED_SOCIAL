@@ -62,7 +62,7 @@
 
             <ul class="menulist">
 
-                <li class="active" onclick="window.location.href='index.html'">
+                <li class="active" onclick="window.location.href='index.php'">
                     <i class="ion-md-home"></i> Inicio
                 </li>
 

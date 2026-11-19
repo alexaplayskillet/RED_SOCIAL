@@ -54,7 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const validarCampo = (expresion, input, campo) => {
-    const validationsDiv = input.nextElementSibling;
+    //const validationsDiv = input.nextElementSibling;
+    const validationsDiv = input.closest(".input-group").nextElementSibling;
     const pls = validationsDiv?.querySelector(".pls");
     const error = validationsDiv?.querySelector(".error");
     const valor = input.value.trim();

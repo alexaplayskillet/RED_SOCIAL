@@ -67,7 +67,8 @@ body {
     align-items: center !important;
     justify-content: center !important;
     color: white !important;
-    font-size: 22px !important;
+    /*font-size: 22px !important;*/
+    font-size: 1.5rem;
     cursor: pointer;
 }
 
@@ -80,7 +81,8 @@ body {
 }
 
 .colecciones-body .menulat ion-icon {
-    font-size: 23px;
+    /*font-size: 23px;*/
+    font-size: 1.67rem;
 }
 
 .contenido-guardado {
@@ -129,7 +131,8 @@ body {
 .guardado-titulo h1 {
     margin: 0;
     color: white;
-    font-size: 24px;
+    /*font-size: 24px;*/
+    font-size: 1.70rem;
     font-weight: 600;
 }
 
@@ -156,7 +159,8 @@ body {
 }
 
 .configuracion ion-icon {
-    font-size: 20px;
+    /*font-size: 20px;*/
+    font-size: 1.25rem;
 }
 
 .elemento-principal {
@@ -194,20 +198,23 @@ body {
 }
 
 .icono-elemento ion-icon {
-    font-size: 21px;
+    /*font-size: 21px;*/
+    font-size: 1.35em;
     color: #00e5ff;
 }
 
 .elemento-principal span {
     display: block;
-    font-size: 13px;
+    /*font-size: 13px;*/
+    font-size: 0.8125rem;
     font-weight: 600;
 }
 
 .elemento-principal small {
     display: block;
     margin-top: 2px;
-    font-size: 10px;
+    /*font-size: 10px;*/
+    font-size: 0.65rem;
     opacity: 0.55;
 }
 
@@ -221,7 +228,8 @@ body {
 .titulo-mis-colecciones h2 {
     margin: 0 0 10px;
     color: white;
-    font-size: 15px;
+    /*font-size: 15px;*/
+    font-size: 0.92rem;
     font-weight: 500;
 }
 
@@ -285,11 +293,13 @@ body {
 
 .mini-coleccion.todos ion-icon {
     color: #00e5ff;
-    font-size: 20px;
+    /*font-size: 20px;*/
+    font-size: 1.2rem;
 }
 
 .mini-coleccion.nueva {
-    font-size: 19px;
+    /*font-size: 19px;*/
+    font-size: 1.14rem;
 }
 
 .info-menu-coleccion {
@@ -299,7 +309,8 @@ body {
 .info-menu-coleccion span {
     display: block;
     color: white;
-    font-size: 13px;
+    /*font-size: 13px;*/
+    font-size: 0.8125rem;
     font-weight: 500;
     white-space: nowrap;
     overflow: hidden;
@@ -310,7 +321,8 @@ body {
     display: block;
     color: white;
     margin-top: 2px;
-    font-size: 10px;
+    /*font-size: 10px;*/
+    font-size: 0.65rem;
     opacity: 0.55;
 }
 
@@ -327,7 +339,8 @@ body {
     gap: 10px;
     border-radius: 11px;
     font-family: "Poppins", sans-serif;
-    font-size: 12px;
+    /*font-size: 12px;*/
+    font-size: 0.8rem;
     cursor: pointer;
     transition: 0.2s ease;
 }
@@ -348,7 +361,8 @@ body {
 }
 
 .icono-ver-mas ion-icon {
-    font-size: 18px;
+    /*font-size: 18px;*/
+    font-size: 1.12rem;
 }
 
 .crear-coleccion {
@@ -365,7 +379,8 @@ body {
     );
     color: white;
     font-family: "Poppins", sans-serif;
-    font-size: 12px;
+    /*font-size: 12px;*/
+    font-size: 0.8rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -380,7 +395,8 @@ body {
 }
 
 .crear-coleccion ion-icon {
-    font-size: 19px;
+    /*font-size: 19px;*/
+    font-size: 1.2rem;
 }
 
 .contenido-publicaciones {

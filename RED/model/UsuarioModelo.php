@@ -1,39 +1,36 @@
 <?php
 class UsuarioModelo {
-    private $cone;
+    private mysqli $cone;
 
-    public function __construct($cone) {
+    public function __construct(mysqli $cone) {
         $this->cone = $cone;
     }
 
-    // Devuelve ['id' => ..., 'hash' => ...] o null si no existe / está inhabilitado
     public function obtenerUsuarioTag($tag) {
-        $consulta = mysqli_prepare($this->cone, "CALL login_usuario(?, @id, @hash)");
-        mysqli_stmt_bind_param($consulta, "s", $tag);
-        mysqli_stmt_execute($consulta);
-        mysqli_stmt_close($consulta);
+    
+        $consulta = $this->cone->prepare("CALL login_usuario(?, @id, @hash)");//llama mi procedimiento
+        $consulta->bind_param("s", $tag);//adjuntamos el parametro de entrada, representado con el ?
+        $consulta->execute();
+        $consulta->close();
 
-        /*saco los datos del procedimiento y los guardo en un arreglo donde sus claves son id y hash respectivamente
-        
-        es decir
-        fila {
-            "id" = id que trae el procedimiento;
-            "hash" = contraseña que trae el procedimiento
-        }*/
-        $resultado = mysqli_query($this->cone, "SELECT @id AS id, @hash AS hash");
-        $fila = mysqli_fetch_assoc($resultado);
+    
+        $resultado = $this->cone->query("SELECT @id AS id, @hash AS hash");
+        $fila = $resultado->fetch_assoc(); //representa los datos de la consulta, siendo id y hash
+        $resultado->free();
 
-        return $fila['hash'] !== null ? $fila : null;
+        return $fila['hash'] !== null ? $fila : null; //si la contraseña es nula no regresa nada, si hay info regresa todo el registro
     }
 
-    public function registrarUsuario($nombre, $tag, $fechaNac, $correo, $contras){
-        $consulta = mysqli_prepare($this->cone, "CALL registrar_usuario(?, ?, ?, ?, ?, @id, @codigo)");
+    public function registrarUsuario($nombre, $tag, $fechaNac, $correo, $contras) {
+        $consulta = $this->cone->prepare("CALL registrar_usuario(?, ?, ?, ?, ?, @id, @codigo)");
+        $consulta->bind_param("sssss", $nombre, $tag, $fechaNac, $correo, $contras);
+        $consulta->execute();
+        $consulta->close();
 
-        mysqli_stmt_bind_param($consulta, "sssss", $nombre, $tag, $fechaNac, $correo, $contras);
-        mysqli_stmt_execute($consulta);
-        mysqli_stmt_close($consulta);
+        $resultado = $this->cone->query("SELECT @id AS id, @codigo AS codigo");
+        $fila = $resultado->fetch_assoc();
+        $resultado->free();
 
-        $resultado = mysqli_query($this->cone, "SELECT @id AS id, @codigo AS codigo");
-        return mysqli_fetch_assoc($resultado);
+        return $fila;
     }
 }

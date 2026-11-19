@@ -28,7 +28,7 @@ const validarFormulario = (e) => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const getFontSize = () =>
-    parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--font-size'));
+    parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--font-size')) || 1;
 
   const setFontSize = (size) => {
     document.documentElement.style.setProperty('--font-size', `${size}em`);
@@ -64,7 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const validarCampo = (expresion, input, campo) => {
-    const validationsDiv = input.nextElementSibling;
+    //const validationsDiv = input.nextElementSibling;
+    const validationsDiv = input.closest(".input-group").nextElementSibling;
     const pls = validationsDiv?.querySelector(".pls");
     const error = validationsDiv?.querySelector(".error");
 
