@@ -248,6 +248,14 @@
 }
 .post-actions span:hover { color: #00e5ff; }
 
+.post-enlace {
+    color: inherit;
+    text-decoration: none;
+}
+.post-enlace:hover {
+    text-decoration: underline;
+}
+
 /* formulario de comentario (oculto hasta hacer click en Comentar) */
 .caja_com{
   display: none;

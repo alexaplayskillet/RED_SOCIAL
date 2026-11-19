@@ -5,6 +5,8 @@
       header("Location: login.php");
       exit();
   }
+
+  require_once '../Controllers/ShowPublicationsController.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -545,7 +547,7 @@
 
                 </DIV>
 
-                <DIV CLASS="panel">
+                <!--<DIV CLASS="panel">
 
                     <div class="panel-title">
                         Historias
@@ -661,7 +663,7 @@
                     </div>
 
                 </DIV>
-
+-->
                 <!-- Apartado filtrar publis funcionalidad 2 -->
 
                 <DIV CLASS="panel filtros-panel">
@@ -704,84 +706,89 @@
                     </div>
 
                 </DIV>
+                
+                <?php foreach ($publicaciones as $publicacion): ?>
+                   
+                    <article CLASS="post" data-id-pub="<?= (int)$publicacion['id_pub'] ?>">
 
-                <DIV CLASS="post">
+                        <DIV CLASS="userinfo">
 
-                    <DIV CLASS="userinfo">
+                            <img src="<?= $publicacion['foto_src']?>"
+                                alt="no cargo"
+                                class="foto">
 
-                        <img src="./resources/foto.jpg"
-                             alt="no cargo"
-                             class="foto">
+                            <DIV class="username">
 
-                        <DIV class="username">
+                                <p>
+                                    <?= htmlspecialchars($publicacion['nombre'])?>
 
-                            <p>
-                                Usuario
-                            </p>
+                                </p>
 
-                            <p>
-                                Hace 5 minutos
-                            </p>
+                                <p>
+                                    <a href="verPublicacion.php?id=<?= (int)$publicacion['id_pub'] ?>"
+                                    class="post-enlace">
+                                        <?= htmlspecialchars($publicacion['fecha_pub']) ?>
+                                    </a>
+                                </p>
+
+                            </DIV>
 
                         </DIV>
 
-                    </DIV>
+                        <div class="post-text">
 
-                    <div class="post-text">
+                            <?= htmlspecialchars($publicacion['texto'])?>
+                            <img src="<?= $publicacion['media_src']?>" alt="no hay archivo multimedia">
+                        </div>
+                    
+                        <DIV CLASS="post-actions">
 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur.
+                            <span>
+                                <i class="ion-md-heart-empty"></i>
+                                <?= htmlspecialchars($publicacion['likes'])?>
+                            </span>
 
-                    </div>
+                            <span onclick="this.closest('.post').querySelector('.caja_com').classList.toggle('active')">
 
-                    <DIV CLASS="post-actions">
+                                <i class="ion-md-chatbubbles"></i>
+                            <?= htmlspecialchars($publicacion['comentarios'])?>
 
-                        <span>
-                            <i class="ion-md-heart-empty"></i>
-                            Me gusta
-                        </span>
+                            </span>
 
-                        <span onclick="this.closest('.post').querySelector('.caja_com').classList.toggle('active')">
+                            <span>
 
-                            <i class="ion-md-chatbubbles"></i>
-                            Comentar
+                                <i class="ion-md-share"></i>
+                            <?= htmlspecialchars($publicacion['compartidos'])?>
 
-                        </span>
+                            </span>
 
-                        <span>
+                            <span>
 
-                            <i class="ion-md-share"></i>
-                            Compartir
+                                <i class="ion-md-bookmark"></i>
+                                <?= htmlspecialchars($publicacion['guardados'])?>
 
-                        </span>
+                            </span>
 
-                        <span>
+                        </DIV>
 
-                            <i class="ion-md-bookmark"></i>
-                            Guardar
+                        <DIV CLASS="caja_com">
 
-                        </span>
+                            <FORM>
 
-                    </DIV>
+                                <INPUT TYPE="text"
+                                    PLACEHOLDER="Escribe tu comentario"
+                                    CLASS="inputs">
 
-                    <DIV CLASS="caja_com">
+                            </FORM>
 
-                        <FORM>
-
-                            <INPUT TYPE="text"
-                                   PLACEHOLDER="Escribe tu comentario"
-                                   CLASS="inputs">
-
-                        </FORM>
-
-                    </DIV>
-
-                </DIV>
-
+                        </DIV>
+                        
+                </article>
+                    <?php endforeach; ?>
+                
+           
+            
             </DIV>
-
             <DIV CLASS="right">
 
                 <DIV CLASS="panel">
@@ -1169,6 +1176,7 @@
         <SCRIPT SRC="./JS/buttons.js"></SCRIPT>
         <SCRIPT SRC="./JS/particulas.js"></SCRIPT>
         <SCRIPT SRC="./JS/deriva.js"></SCRIPT>
+        <SCRIPT SRC="./JS/abrirPub.js"></SCRIPT>
         <script src="./JS/crearpub.js"></script>
         <SCRIPT SRC="./JS/stories.js"></SCRIPT>
         <SCRIPT SRC="./JS/contador.js"></SCRIPT>
@@ -1181,5 +1189,6 @@
     </FOOTER>
 
 </HTML>
+
 
 
