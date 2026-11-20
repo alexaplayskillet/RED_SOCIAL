@@ -893,3 +893,24 @@
   border: 1px solid rgba(0, 229, 255, 0.18);
   z-index: 6;
 }
+
+.iconos{
+  background-color: transparent;
+  color: inherit;
+  border: 0;
+}
+
+.iconos.active{
+  color: #00e5ff; }
+
+
+.int.animate{
+  transform: scale(1.5) rotate(-45deg);
+  
+}
+
+.int{
+  color: inherit;
+  display: inline-block;
+  transition: transform 0.2s ease, color 0.2s ease;
+}

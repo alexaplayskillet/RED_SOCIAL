@@ -467,36 +467,39 @@
 
                         </DIV>
 
-                        <div class="post-text">
+                         <?php if ($publicaciones['texto'] != null):?>
+                            <div class="post-text">
+                                <?= htmlspecialchars($publicaciones['texto'])?>
+                            </div>
+                        <?php endif; ?> 
 
-                            <?= htmlspecialchars($publicaciones['texto'])?>
+                        <?php if($publicaciones['media_src'] != null):?>
                             <img src="<?= $publicaciones['media_src']?>" alt="no hay archivo multimedia">
-                        </div>
+                        <?php endif;?>
                     
                         <DIV CLASS="post-actions">
-
                             <span>
-                                <i class="ion-md-heart-empty"></i>
+                                <button class="iconos like_btn"><i class="ion-md-heart-empty like int"></i></button>
                                 <?= htmlspecialchars($publicaciones['likes'])?>
                             </span>
 
                             <span onclick="this.closest('.post').querySelector('.caja_com').classList.toggle('active')">
 
-                                <i class="ion-md-chatbubbles"></i>
+                                <button class="iconos comment_btn"><i class="ion-md-chatbubbles comment int"></i></button>
                             <?= htmlspecialchars($publicaciones['comentarios'])?>
 
                             </span>
 
                             <span>
 
-                                <i class="ion-md-share"></i>
+                                <button class="iconos compartir_btn"><i class="ion-md-share share int"></i></button>
                             <?= htmlspecialchars($publicaciones['compartidos'])?>
 
                             </span>
 
                             <span>
 
-                                <i class="ion-md-bookmark"></i>
+                                <button class="iconos guardar_btn"><i class="ion-md-bookmark save int"></i>
                                 <?= htmlspecialchars($publicaciones['guardados'])?>
 
                             </span>
@@ -932,7 +935,7 @@
         <SCRIPT SRC="./JS/contador.js"></SCRIPT>
         <SCRIPT SRC="./JS/funcionalidades.js"></SCRIPT>
         <script src="./JS/tema.js"></script>
-        
+         <SCRIPT SRC="./JS/interaccion.js"></SCRIPT>
     </BODY>
 
     <FOOTER>

@@ -13,7 +13,7 @@ CREATE TABLE usuario(
     fecha_creac DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     fotografia BLOB
 );
-
+ALTER table usuario ADD portada mediumblob;
 CREATE TABLE amistad (
     id_amistad INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario1 INT NOT NULL,
