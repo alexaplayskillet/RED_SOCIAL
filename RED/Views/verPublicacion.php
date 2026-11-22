@@ -100,7 +100,7 @@
 
             </div>
 
-            <button class="profile-menu-verperfil" onclick="window.location.href='perfil.html'">
+            <button class="profile-menu-verperfil" onclick="window.location.href='perfil.php'">
                 <i class="ion-md-person"></i> Ver perfil
             </button>
 

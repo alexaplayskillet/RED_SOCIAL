@@ -27,7 +27,7 @@
             return $resultado;
         }
 
-          public function CargarPublicacionesPropias($id){
+        public function CargarPublicacionesPropias($id){
             $consulta = $this->cone->prepare("SELECT * FROM v_cargaPublicaciones WHERE id_usuario = ? ORDER BY fecha_pub DESC");
             $consulta -> bind_param("i", $id);
             $consulta->execute();
@@ -38,5 +38,8 @@
             return $resultado;
         }
 
+        public function CrearPublicacion(){
+            
+        }
     }
 ?>

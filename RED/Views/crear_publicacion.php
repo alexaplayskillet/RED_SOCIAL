@@ -42,7 +42,7 @@ $avatarPorDefecto = "data:image/svg+xml;utf8," . rawurlencode($svgAvatar);
 
             </div>
 
-            <form>
+            <form action="../Controllers/CrearPost.php" >
 
                 <textarea
                     placeholder="¿Qué está pasando por tu mente?"
