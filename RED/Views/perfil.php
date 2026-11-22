@@ -54,6 +54,7 @@ $fechaNac = $fecha->format("j") . " de " . $meses[(int) $fecha->format("n") - 1]
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/distribucion.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/movil.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/menus.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/notificaciones.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/crearpub.css">
@@ -62,6 +63,7 @@ $fechaNac = $fecha->format("j") . " de " . $meses[(int) $fecha->format("n") - 1]
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/amigos.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/galeria.css">
 <link rel="stylesheet" href="./CSS/modo-claro.css">
+        <link rel="stylesheet" TYPE="TEXT/CSS" href="./CSS/visor.css">
 
              <script>
                 const temaInicial = localStorage.getItem("cosmix-tema") || "dark";
@@ -98,12 +100,14 @@ $fechaNac = $fecha->format("j") . " de " . $meses[(int) $fecha->format("n") - 1]
 
         <?php require __DIR__ . "/menu_usuario.php"; ?>
 
+        <?php require __DIR__ . "/notificaciones_panel.php"; ?>
+
         <DIV CLASS="title">
             <button id="toggleMenu" class="hamburger" accesskey="M">☰</button>
             <div class="title-logo"><i class="ion-md-planet"></i> COSMIX</div>
             <div class="search-box"><i class="ion-md-search"></i> Buscar</div>
             <div class="title-icons">
-                <i class="ion-md-notifications-outline"></i>
+                <i class="ion-md-notifications-outline" id="notifTrigger"></i>
                 <i class="ion-md-mail-outline"></i>
                 <div class="profile" id="profileTrigger" style="overflow:hidden;" onclick="document.getElementById('profileMenu').classList.toggle('active')">
                     <img id="headerAvatar" class="profile-foto" alt="Foto de perfil"
@@ -189,7 +193,7 @@ $fechaNac = $fecha->format("j") . " de " . $meses[(int) $fecha->format("n") - 1]
 
                     <div class="profile-right">
                         <div class="panel crear-post">
-                            <img src="./resources/foto.jpg" alt="foto usuario" class="foto">
+                            <img src="<?= $fotoUsuarioSrc ?>" alt="foto usuario" class="foto" onerror="this.onerror=null; this.src='<?= $fotoPorDefecto ?>'">
                             <input type="text" class="inputs crear-post-input" placeholder="¿Qué está pasando por tu mente?">
                             <div class="crear-post-icons">
                                 <button class="icon-btn" title="Agregar foto"><i class="ion-md-image"></i></button>
@@ -216,12 +220,29 @@ $fechaNac = $fecha->format("j") . " de " . $meses[(int) $fecha->format("n") - 1]
 
                                 <p>
                                     <a href="verPublicacion.php?id=<?= (int)$publicacion['id_pub'] ?>"
-                                    class="post-enlace">
-                                        <?= htmlspecialchars($publicacion['fecha_pub']) ?>
+                                    class="post-enlace"
+                                    title="<?= htmlspecialchars($publicacion['fecha_pub']) ?>">
+                                        <?= htmlspecialchars($publicacion['hace']) ?>
                                     </a>
                                 </p>
 
                             </DIV>
+
+                            <?php if ((int) $publicacion['id_usuario'] === (int) $_SESSION['id_usuario']): ?>
+                                <div class="post-menu">
+                                    <button type="button" class="post-menu-btn" title="Opciones">
+                                        <i class="ion-md-more"></i>
+                                    </button>
+                                    <div class="post-menu-lista">
+                                        <button type="button" class="post-editar">
+                                            <i class="ion-md-create"></i> Editar
+                                        </button>
+                                        <button type="button" class="post-eliminar">
+                                            <i class="ion-md-trash"></i> Eliminar
+                                        </button>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
 
                         </DIV>
 
@@ -231,48 +252,51 @@ $fechaNac = $fecha->format("j") . " de " . $meses[(int) $fecha->format("n") - 1]
                             </div>
                         <?php endif; ?> 
 
-                        <?php if($publicacion['media_src'] != null):?>
-                            <img src="<?= $publicacion['media_src']?>" alt="no hay archivo multimedia">
-                        <?php endif;?>
+                        <?php if ($publicacion['media_src'] !== ''): ?>
+                            <?php if ($publicacion['es_video']): ?>
+                                <video src="<?= $publicacion['media_src'] ?>" class="post-video" controls preload="metadata"></video>
+                            <?php else: ?>
+                                <img src="<?= $publicacion['media_src'] ?>" alt="imagen de la publicación" class="post-img" loading="lazy">
+                            <?php endif; ?>
+                        <?php endif; ?>
                     
                         <DIV CLASS="post-actions">
+
                             <span>
-                                <button class="iconos like_btn"><i class="ion-md-heart-empty like int"></i></button>
-                                <?= htmlspecialchars($publicacion['likes'])?>
+                                <button type="button"
+                                        class="iconos like_btn"
+                                        data-liked="<?= !empty($publicacion['dio_like']) ? '1' : '0' ?>">
+                                    <i class="ion-md-heart-empty like int"></i>
+                                </button>
+                                <span class="contador-likes"><?= (int) $publicacion['likes'] ?></span>
                             </span>
 
                             <span onclick="this.closest('.post').querySelector('.caja_com').classList.toggle('active')">
-
-                                <button class="iconos comment_btn"><i class="ion-md-chatbubbles comment int"></i></button>
-                            <?= htmlspecialchars($publicacion['comentarios'])?>
-
+                                <button type="button" class="iconos comment_btn"><i class="ion-md-chatbubbles comment int"></i></button>
+                                <span class="contador-comentarios"><?= (int) $publicacion['comentarios'] ?></span>
                             </span>
 
                             <span>
-
-                                <button class="iconos compartir_btn"><i class="ion-md-share share int"></i></button>
-                            <?= htmlspecialchars($publicacion['compartidos'])?>
-
-                            </span>
-
-                            <span>
-
-                                <button class="iconos guardar_btn"><i class="ion-md-bookmark save int"></i>
-                                <?= htmlspecialchars($publicacion['guardados'])?>
-
+                                <button type="button" class="iconos guardar_btn"><i class="ion-md-bookmark save int"></i></button>
+                                <?= (int) $publicacion['guardados'] ?>
                             </span>
 
                         </DIV>
 
                         <DIV CLASS="caja_com">
 
-                            <FORM>
-
+                            <FORM class="form-comentario">
                                 <INPUT TYPE="text"
-                                    PLACEHOLDER="Escribe tu comentario"
-                                    CLASS="inputs">
-
+                                       name="texto"
+                                       maxlength="255"
+                                       autocomplete="off"
+                                       PLACEHOLDER="Escribe tu comentario"
+                                       CLASS="inputs">
                             </FORM>
+
+                            <a href="verPublicacion.php?id=<?= (int) $publicacion['id_pub'] ?>" class="ver-comentarios">
+                                Ver comentarios
+                            </a>
 
                         </DIV>
                         
@@ -508,7 +532,11 @@ $fechaNac = $fecha->format("j") . " de " . $meses[(int) $fecha->format("n") - 1]
 
         <script src="./LIBS/jquery-4.0.0.min.js"></script>
         <script src="./LIBS/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+        <?php require __DIR__ . "/visor_publicacion.php"; ?>
+        <?php require __DIR__ . "/editar_publicacion.php"; ?>
+
         <SCRIPT SRC="./JS/buttons.js"></SCRIPT>
+        <script src="./JS/notificaciones.js"></script>
         <SCRIPT SRC="./JS/editar_perfil.js"></SCRIPT>
         <SCRIPT SRC="./JS/amigos.js"></SCRIPT>
         <SCRIPT SRC="./JS/galeria.js"></SCRIPT>
@@ -517,7 +545,11 @@ $fechaNac = $fecha->format("j") . " de " . $meses[(int) $fecha->format("n") - 1]
         <SCRIPT SRC="./JS/configuracion.js"></SCRIPT>
         <SCRIPT SRC="./JS/abrirPub.js"></SCRIPT>
         <script src="./JS/tema.js"></script>
-         <SCRIPT SRC="./JS/interaccion.js"></SCRIPT>
+        <script src="./JS/media.js"></script>
+        <script src="./JS/crearpub.js"></script>
+        <SCRIPT SRC="./JS/interaccion.js"></SCRIPT>
+        <script src="./JS/visor.js"></script>
+        <script src="./JS/editarpub.js"></script>
     </BODY>
     <FOOTER>
         

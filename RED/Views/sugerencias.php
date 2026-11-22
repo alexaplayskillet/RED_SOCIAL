@@ -15,6 +15,7 @@
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/distribucion.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/movil.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/menus.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/notificaciones.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/botella.css">
@@ -60,12 +61,14 @@
 
         <?php require __DIR__ . "/menu_usuario.php"; ?>
 
+        <?php require __DIR__ . "/notificaciones_panel.php"; ?>
+
         <DIV CLASS="title">
             <button id="toggleMenu" class="hamburger" accesskey="M">☰</button>
             <div class="title-logo"><i class="ion-md-planet"></i> COSMIX</div>
             <div class="search-box"><i class="ion-md-search"></i> Buscar</div>
             <div class="title-icons">
-                <i class="ion-md-notifications-outline"></i>
+                <i class="ion-md-notifications-outline" id="notifTrigger"></i>
                 <i class="ion-md-mail-outline"></i>
                 <div class="profile" id="profileTrigger" style="overflow:hidden;" onclick="document.getElementById('profileMenu').classList.toggle('active')">
                     <?= avatarUsuario("headerAvatar","headerIniciales",$inicialesHeader,$v) ?>
@@ -106,6 +109,7 @@
        
         <script src="./LIBS/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
         <SCRIPT SRC="./JS/buttons.js"></SCRIPT>
+        <script src="./JS/notificaciones.js"></script>
         <SCRIPT SRC="./JS/particulas.js"></SCRIPT>
         <SCRIPT SRC="./JS/deriva.js"></SCRIPT>
         <script src="./JS/crearpub.js"></script>

@@ -82,9 +82,17 @@
 
     function aplicarFiltro(tipo) {
 
-        //Logica para filtrar publis
+        //Recarga el index con el filtro elegido (index.php?filtro=...).
+        //Si se elige el filtro que ya estaba activo, se quita y vuelve el orden aleatorio.
+        const url = new URL(window.location.href);
 
-        console.log("Filtro aplicado:", tipo);
+        if (url.searchParams.get("filtro") === tipo) {
+            url.searchParams.delete("filtro");
+        } else {
+            url.searchParams.set("filtro", tipo);
+        }
+
+        window.location.href = url.pathname + url.search;
 
     }
 

@@ -1,4 +1,4 @@
-/* ===== paneles (publicar, historias, sugerencias) ===== */
+/* paneles (publicar, historias, sugerencias) */
 .panel {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -19,7 +19,7 @@
   text-transform: uppercase;
 }
 
-/* ===== historias ===== */
+/* historias */
 .stories {
   display: flex;
   gap: 10px;
@@ -127,7 +127,7 @@
  }
 .stories-flecha-der { right: -6px; }
 
-/* ===== post ===== */
+/* post */
 .post {
   margin: 0;
   padding: 18px 20px;
@@ -142,7 +142,7 @@
   text-align: left;
   transition: background-color 0.5s ease, color 0.5s ease;
 }
-/* ===== crear publicacion ===== */
+/* crear publicacion */
 .panel.crear-post {
   display: flex;
   align-items: center;
@@ -224,20 +224,24 @@
 .post-text .tag { color: #00e5ff; }
 
 .post-img {
+  display: block;
   width: 100%;
+  max-height: 420px;
+  object-fit: cover;
   border-radius: 12px;
   margin-bottom: 14px;
   background: linear-gradient(135deg, #3a2a5c, #1c1730);
-  aspect-ratio: 16/9;
+  cursor: zoom-in;
 }
 
 /* acciones: me gusta, comentar, compartir, guardar */
 .post-actions {
   display: flex;
-  gap: 22px;
+  align-items: center;
+  gap: 26px;
   padding-top: 12px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.55);
 }
 .post-actions span {
@@ -247,6 +251,89 @@
   cursor: pointer;
 }
 .post-actions span:hover { color: #00e5ff; }
+
+/* videos de las publicaciones */
+.post-video {
+  display: block;
+  width: 100%;
+  max-height: 480px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  background: black;
+}
+
+/* menu de opciones (editar y eliminar) en las publicaciones propias */
+.userinfo .post-menu {
+  position: relative;
+  margin-left: auto;
+  align-self: flex-start;
+}
+
+.post-menu-btn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.post-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.post-menu-lista {
+  display: none;
+  position: absolute;
+  top: 38px;
+  right: 0;
+  z-index: 20;
+  min-width: 160px;
+  padding: 6px;
+  border-radius: 12px;
+  background: #1c1730;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.post-menu.abierto .post-menu-lista {
+  display: block;
+}
+
+.post-menu-lista button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+  font: inherit;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.post-menu-lista button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.post-menu-lista .post-eliminar {
+  color: #ff8a8a;
+}
+
+/* iconos de like, comentar y guardar mas grandes */
+.post-actions .int {
+  font-size: 22px;
+}
 
 .post-enlace {
     color: inherit;
@@ -279,7 +366,7 @@
 }
 .inputs::placeholder { color: rgba(255, 255, 255, 0.35); }
 
-/* ===== sugerencias ===== */
+/* sugerencias */
 .suggestion {
   display: flex;
   align-items: center;
@@ -554,7 +641,7 @@
 }
 
 
-/* ===== filtros de historia ===== */
+/* filtros de historia */
 .historia-filtros-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -913,4 +1000,190 @@
   color: inherit;
   display: inline-block;
   transition: transform 0.2s ease, color 0.2s ease;
+}
+
+
+/* comentarios de las publicaciones */
+.lista-comentarios {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 4px 0 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.comentario {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.comentario .foto {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+}
+
+.respuestas .comentario .foto {
+  width: 28px;
+  height: 28px;
+}
+
+.comentario-cuerpo {
+  flex: 1;
+  min-width: 0;
+}
+
+.comentario-burbuja {
+  display: inline-block;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 8px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.comentario-burbuja strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.comentario-burbuja p {
+  margin: 2px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  overflow-wrap: anywhere;
+}
+
+/* fila debajo de cada comentario: tiempo, me gusta, responder y total de likes */
+.comentario-acciones {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  margin: 4px 0 0 12px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.btn-like-com,
+.btn-responder {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-like-com:hover,
+.btn-responder:hover {
+  text-decoration: underline;
+}
+
+.btn-like-com.activo {
+  color: #00e5ff;
+}
+
+.like-com-total {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #00e5ff;
+}
+
+.like-com-total[hidden] {
+  display: none;
+}
+
+.respuestas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.respuestas:empty {
+  display: none;
+}
+
+.form-respuesta .inputs {
+  padding: 7px 12px;
+  font-size: 13px;
+}
+
+.sin-comentarios {
+  margin: 0;
+  font-size: 13px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.form-comentario {
+  margin: 0;
+}
+
+.ver-comentarios {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+}
+
+.ver-comentarios:hover {
+  color: #00e5ff;
+  text-decoration: underline;
+}
+
+/* botones de iniciar sesion y crear cuenta para los visitantes */
+.botones-sesion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-sesion {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 229, 255, 0.5);
+  color: #00e5ff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.btn-sesion:hover {
+  background: rgba(0, 229, 255, 0.1);
+  color: #00e5ff;
+}
+
+.btn-sesion-crear {
+  border-color: transparent;
+  background: linear-gradient(135deg, #a855f7, #00b8d4);
+  color: white;
+}
+
+.btn-sesion-crear:hover {
+  color: white;
+  opacity: 0.9;
+}
+
+/* filtro activo junto al boton de Filtros y aviso cuando no hay publicaciones */
+.filtro-actual {
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.sin-publicaciones {
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
 }

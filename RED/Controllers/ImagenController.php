@@ -3,20 +3,21 @@ session_start();
 
 require_once __DIR__ . "/../model/conexion.php";
 
-if (!isset($_SESSION["id_usuario"])) {
+$tipo    = strtoupper($_GET["tipo"] ?? "");
+$idAmigo = isset($_GET["id"]) ? (int) $_GET["id"] : 0;
+
+// Sin sesion solo se puede ver la foto de perfil de otro usuario (por ejemplo en los comentarios)
+if (!isset($_SESSION["id_usuario"]) && !($tipo === "FOTO" && $idAmigo > 0)) {
     http_response_code(401);
     exit;
 }
 
-$idUsuario = (int) $_SESSION["id_usuario"];
-$tipo      = strtoupper($_GET["tipo"] ?? "");
+$idUsuario = (int) ($_SESSION["id_usuario"] ?? 0);
 
 if (!in_array($tipo, ["PORTADA", "FOTO"], true)) {
     http_response_code(400);
     exit;
 }
-
-$idAmigo = isset($_GET["id"]) ? (int) $_GET["id"] : 0;
 
 if ($idAmigo > 0 && $idAmigo !== $idUsuario) {
     if ($tipo !== "FOTO") {

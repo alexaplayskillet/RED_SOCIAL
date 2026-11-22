@@ -1,8 +1,9 @@
+<?php require_once __DIR__ . "/usuario_header.php"; ?>
 <!DOCTYPE HTML>
 <HTML>
     <HEAD>
         <meta charset="UTF-8">
-        <title>Pagina Principal</title>
+        <title>Solicitudes de amistad</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,19 +15,20 @@
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/distribucion.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/movil.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/menus.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/notificaciones.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/botella.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/crearpub.css">
-            <link rel="stylesheet" TYPE="TEXT/CSS" href="./CSS/modo-claro.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/solicitudes.css">
+        <link rel="stylesheet" href="./CSS/modo-claro.css">
 
-         <script>
-            const temaInicial = localStorage.getItem("cosmix-tema") || "dark";
-            document.documentElement.classList.add(
-                temaInicial === "light" ? "modo-claro" : "modo-oscuro"
-            );
-        </script>
-        
+             <script>
+                const temaInicial = localStorage.getItem("cosmix-tema") || "dark";
+                document.documentElement.classList.add(
+                    temaInicial === "light" ? "modo-claro" : "modo-oscuro"
+                );
+            </script>
     </HEAD>
     <BODY>
             <!--Elementos para el fondo-->
@@ -52,78 +54,25 @@
         <li class="active" onclick="window.location.href='index.php'"><i class="ion-md-home"></i> Inicio</li>
          <li onclick="window.location.href='messages.html'"><i class="ion-md-mail"></i> Chat</li>
         <li><i class="ion-md-bookmark"></i> Guardados</li>
-        <li onclick="window.location.href='Solicitudes.html'"><i class="ion-md-people"></i> Solicitudes de amistad</li>
+        <li onclick="window.location.href='Solicitudes.php'"><i class="ion-md-people"></i> Solicitudes de amistad</li>
     </ul>
     <button class="create-post-btn">Publicar</button>
     </DIV>
 
-        <DIV CLASS="profile-menu" id="profileMenu">
-            <div class="profile-menu-header">
-                <div class="profile-menu-avatar">HO</div>
-                <div class="profile-menu-name">@nombreUsuario</div>
-            </div>
+        <?php require __DIR__ . "/menu_usuario.php"; ?>
 
-            <button class="profile-menu-verperfil">
-                <i class="ion-md-person"></i> Ver perfil
-            </button>
-
-            <div class="profile-menu-divider"></div>
-
-            <ul class="profile-menu-list">
-                <li><i class="ion-md-help-circle"></i> Ayuda</li>
-                <li onclick="toggleAccessMenu(true)"><i class="ion-md-options"></i> Accesibilidad</li>
-               <li class="profile-menu-logout" onclick="window.location.href='login.html'"><i class="ion-md-log-out"></i> Cerrar sesión</li>
-            </ul>
-        </DIV>
-        <DIV CLASS="access-menu" id="accessMenu">
-    <div class="access-menu-header">
-        <button class="access-back" onclick="toggleAccessMenu(false)">
-            <i class="ion-md-arrow-back"></i>
-        </button>
-        <span>Pantalla y accesibilidad</span>
-    </div>
-
-    <div class="access-section">
-        <div class="access-section-title"><i class="ion-md-moon"></i> Apariencia</div>
-        <div class="access-options">
-            <button class="access-chip" id="themeLight" onclick="setTheme('light')">
-                <i class="ion-md-sunny"></i> Claro
-            </button>
-            <button class="access-chip active" id="themeDark" onclick="setTheme('dark')">
-                <i class="ion-md-moon"></i> Oscuro
-            </button>
-        </div>
-    </div>
-
-    <div class="access-section">
-        <div class="access-section-title"><i class="ion-md-text"></i> Tamaño de letra</div>
-        <div class="access-fontsize-control">
-            <button class="access-font-btn" id="fontDecrease">A-</button>
-            <span class="access-font-value" id="fontValue">100%</span>
-            <button class="access-font-btn" id="fontIncrease">A+</button>
-        </div>
-    </div>
-
-    <div class="access-section">
-        <div class="access-section-title-row">
-            <div class="access-section-title"><i class="ion-md-contrast"></i> Alto contraste</div>
-            <label class="access-switch">
-                <input type="checkbox" id="contrastToggle">
-                <span class="access-switch-slider"></span>
-            </label>
-        </div>
-        <p class="access-desc">Aumenta el contraste de los textos para facilitar la lectura.</p>
-    </div>
-</DIV>
+        <?php require __DIR__ . "/notificaciones_panel.php"; ?>
 
         <DIV CLASS="title">
             <button id="toggleMenu" class="hamburger" accesskey="M">☰</button>
             <div class="title-logo"><i class="ion-md-planet"></i> COSMIX</div>
             <div class="search-box"><i class="ion-md-search"></i> Buscar</div>
             <div class="title-icons">
-                <i class="ion-md-notifications-outline"></i>
+                <i class="ion-md-notifications-outline" id="notifTrigger"></i>
                 <i class="ion-md-mail-outline"></i>
-                <div class="profile" id="profileTrigger" onclick="document.getElementById('profileMenu').classList.toggle('active')">HO</div>
+                <div class="profile" id="profileTrigger" style="overflow:hidden;" onclick="document.getElementById('profileMenu').classList.toggle('active')">
+                    <?= avatarUsuario("headerAvatar","headerIniciales",$inicialesHeader,$v) ?>
+                </div>
             </div>
         </DIV>
         <DIV CLASS="body">
@@ -133,68 +82,15 @@
 
     <div class="solicitudes-header">
         <h2>Solicitudes de amistad</h2>
-        <p class="solicitudes-subtitulo">Revisa quién quiere conectar contigo</p>
+        <p class="solicitudes-subtitulo" id="solicitudesSubtitulo">Revisa quién quiere conectar contigo</p>
+        <a class="ver-mas-sugerencias" href="sugerencias.php" style="text-align:left">Buscar personas para agregar</a>
     </div>
 
-            <DIV CLASS="CajaSoli w100">
-                <DIV CLASS="soli">
-                    <img src="./resources/foto.jpg">
-                    <p>Nombre del usuario</p>
-                    <p><small>2 Amigos en comun</small></p>
-                    <button class="btn-cerrar mar">Aceptar</button><br>
-                    <button class="btn-devolver mar">Rechazar</button>
-                </DIV>
-                <DIV CLASS="soli">
-                    <img src="./resources/foto.jpg">
-                    <p>Nombre del usuario</p>
-                    <p><small>2 Amigos en comun</small></p>
-                    <button class="btn-cerrar mar">Aceptar</button><br>
-                    <button class="btn-devolver mar">Rechazar</button>
-                </DIV>
-                <DIV CLASS="soli">
-                    <img src="./resources/foto.jpg">
-                    <p>Nombre del usuario</p>
-                    <p><small>2 Amigos en comun</small></p>
-                    <button class="btn-cerrar mar">Aceptar</button><br>
-                    <button class="btn-devolver mar">Rechazar</button>
-                </DIV>
-                <DIV CLASS="soli">
-                    <img src="./resources/foto.jpg">
-                    <p>Nombre del usuario</p>
-                    <p><small>2 Amigos en comun</small></p>
-                    <button class="btn-cerrar mar">Aceptar</button><br>
-                    <button class="btn-devolver mar">Rechazar</button>
-                </DIV>
-                <DIV CLASS="soli">
-                    <img src="./resources/foto.jpg">
-                    <p>Nombre del usuario</p>
-                    <p><small>2 Amigos en comun</small></p>
-                    <button class="btn-cerrar mar">Aceptar</button><br>
-                    <button class="btn-devolver mar">Rechazar</button>
-                </DIV>
-                <DIV CLASS="soli">
-                    <img src="./resources/foto.jpg">
-                    <p>Nombre del usuario</p>
-                    <p><small>2 Amigos en comun</small></p>
-                    <button class="btn-cerrar mar">Aceptar</button><br>
-                    <button class="btn-devolver mar">Rechazar</button>
-                </DIV>
-                <DIV CLASS="soli">
-                    <img src="./resources/foto.jpg">
-                    <p>Nombre del usuario</p>
-                    <p><small>2 Amigos en comun</small></p>
-                    <button class="btn-cerrar mar">Aceptar</button><br>
-                    <button class="btn-devolver mar">Rechazar</button>
-                </DIV>
-                <DIV CLASS="soli">
-                    <img src="./resources/foto.jpg">
-                    <p>Nombre del usuario</p>
-                    <p><small>2 Amigos en comun</small></p>
-                    <button class="btn-cerrar mar">Aceptar</button><br>
-                    <button class="btn-devolver mar">Rechazar</button>
-                </DIV>
-            </DIV>
-               
+            <p class="solicitudes-msg" id="solicitudesMensaje"></p>
+
+            <DIV CLASS="CajaSoli w100" id="solicitudesGrid"></DIV>
+            <p class="solicitudes-vacio" id="solicitudesVacio"></p>
+
             <div id="mensaje-card">
                 <h4>Mensaje a la deriva</h4>
                 <p id="mensaje-texto">Cargando...</p>
@@ -213,10 +109,12 @@
        
         <script src="./LIBS/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
         <SCRIPT SRC="./JS/buttons.js"></SCRIPT>
+        <script src="./JS/notificaciones.js"></script>
         <SCRIPT SRC="./JS/particulas.js"></SCRIPT>
         <SCRIPT SRC="./JS/deriva.js"></SCRIPT>
         <script src="./JS/crearpub.js"></script>
         <script src="./JS/tema.js"></script>
+        <script src="./JS/solicitudes.js"></script>
         
     </FOOTER>
 </HTML>

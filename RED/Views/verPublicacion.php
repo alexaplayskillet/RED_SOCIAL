@@ -1,14 +1,12 @@
 <?php
     session_start();//para recordar quién inició sesión
-    //que incluya la conexion antes de hacer nada
-    if (!isset($_SESSION['id_usuario'])) {
-      header("Location: login.php");
-      exit();
-  }
 
-  require_once '../Controllers/IndividualPostController.php';
+    //las publicaciones se pueden ver sin cuenta; para comentar y dar like hay que iniciar sesion
+    $paginaPublica = true;
+    require_once 'usuario_header.php';
+    require_once '../Controllers/IndividualPostController.php';
 
-
+    $idSesion = $hayUsuario ? (int) $_SESSION['id_usuario'] : 0;
 ?>
 
 <!DOCTYPE HTML>
@@ -28,12 +26,15 @@
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/distribucion.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/movil.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/menus.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/notificaciones.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/posts.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/fondo.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/botella.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/crearpub.css">
         <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/funcionalidades.css">
         <link rel="stylesheet" TYPE="TEXT/CSS" href="./CSS/modo-claro.css">
+        <LINK REL="STYLESHEET" TYPE="TEXT/CSS" HREF="./CSS/solicitudes.css">
+        <link rel="stylesheet" TYPE="TEXT/CSS" href="./CSS/visor.css">
 
          <script>
             const temaInicial = localStorage.getItem("cosmix-tema") || "dark";
@@ -43,7 +44,7 @@
         </script>
     </HEAD>
 
-    <BODY>
+    <BODY data-sesion="<?= $hayUsuario ? '1' : '0' ?>">
 
         <div class="fondo_cos">
             <div class="gradi1"></div>
@@ -88,314 +89,13 @@
 
         </DIV>
 
-        <DIV CLASS="profile-menu" id="profileMenu">
-
-            <div class="profile-menu-header">
-
-                <div class="profile-menu-avatar">HO</div>
-
-                <div class="profile-menu-name">
-                    @nombreUsuario
-                </div>
-
-            </div>
-
-            <button class="profile-menu-verperfil" onclick="window.location.href='perfil.php'">
-                <i class="ion-md-person"></i> Ver perfil
-            </button>
-
-            <div class="profile-menu-divider"></div>
-
-            <ul class="profile-menu-list">
-
-                <li>
-                    <i class="ion-md-help-circle"></i> Ayuda
-                </li>
-
-                <li onclick="toggleAccessMenu(true)">
-                    <i class="ion-md-options"></i> Accesibilidad
-                </li>
-
-                <li class="profile-menu-logout" onclick="window.location.href='login.php'">
-                    <i class="ion-md-log-out"></i> Cerrar sesión
-                </li>
-
-            </ul>
-
-        </DIV>
-
-        <DIV CLASS="access-menu" id="accessMenu">
-
-            <div class="access-menu-header">
-
-                <button class="access-back" onclick="toggleAccessMenu(false)">
-                    <i class="ion-md-arrow-back"></i>
-                </button>
-
-                <span>Pantalla y accesibilidad</span>
-
-            </div>
-
-            <div class="access-section">
-
-                <div class="access-section-title">
-                    <i class="ion-md-moon"></i> Apariencia
-                </div>
-
-                <div class="access-options">
-
-                    <button class="access-chip" id="themeLight" onclick="setTheme('light')">
-                        <i class="ion-md-sunny"></i> Claro
-                    </button>
-
-                    <button class="access-chip active" id="themeDark" onclick="setTheme('dark')">
-                        <i class="ion-md-moon"></i> Oscuro
-                    </button>
-
-                </div>
-
-            </div>
-
-            <div class="access-section">
-
-                <div class="access-section-title">
-                    <i class="ion-md-text"></i> Tamaño de letra
-                </div>
-
-                <div class="access-fontsize-control">
-
-                    <button class="access-font-btn" id="fontDecrease">
-                        A-
-                    </button>
-
-                    <span class="access-font-value" id="fontValue">
-                        100%
-                    </span>
-
-                    <button class="access-font-btn" id="fontIncrease">
-                        A+
-                    </button>
-
-                </div>
-
-            </div>
-
-            <div class="access-section">
-
-                <div class="access-section-title-row">
-
-                    <div class="access-section-title">
-                        <i class="ion-md-contrast"></i> Alto contraste
-                    </div>
-
-                    <label class="access-switch">
-
-                        <input type="checkbox" id="contrastToggle">
-
-                        <span class="access-switch-slider"></span>
-
-                    </label>
-
-                </div>
-
-                <p class="access-desc">
-                    Aumenta el contraste de los textos para facilitar la lectura.
-                </p>
-
-            </div>
-
-        </DIV>
-
-        <DIV CLASS="notif-menu" id="notifMenu">
-
-            <div class="notif-header">
-                <h3>Notificaciones</h3>
-            </div>
-
-            <div class="notif-tabs">
-
-                <div class="notif-tab active" data-notiftab="todas">
-                    Todas
-                </div>
-
-                <div class="notif-tab" data-notiftab="noleidas">
-                    No leídas
-                </div>
-
-            </div>
-
-            <div class="notif-aviso" id="notifAviso">
-
-                <div class="notif-aviso-top">
-
-                    <div>
-
-                        <p class="notif-aviso-titulo">
-                            Las notificaciones de mensaje a la deriva estan activadas
-                        </p>
-
-                        <p class="notif-aviso-desc">
-                            Desactiva en caso que lo necesites
-                        </p>
-
-                    </div>
-
-                    <button class="notif-aviso-cerrar" id="notifAvisoCerrar">
-                        <i class="ion-md-close"></i>
-                    </button>
-
-                </div>
-
-                <div class="notif-aviso-btns">
-
-                    <button class="btn-notif-activar">
-                        Desactivar
-                    </button>
-
-                    <button class="btn-notif-ahora-no" id="notifAhoraNo">
-                        Ahora no
-                    </button>
-
-                </div>
-
-            </div>
-
-            <div class="notif-lista">
-
-                <div class="notif-grupo-titulo">
-
-                    <span>Nuevas</span>
-
-                    <a class="notif-ver-todo">
-                        Ver todo
-                    </a>
-
-                </div>
-
-                <div class="notif-item">
-
-                    <div class="notif-avatar">
-
-                        <img src="./resources/foto.jpg" alt="usuario">
-
-                        <span class="notif-badge notif-badge-insignia">
-                            <i class="ion-md-ribbon"></i>
-                        </span>
-
-                    </div>
-
-                    <div class="notif-texto">
-
-                        <p>
-                            <strong>¡Felicitaciones!</strong>
-                            Obtuviste una insignia de fan destacado.
-                        </p>
-
-                        <span class="notif-tiempo">
-                            2 días
-                        </span>
-
-                    </div>
-
-                    <span class="notif-dot"></span>
-
-                </div>
-
-                <div class="notif-item">
-
-                    <div class="notif-avatar">
-
-                        <img src="./resources/noticia1.png" alt="pagina">
-
-                        <span class="notif-badge notif-badge-campana">
-                            <i class="ion-md-notifications"></i>
-                        </span>
-
-                    </div>
-
-                    <div class="notif-texto">
-
-                        <p>
-                            <strong>Taste Buds with Yezi</strong>
-                            te invitó a que sigas su página.
-                        </p>
-
-                        <span class="notif-tiempo">
-                            2 días
-                        </span>
-
-                    </div>
-
-                    <span class="notif-dot"></span>
-
-                </div>
-
-                <div class="notif-grupo-titulo notif-grupo-anteriores">
-                    <span>Anteriores</span>
-                </div>
-
-                <div class="notif-item">
-
-                    <div class="notif-avatar">
-
-                        <img src="./resources/foto.jpg" alt="usuario">
-
-                        <span class="notif-badge notif-badge-insignia">
-                            <i class="ion-md-ribbon"></i>
-                        </span>
-
-                    </div>
-
-                    <div class="notif-texto">
-
-                        <p>
-                            <strong>¡Felicitaciones!</strong>
-                            Obtuviste una insignia de fan destacado.
-                        </p>
-
-                        <span class="notif-tiempo">
-                            3 días
-                        </span>
-
-                    </div>
-
-                    <span class="notif-dot"></span>
-
-                </div>
-
-                <div class="notif-item">
-
-                    <div class="notif-avatar">
-
-                        <img src="./resources/foto.jpg" alt="usuario">
-
-                        <span class="notif-badge notif-badge-personas">
-                            <i class="ion-md-people"></i>
-                        </span>
-
-                    </div>
-
-                    <div class="notif-texto">
-
-                        <p>
-                            Te damos la bienvenida a
-                            <strong>Personas que sé...</strong>
-                            Ahora puedes publicar contenido, conectarte...
-                        </p>
-
-                        <span class="notif-tiempo">
-                            5 días
-                        </span>
-
-                    </div>
-
-                    <span class="notif-dot"></span>
-
-                </div>
-
-            </div>
-
-        </DIV>
+        <?php if ($hayUsuario): ?>
+            <?php require __DIR__ . "/menu_usuario.php"; ?>
+        <?php endif; ?>
+
+        <?php if ($hayUsuario): ?>
+            <?php require __DIR__ . "/notificaciones_panel.php"; ?>
+        <?php endif; ?>
 
         <DIV CLASS="title">
 
@@ -413,24 +113,36 @@
 
             <div class="title-icons">
 
-                <i class="ion-md-notifications-outline"
-                   id="notifTrigger"
-                   onclick="document.getElementById('notifMenu').classList.toggle('active')">
-                </i>
+                <?php if ($hayUsuario): ?>
 
-                <i class="ion-md-mail-outline"></i>
+                    <i class="ion-md-notifications-outline" id="notifTrigger"></i>
 
-                <div class="profile"
-                     id="profileTrigger"
-                     onclick="document.getElementById('profileMenu').classList.toggle('active')">
-                    HO
-                </div>
+                    <i class="ion-md-mail-outline"></i>
+
+                    <div class="profile"
+                         id="profileTrigger" style="overflow:hidden;"
+                         onclick="document.getElementById('profileMenu').classList.toggle('active')">
+                        <?= avatarUsuario("headerAvatar","headerIniciales",$inicialesHeader,$v) ?>
+                    </div>
+
+                <?php else: ?>
+
+                    <div class="botones-sesion">
+                        <a href="login.php" class="btn-sesion">Iniciar sesión</a>
+                        <a href="register.php" class="btn-sesion btn-sesion-crear">Crear cuenta</a>
+                    </div>
+
+                <?php endif; ?>
 
             </div>
 
         </DIV>
 
        
+
+        <?php if ($hayUsuario): ?>
+            <?php require __DIR__ . "/crear_publicacion.php"; ?>
+        <?php endif; ?>
 
         <DIV CLASS="body">
 
@@ -458,12 +170,29 @@
 
                                 <p>
                                     <a href="verPublicacion.php?id=<?= (int)$publicaciones['id_pub'] ?>"
-                                    class="post-enlace">
-                                        <?= htmlspecialchars($publicaciones['fecha_pub']) ?>
+                                    class="post-enlace"
+                                    title="<?= htmlspecialchars($publicaciones['fecha_pub']) ?>">
+                                        <?= htmlspecialchars($publicaciones['hace']) ?>
                                     </a>
                                 </p>
 
                             </DIV>
+
+                            <?php if ($hayUsuario && (int) $publicaciones['id_usuario'] === $idSesion): ?>
+                                <div class="post-menu">
+                                    <button type="button" class="post-menu-btn" title="Opciones">
+                                        <i class="ion-md-more"></i>
+                                    </button>
+                                    <div class="post-menu-lista">
+                                        <button type="button" class="post-editar">
+                                            <i class="ion-md-create"></i> Editar
+                                        </button>
+                                        <button type="button" class="post-eliminar">
+                                            <i class="ion-md-trash"></i> Eliminar
+                                        </button>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
 
                         </DIV>
 
@@ -473,69 +202,47 @@
                             </div>
                         <?php endif; ?> 
 
-                        <?php if($publicaciones['media_src'] != null):?>
-                            <img src="<?= $publicaciones['media_src']?>" alt="no hay archivo multimedia">
-                        <?php endif;?>
+                        <?php if ($publicaciones['media_src'] !== ''): ?>
+                            <?php if ($publicaciones['es_video']): ?>
+                                <video src="<?= $publicaciones['media_src'] ?>" class="post-video" controls preload="metadata"></video>
+                            <?php else: ?>
+                                <img src="<?= $publicaciones['media_src'] ?>" alt="imagen de la publicación" class="post-img" loading="lazy">
+                            <?php endif; ?>
+                        <?php endif; ?>
                     
                         <DIV CLASS="post-actions">
-                            <span>
-                                <button class="iconos like_btn"><i class="ion-md-heart-empty like int"></i></button>
-                                <?= htmlspecialchars($publicaciones['likes'])?>
-                            </span>
-
-                            <span onclick="this.closest('.post').querySelector('.caja_com').classList.toggle('active')">
-
-                                <button class="iconos comment_btn"><i class="ion-md-chatbubbles comment int"></i></button>
-                            <?= htmlspecialchars($publicaciones['comentarios'])?>
-
-                            </span>
 
                             <span>
+                                <button type="button"
+                                        class="iconos like_btn"
+                                        data-liked="<?= !empty($publicaciones['dio_like']) ? '1' : '0' ?>">
+                                    <i class="ion-md-heart-empty like int"></i>
+                                </button>
+                                <span class="contador-likes"><?= (int) $publicaciones['likes'] ?></span>
+                            </span>
 
-                                <button class="iconos compartir_btn"><i class="ion-md-share share int"></i></button>
-                            <?= htmlspecialchars($publicaciones['compartidos'])?>
-
+                            <span onclick="this.closest('.post').querySelector('.form-comentario input').focus()">
+                                <button type="button" class="iconos comment_btn"><i class="ion-md-chatbubbles comment int"></i></button>
+                                <span class="contador-comentarios"><?= (int) $publicaciones['comentarios'] ?></span>
                             </span>
 
                             <span>
-
-                                <button class="iconos guardar_btn"><i class="ion-md-bookmark save int"></i>
-                                <?= htmlspecialchars($publicaciones['guardados'])?>
-
+                                <button type="button" class="iconos guardar_btn"><i class="ion-md-bookmark save int"></i></button>
+                                <?= (int) $publicaciones['guardados'] ?>
                             </span>
 
                         </DIV>
-                        <br>
-                        <DIV CLASS="lista-comentarios">
-                            <?php foreach ($comentarios as $comentario): ?>
-                                <div class="comentario">
-                                    <img src="<?= $comentario['foto_src'] ?>" alt="foto" class="foto">
-                                    <div>
-                                        <strong><?= htmlspecialchars($comentario['nombre']) ?></strong>
-                                        <span><?= htmlspecialchars($comentario['fechaC']) ?></span>
-                                        <p><?= htmlspecialchars($comentario['texto']) ?></p>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
 
-                            <?php if (empty($comentarios)): ?>
-                                <p>Aún no hay comentarios.</p>
-                            <?php endif; ?>
-                        </DIV>
-                        <FORM>
+                        <DIV CLASS="lista-comentarios" data-cargar="1"></DIV>
 
-                                <INPUT TYPE="text"
-                                    PLACEHOLDER="Escribe tu comentario"
-                                    CLASS="inputs">
-
-                            </FORM>
-                        
-
-                        <DIV CLASS="caja_com">
-
-                            
-
-                        </DIV>
+                        <FORM class="form-comentario">
+                            <INPUT TYPE="text"
+                                   name="texto"
+                                   maxlength="255"
+                                   autocomplete="off"
+                                   PLACEHOLDER="Escribe tu comentario"
+                                   CLASS="inputs">
+                        </FORM>
                         
                 </article>
                 
@@ -544,57 +251,21 @@
             </DIV>
             <DIV CLASS="right">
 
+                <?php if ($hayUsuario): ?>
                 <DIV CLASS="panel">
 
                     <div class="panel-title">
                         Sugerencias para ti
                     </div>
 
-                    <div class="suggestion">
+                    <div id="sugerenciasLista"></div>
 
-                        <div class="foto"></div>
+                    <p class="solicitudes-msg" id="solicitudesMensaje"></p>
 
-                        <div class="suggestion-info">
-
-                            <p>
-                                @usuario4
-                            </p>
-
-                            <p>
-                                Recomendado
-                            </p>
-
-                        </div>
-
-                        <button class="follow-btn">
-                            Seguir
-                        </button>
-
-                    </div>
-
-                    <div class="suggestion">
-
-                        <div class="foto"></div>
-
-                        <div class="suggestion-info">
-
-                            <p>
-                                @usuario5
-                            </p>
-
-                            <p>
-                                Recomendado
-                            </p>
-
-                        </div>
-
-                        <button class="follow-btn">
-                            Seguir
-                        </button>
-
-                    </div>
+                    <a class="ver-mas-sugerencias" href="sugerencias.php">Ver más sugerencias</a>
 
                 </DIV>
+                <?php endif; ?>
 
                 <DIV CLASS="panel">
 
@@ -740,13 +411,14 @@
 
                 <div class="historia-usuario">
 
-                    <img src="./resources/foto.jpg"
-                         alt="foto usuario">
+                    <img src="<?= $fotoUsuarioSrc ?>"
+                         alt="foto usuario"
+                         onerror="this.onerror=null; this.src='<?= $fotoPorDefecto ?>'">
 
                     <div>
 
                         <strong>
-                            @nombreUsuario
+                            @<?= h($tagHeader) ?>
                         </strong>
 
                         <span>
@@ -821,7 +493,7 @@
 
                 </div>
 
-                <!-- ===== FILTROS ===== -->
+                <!-- Filtros -->
 
                 <div class="historia-filtros"
                      id="historiaFiltros">
@@ -926,21 +598,31 @@
         <script src="./LIBS/jquery-4.0.0.min.js"></script>
        
         <script src="./LIBS/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+        <?php require __DIR__ . "/visor_publicacion.php"; ?>
+        <?php if ($hayUsuario): ?>
+            <?php require __DIR__ . "/editar_publicacion.php"; ?>
+        <?php else: ?>
+            <?php require __DIR__ . "/aviso_sesion.php"; ?>
+        <?php endif; ?>
+
         <SCRIPT SRC="./JS/buttons.js"></SCRIPT>
+        <script src="./JS/notificaciones.js"></script>
         <SCRIPT SRC="./JS/particulas.js"></SCRIPT>
         <SCRIPT SRC="./JS/deriva.js"></SCRIPT>
         <SCRIPT SRC="./JS/abrirPub.js"></SCRIPT>
+        <script src="./JS/media.js"></script>
         <script src="./JS/crearpub.js"></script>
         <SCRIPT SRC="./JS/stories.js"></SCRIPT>
         <SCRIPT SRC="./JS/contador.js"></SCRIPT>
+        <SCRIPT SRC="./JS/solicitudes.js"></SCRIPT>
         <SCRIPT SRC="./JS/funcionalidades.js"></SCRIPT>
         <script src="./JS/tema.js"></script>
          <SCRIPT SRC="./JS/interaccion.js"></SCRIPT>
+        <script src="./JS/visor.js"></script>
+        <script src="./JS/editarpub.js"></script>
     </BODY>
 
     <FOOTER>
     </FOOTER>
 
 </HTML>
-
-

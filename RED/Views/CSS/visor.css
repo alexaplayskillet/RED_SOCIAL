@@ -1,0 +1,120 @@
+/* ventana para ver la imagen completa con sus comentarios */
+.visor {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    background: rgba(5, 3, 12, 0.94);
+}
+
+.visor.activo {
+    display: flex;
+}
+
+body.visor-abierto {
+    overflow: hidden;
+}
+
+.visor-cerrar {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 1;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.visor-cerrar:hover {
+    background: rgba(255, 255, 255, 0.24);
+}
+
+.visor-imagen {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+    background: black;
+}
+
+.visor-imagen img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.visor-panel {
+    width: 400px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 18px 18px 14px;
+    background: #16112a;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.visor-panel .post-text {
+    margin-bottom: 12px;
+}
+
+.visor-panel .lista-comentarios {
+    flex: 1;
+    overflow-y: auto;
+    margin: 0;
+    padding: 14px 4px 14px 0;
+}
+
+.visor-panel .comentario-acciones {
+    gap: 2px 10px;
+    margin-left: 8px;
+}
+
+.visor-panel .visor-form {
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* en pantallas chicas la imagen va arriba y los comentarios abajo */
+@media (max-width: 800px) {
+    .visor.activo {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    .visor-imagen {
+        flex: none;
+        height: 50vh;
+        padding: 12px;
+    }
+
+    .visor-panel {
+        width: 100%;
+        flex: 1;
+        border-left: none;
+    }
+
+    .visor-panel .lista-comentarios {
+        overflow: visible;
+    }
+}

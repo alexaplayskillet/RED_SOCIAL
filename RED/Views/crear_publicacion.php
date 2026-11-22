@@ -42,44 +42,48 @@ $avatarPorDefecto = "data:image/svg+xml;utf8," . rawurlencode($svgAvatar);
 
             </div>
 
-            <form action="../Controllers/CrearPost.php" >
+            <form id="form-crear-publi" enctype="multipart/form-data">
 
-                <textarea
+                <textarea name="texto"
                     placeholder="¿Qué está pasando por tu mente?"
-                    maxlength="500"></textarea>
+                    maxlength="255"></textarea>
+
+                <input type="file"
+                       name="imagen"
+                       id="publi-imagen"
+                       accept="image/jpeg,image/png,image/gif,image/webp,video/mp4,video/webm,video/ogg"
+                       hidden>
+
+                <div class="crear-publi-preview" id="publi-preview" style="display:none;">
+                    <img alt="vista previa">
+                    <video controls></video>
+                    <button type="button" id="publi-quitar-imagen" title="Quitar foto o video">
+                        <i class="ion-md-close"></i>
+                    </button>
+                </div>
+
+                <p class="crear-publi-mensaje" id="publi-mensaje"></p>
 
                 <div class="crear-publi-footer">
 
                     <div class="crear-publi-opciones">
 
-                        <button type="button"
-                                title="Agregar foto">
-
+                        <button type="button" title="Agregar foto" id="publi-btn-foto">
                             <i class="ion-md-image"></i>
-
                         </button>
 
-                        <button type="button"
-                                title="Agregar video">
-
+                        <button type="button" title="Agregar video" id="publi-btn-video">
                             <i class="ion-md-videocam"></i>
-
                         </button>
 
-                        <button type="button"
-                                title="Agregar emoji">
-
+                        <button type="button" title="Agregar emoji">
                             <i class="ion-md-happy"></i>
-
                         </button>
 
                     </div>
 
-                    <button type="submit"
-                            class="btn-publicar">
-
+                    <button type="submit" class="btn-publicar">
                         Publicar
-
                     </button>
 
                 </div>

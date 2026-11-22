@@ -26,7 +26,7 @@
                     <i class="ion-md-options"></i> Accesibilidad
                 </li>
 
-                <li class="profile-menu-logout" onclick="window.location.href='login.php'">
+                <li class="profile-menu-logout" onclick="document.getElementById('profileMenu').classList.remove('active'); document.getElementById('confirmarSalir').classList.add('activo')">
                     <i class="ion-md-log-out"></i> Cerrar sesión
                 </li>
 
@@ -111,6 +111,28 @@
                 <p class="access-desc">
                     Aumenta el contraste de los textos para facilitar la lectura.
                 </p>
+
+            </div>
+
+        </DIV>
+
+        <!-- Confirmacion antes de cerrar sesion (usa los estilos de crearpub.css) -->
+        <DIV CLASS="confirmar-eliminar" id="confirmarSalir"
+             onclick="if (event.target === this) this.classList.remove('activo')">
+
+            <div class="confirmar-caja">
+
+                <h3>¿Cerrar sesión?</h3>
+
+                <p>Tendrás que volver a iniciar sesión para publicar, comentar y dar me gusta.</p>
+
+                <div class="confirmar-botones">
+                    <button type="button" class="confirmar-cancelar"
+                            onclick="document.getElementById('confirmarSalir').classList.remove('activo')">
+                        Cancelar
+                    </button>
+                    <a href="../Controllers/LogoutController.php" class="confirmar-aceptar">Cerrar sesión</a>
+                </div>
 
             </div>
 
