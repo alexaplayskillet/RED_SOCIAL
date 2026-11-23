@@ -11,3 +11,5 @@ UPDATE publicaciones set multimedia =
 load_file("C:/Users/Lenovo/Pictures/Screenshots/Captura de pantalla 2025-10-09 131050.png") wHERE id_pub = 1;
 
 INSERT INTO publicaciones(id_usuarioP, texto) VALUES (1, 'Mi segunda publicacion');
+
+SELECT * FROM likes;

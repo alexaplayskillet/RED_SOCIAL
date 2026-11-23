@@ -8,6 +8,10 @@ if (!isset($_SESSION["id_usuario"])) {
 require_once __DIR__ . "/../model/conexion.php";
 require_once __DIR__ . "/../model/UsuarioModelo.php";
 require_once __DIR__ . "/../Controllers/ShowOwnPostsController.php";
+require_once __DIR__ . "/../Controllers/EstLikesController.php";
+require_once __DIR__ . "/../Controllers/EstCommsController.php";
+require_once __DIR__ . "/../Controllers/EstPubsController.php";
+require_once __DIR__ . "/../Controllers/EstAmigosController.php";
 
 $modelo = new UsuarioModelo($conexion);
 $perfil = $modelo->obtenerPerfil((int) $_SESSION["id_usuario"]);
@@ -350,22 +354,22 @@ $fechaNac = $fecha->format("j") . " de " . $meses[(int) $fecha->format("n") - 1]
                     <div class="stats-cards">
                         <div class="stat-card">
                             <div class="stat-card-icon"><i class="ion-md-heart"></i></div>
-                            <div class="stat-card-valor" id="statLikes">0</div>
+                            <div class="stat-card-valor" id="statLikes"><?= (int)$likes ?></div>
                             <div class="stat-card-label">Me gusta recibidos</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-card-icon"><i class="ion-md-chatbubbles"></i></div>
-                            <div class="stat-card-valor" id="statComentarios">0</div>
+                            <div class="stat-card-valor" id="statComentarios"><?= (int)$comentarios ?></div>
                             <div class="stat-card-label">Comentarios recibidos</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-card-icon"><i class="ion-md-people"></i></div>
-                            <div class="stat-card-valor" id="statAmigosMes">0</div>
-                            <div class="stat-card-label">Amigos nuevos este mes</div>
+                            <div class="stat-card-valor" id="statAmigosMes"><?= (int)$cantAmi ?></div>
+                            <div class="stat-card-label">Amigos Totales</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-card-icon"><i class="ion-md-create"></i></div>
-                            <div class="stat-card-valor" id="statPostsMes">0</div>
+                            <div class="stat-card-valor" id="statPostsMes"><?= (int)$publis ?></div>
                             <div class="stat-card-label">Publicaciones este mes</div>
                         </div>
                     </div>
