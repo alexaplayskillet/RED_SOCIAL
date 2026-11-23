@@ -403,6 +403,7 @@ html.modo-claro .filtros-btn:hover {
     background: rgba(125, 96, 162, 0.8);
 }
 
+
 html.modo-claro .filtros-btn.active {
     background: linear-gradient(
         135deg,
@@ -1287,3 +1288,9 @@ html.modo-oscuro .Cpost {
     color: #f1eafa;
 }
 
+/* Evitar que el panel de filtros tenga fondo en modo claro */
+html.modo-claro .filtros-panel {
+    background: none;
+    border: none;
+    box-shadow: none;
+}
