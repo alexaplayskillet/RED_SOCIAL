@@ -396,6 +396,8 @@ $fechaNac = $fecha->format("j") . " de " . $meses[(int) $fecha->format("n") - 1]
                         <i class="ion-md-bar-chart"></i>
                         <p>Selecciona un tipo de reporte y presiona "Generar reporte" para ver los resultados.</p>
                     </div>
+
+                    <div class="reporte-resultado" id="reporteResultado"></div>
                 </div>
             </div>
 
@@ -543,6 +545,7 @@ $fechaNac = $fecha->format("j") . " de " . $meses[(int) $fecha->format("n") - 1]
         <script src="./JS/notificaciones.js"></script>
         <SCRIPT SRC="./JS/editar_perfil.js"></SCRIPT>
         <SCRIPT SRC="./JS/amigos.js"></SCRIPT>
+        <SCRIPT SRC="./JS/reportes.js"></SCRIPT>
         <SCRIPT SRC="./JS/galeria.js"></SCRIPT>
         <SCRIPT SRC="./JS/abrirPublicacion.js"></SCRIPT>
         <SCRIPT SRC="./JS/particulas.js"></SCRIPT>

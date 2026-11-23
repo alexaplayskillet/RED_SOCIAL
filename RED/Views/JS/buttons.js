@@ -199,23 +199,6 @@ document.querySelectorAll('.fotos-subtab').forEach(subtab => {
     });
 });
 
-//Reportes estadisticas
-document.getElementById('btnGenerarReporte')?.addEventListener('click', () => {
-    const tipoSeleccionado = document.getElementById('tipoReporte').value;
-
-    document.getElementById('reportePlaceholder').style.display = 'none';
-
-    document.querySelectorAll('.reporte-contenido').forEach(p => p.classList.remove('active'));
-    const panelElegido = document.querySelector(`[data-reporte-panel="${tipoSeleccionado}"]`);
-    if(panelElegido){
-        panelElegido.classList.add('active');
-
-        if(tipoSeleccionado === 'general' && typeof inicializarEstadisticas === 'function'){
-            inicializarEstadisticas();
-        }
-    }
-});
-
 //Notificaciones
 const notifMenu = document.getElementById('notifMenu');
 const notifTrigger = document.getElementById('notifTrigger');

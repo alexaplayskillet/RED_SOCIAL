@@ -1317,3 +1317,28 @@ html.modo-claro .amigo-card-mensaje:hover {
     background: rgba(184, 155, 233, 0.38);
     color: #ffffff;
 }
+
+
+/* Resultado del reporte */
+html.modo-claro .profile-page .reporte-titulo,
+html.modo-claro .profile-page .reporte-tabla {
+    color: #f1eafa;
+}
+
+html.modo-claro .profile-page .reporte-mensaje {
+    color: #d0c1e3;
+}
+
+html.modo-claro .profile-page .reporte-tabla-wrap,
+html.modo-claro .profile-page .reporte-tabla th,
+html.modo-claro .profile-page .reporte-tabla td {
+    border-color: rgba(200, 175, 240, 0.22);
+}
+
+html.modo-claro .profile-page .reporte-tabla th {
+    background: rgba(184, 155, 233, 0.2);
+}
+
+html.modo-claro .profile-page .reporte-tabla tbody tr:hover {
+    background: rgba(184, 155, 233, 0.12);
+}
