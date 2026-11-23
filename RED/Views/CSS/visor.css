@@ -118,3 +118,39 @@ body.visor-abierto {
         overflow: visible;
     }
 }
+
+#dlg-guardar{
+    background-color: #16112a;
+    color: white;
+    border: 0;
+    padding: 10px;
+}
+
+html.modo-claro #dlg-guardar{
+    background: #675086;
+}
+
+#dlg-guardar select, #dlg-guardar button{
+    background-color: #5a3074;
+    border: 0;
+    border-radius: 10px;
+}
+
+#dlg-guardar select:hover, #dlg-guardar button:hover{
+    background-color: #60c3ee;
+    transform: scale(1.1);
+    
+}
+
+html.modo-claro #dlg-guardar select, #dlg-guardar button{
+    background-color: #b078d4;
+    border: 0;
+    border-radius: 10px;
+}
+
+#dlg-guardar select:hover, #dlg-guardar button:hover{
+    background-color: #72c2e2;
+    transform: scale(1.1);
+    
+}
+

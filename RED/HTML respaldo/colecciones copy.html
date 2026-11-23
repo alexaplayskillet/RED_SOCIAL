@@ -93,8 +93,15 @@
                         <h2>Mis colecciones</h2>
                     </div>
 
+                    <form id="form-coleccion">
+                        <input type="text" name="nombre" placeholder="Nombre de la colección" maxlength="100" required>
+                        <input type="text" name="descripcion" placeholder="Descripción (opcional)" maxlength="255">
+                        <button type="submit">Crear colección</button>
+                    </form>
 
-                    <div class="lista-colecciones" id="listaColecciones">
+                    <div id="lista-colecciones"></div>
+                    <div id="guardados"></div>
+                    <!--<div class="lista-colecciones" id="listaColecciones">
 
                         <div class="coleccion-menu activo">
 
@@ -179,7 +186,7 @@
 
                         </div>
 
-                    </div>
+                    </div>-->
 
 
                     <button class="ver-mas">

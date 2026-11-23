@@ -45,8 +45,24 @@
 
             });
 
+            document.getElementById("crearColeccion").addEventListener("click", async function () {
+    const nombre = document.getElementById("nombreColeccion").value.trim();
+    if (nombre === "") return;
 
-            document.getElementById("crearColeccion").addEventListener("click", function() {
+    const json = await enviar("crear", {
+        nombre: emojiSeleccionado + " " + nombre,
+        descripcion: ""
+    });
+
+    if (json.ok) {
+        document.getElementById("nombreColeccion").value = "";
+        modal.classList.remove("mostrar");
+        cargarColecciones();
+    } else {
+        alert(json.error);
+    }
+});
+           /* document.getElementById("crearColeccion").addEventListener("click", function() {
 
                 const nombre = document
                     .getElementById("nombreColeccion")
@@ -92,7 +108,7 @@
 
                 modal.classList.remove("mostrar");
 
-            });
+            });*/
 
 
             const colecciones =

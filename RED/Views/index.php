@@ -76,7 +76,7 @@
                     <i class="ion-md-mail"></i> Chat
                 </li>
 
-                <li onclick="window.location.href='colecciones.html'">
+                <li onclick="window.location.href='colecciones.php'">
                     <i class="ion-md-bookmark"></i> Guardado
                 </li>
 
@@ -427,7 +427,7 @@
                             </span>
 
                             <span>
-                                <button type="button" class="iconos guardar_btn"><i class="ion-md-bookmark save int"></i></button>
+                                <button type="button" class="iconos guardar_btn btn-guardar" data-id-pub="<?= (int)$publicacion['id_pub'] ?>"><i class="ion-md-bookmark save int"></i></button>
                                 <?= (int) $publicacion['guardados'] ?>
                             </span>
 
@@ -452,7 +452,12 @@
                         
                 </article>
                     <?php endforeach; ?>
-                
+                <dialog id="dlg-guardar">
+                    <h3>Guardar en colección</h3>
+                    <select id="sel-coleccion"></select>
+                    <button id="btn-confirmar-guardar">Guardar</button>
+                    <button id="btn-cancelar-guardar">Cancelar</button>
+                </dialog>
            
             
             </DIV>
@@ -827,6 +832,8 @@
          <SCRIPT SRC="./JS/interaccion.js"></SCRIPT>
         <script src="./JS/visor.js"></script>
         <script src="./JS/editarpub.js"></script>
+        
+        <script src="./JS/guardar.js"></script>
     </BODY>
 
     <FOOTER>

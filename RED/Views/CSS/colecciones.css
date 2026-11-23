@@ -1017,3 +1017,55 @@ body {
         width: 100%;
     }
 }
+
+/* ===== Tarjetas de publicaciones guardadas (render dinámico) ===== */
+.imagen-publicacion video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+}
+
+.imagen-publicacion .sin-media {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    opacity: 0.35;
+}
+
+.imagen-publicacion .sin-media ion-icon {
+    font-size: 40px;
+}
+
+.datos-publicacion h3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+}
+
+.estado-vacio {
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-align: center;
+    opacity: 0.55;
+}
+
+.estado-vacio ion-icon {
+    font-size: 42px;
+}
+
+.estado-vacio p {
+    margin: 0;
+    font-size: 13px;
+}
+
