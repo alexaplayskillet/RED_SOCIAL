@@ -1295,3 +1295,25 @@ html.modo-claro .filtros-panel {
     box-shadow: none;
 }
 
+
+
+/* ===== MENSAJERIA DINAMICA ===== */
+html.modo-claro .chats li.activo {
+    background: rgba(184, 155, 233, 0.28);
+    border-color: rgba(200, 175, 240, 0.4);
+}
+
+html.modo-claro .conv .userinfo {
+    border-bottom-color: rgba(200, 175, 240, 0.22);
+}
+
+html.modo-claro .amigo-card-mensaje {
+    background: rgba(184, 155, 233, 0.22);
+    border-color: rgba(200, 175, 240, 0.4);
+    color: #f1eafa;
+}
+
+html.modo-claro .amigo-card-mensaje:hover {
+    background: rgba(184, 155, 233, 0.38);
+    color: #ffffff;
+}

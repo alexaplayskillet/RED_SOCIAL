@@ -71,7 +71,7 @@
                     <i class="ion-md-home"></i> Inicio
                 </li>
 
-                <li onclick="window.location.href='messages.html'">
+                <li onclick="window.location.href='messages.php'">
                     <i class="ion-md-mail"></i> Chat
                 </li>
 

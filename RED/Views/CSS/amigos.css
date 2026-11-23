@@ -83,3 +83,29 @@ html.modo-claro .editar-modal .btn-peligro{
     background: linear-gradient(135deg, #e0546d, #b8304f);
     color: #fff;
 }
+
+/* Boton "Enviar mensaje" de cada amigo */
+.amigo-card-mensaje{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 4px;
+    padding: 8px 10px;
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    border-radius: 10px;
+    background: rgba(0, 229, 255, 0.08);
+    color: #00e5ff;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+.amigo-card-mensaje:hover{
+    background: rgba(0, 229, 255, 0.18);
+    color: #00e5ff;
+    transform: translateY(-1px);
+}

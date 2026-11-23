@@ -189,3 +189,7 @@ CREATE TABLE guardados(
 
 
 ALTER TABLE publicaciones MODIFY multimedia MEDIUMBLOB;
+
+ALTER TABLE tableros ADD nombre VARCHAR(100) NOT NULL DEFAULT 'Sin nombre' AFTER id_usuarioT;
+
+ALTER TABLE guardados ADD CONSTRAINT uq_guardado UNIQUE (id_pubG, id_tableroG);

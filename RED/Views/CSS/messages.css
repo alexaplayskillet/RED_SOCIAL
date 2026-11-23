@@ -452,3 +452,167 @@ html, body {
     color: #00e5ff !important;
     font-size: 23px;
 }
+
+/* ===== MENSAJERIA DINAMICA ===== */
+
+/* Avatar con iniciales (la foto se encima si existe) */
+.chat-avatar {
+    position: relative;
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #a955f7, #00e5ff);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.chat-avatar img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.conv-avatar {
+    display: flex;
+}
+
+/* Lista de chats */
+.chats li {
+    cursor: pointer;
+}
+
+.chats li.activo {
+    background: rgba(0, 229, 255, 0.10);
+    border-color: rgba(0, 229, 255, 0.22);
+}
+
+.chat-datos {
+    flex: 1;
+    min-width: 0;
+}
+
+.chat-datos p {
+    margin: 0;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat-datos small {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat-hora {
+    align-self: flex-start;
+    font-size: 9px;
+    opacity: 0.5;
+    white-space: nowrap;
+}
+
+.chats-vacio {
+    display: none;
+    margin-top: 20px;
+    font-size: 12px;
+    text-align: center;
+    opacity: 0.55;
+}
+
+/* Conversacion */
+.conv .userinfo {
+    flex-shrink: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.conv-vacio {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 13px;
+    text-align: center;
+    opacity: 0.6;
+}
+
+.conv-vacio ion-icon {
+    font-size: 48px;
+}
+
+.conv.sin-chat .conv-vacio {
+    display: flex;
+}
+
+.conv.sin-chat .userinfo,
+.conv.sin-chat .mensajes,
+.conv.sin-chat .form-mensaje {
+    display: none;
+}
+
+.enviado p,
+.recibido p {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    margin: 0;
+}
+
+.mensaje-texto {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.mensaje-hora {
+    font-size: 9px;
+    opacity: 0.55;
+    white-space: nowrap;
+}
+
+.form-mensaje .inp:disabled {
+    opacity: 0.6;
+}
+
+.boton-enviar:disabled {
+    opacity: 0.5;
+    cursor: default;
+    transform: none;
+}
+
+/* Icono de inicio extra, solo se usa en movil */
+.menulat li.solo-movil {
+    display: none;
+}
+
+/* ===== MOVIL: el planeta alterna entre chats y conversacion ===== */
+@media (max-width: 768px) {
+    .menulat li.solo-movil {
+        display: flex;
+    }
+
+    .bodyy .chats {
+        width: calc(100% - 70px);
+        min-width: 0;
+        margin-left: 70px;
+    }
+
+    .bodyy.ver-chats .chats {
+        display: block;
+    }
+
+    .bodyy.ver-chats .conv {
+        display: none;
+    }
+}

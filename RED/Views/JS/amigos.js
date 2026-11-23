@@ -93,6 +93,12 @@
             mutuos.textContent = amigo.mutuos + (amigo.mutuos === 1 ? ' amigo en común' : ' amigos en común');
             tarjeta.appendChild(mutuos);
 
+            const mensaje = document.createElement('a');
+            mensaje.className = 'amigo-card-mensaje';
+            mensaje.href = 'messages.php?con=' + amigo.id;
+            mensaje.innerHTML = '<i class="ion-md-mail"></i> Enviar mensaje';
+            tarjeta.appendChild(mensaje);
+
             gridTodos.appendChild(tarjeta);
         });
 

@@ -51,7 +51,7 @@
     <ul class="menulist">
         
         <li class="active" onclick="window.location.href='index.php'"><i class="ion-md-home"></i> Inicio</li>
-         <li onclick="window.location.href='messages.html'"><i class="ion-md-mail"></i> Chat</li>
+         <li onclick="window.location.href='messages.php'"><i class="ion-md-mail"></i> Chat</li>
         <li><i class="ion-md-bookmark"></i> Guardados</li>
         <li onclick="window.location.href='Solicitudes.php'"><i class="ion-md-people"></i> Solicitudes de amistad</li>
     </ul>

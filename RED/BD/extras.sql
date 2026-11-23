@@ -13,3 +13,7 @@ load_file("C:/Users/Lenovo/Pictures/Screenshots/Captura de pantalla 2025-10-09 1
 INSERT INTO publicaciones(id_usuarioP, texto) VALUES (1, 'Mi segunda publicacion');
 
 SELECT * FROM likes;
+
+select * from guardados;
+
+select * from tableros;
