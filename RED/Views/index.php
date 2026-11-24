@@ -178,123 +178,7 @@
 
                 </DIV>
 
-                <!--<DIV CLASS="panel">
-
-                    <div class="panel-title">
-                        Historias
-                    </div>
-
-                    <div class="stories-carousel">
-
-                        <button class="stories-flecha stories-flecha-izq"
-                                title="Anterior">
-
-                            <i class="ion-md-arrow-back"></i>
-
-                        </button>
-
-                        <div class="crear-historia-fija"
-                             onclick="abrirHistoria()">
-
-                            <div class="story-crear-contenido">
-
-                                <div class="story-crear-icono">
-                                    <i class="ion-md-add"></i>
-                                </div>
-
-                                <span>
-                                    Crear historia
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                        <div class="stories" id="storiesContainer">
-
-                            <div class="story">
-
-                                <div class="story-ring">
-                                    <div></div>
-                                </div>
-
-                                <span>@usuario1</span>
-
-                            </div>
-
-                            <div class="story">
-
-                                <div class="story-ring">
-                                    <div></div>
-                                </div>
-
-                                <span>@usuario2</span>
-
-                            </div>
-
-                            <div class="story">
-
-                                <div class="story-ring">
-                                    <div></div>
-                                </div>
-
-                                <span>@usuario3</span>
-
-                            </div>
-
-                            <div class="story">
-
-                                <div class="story-ring">
-                                    <div></div>
-                                </div>
-
-                                <span>@usuario3</span>
-
-                            </div>
-
-                            <div class="story">
-
-                                <div class="story-ring">
-                                    <div></div>
-                                </div>
-
-                                <span>@usuario3</span>
-
-                            </div>
-
-                            <div class="story">
-
-                                <div class="story-ring">
-                                    <div></div>
-                                </div>
-
-                                <span>@usuario3</span>
-
-                            </div>
-
-                            <div class="story">
-
-                                <div class="story-ring">
-                                    <div></div>
-                                </div>
-
-                                <span>@usuario3</span>
-
-                            </div>
-
-                        </div>
-
-                        <button class="stories-flecha stories-flecha-der"
-                                title="Siguiente">
-
-                            <i class="ion-md-arrow-forward"></i>
-
-                        </button>
-
-                    </div>
-
-                </DIV>
--->
+         
                 <!-- Apartado filtrar publis funcionalidad 2 -->
 
                 <DIV CLASS="panel filtros-panel">
@@ -539,12 +423,12 @@
 
             </DIV>
 
-            <div id="botella-flotante"
+            <!--<div id="botella-flotante"
                  title="Mensaje a la deriva">
 
                 🍾
 
-            </div>
+            </div>-->
 
             <div id="mensaje-card">
 

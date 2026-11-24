@@ -166,7 +166,7 @@ $fechaNac = $fecha->format("j") . " de " . $meses[(int) $fecha->format("n") - 1]
                     <div class="profile-tab" data-tab="amigos"><i class="ion-md-people"></i> Amigos</div>
                     <div class="profile-tab" data-tab="galeria"><i class="ion-md-images"></i> Galería</div>
                     <div class="profile-tab" data-tab="estadisticas"><i class="ion-md-stats"></i> Estadísticas</div>
-                    <div class="profile-tab" data-tab="configuracion"><i class="ion-md-settings"></i> Configuración</div>
+                    <!--<div class="profile-tab" data-tab="configuracion"><i class="ion-md-settings"></i> Configuración</div>-->
                 </div>
             </div>
 
@@ -401,7 +401,7 @@ $fechaNac = $fecha->format("j") . " de " . $meses[(int) $fecha->format("n") - 1]
                 </div>
             </div>
 
-            <div class="tab-panel" id="tab-configuracion">
+            <!--<div class="tab-panel" id="tab-configuracion">
                 <div class="panel configuracion-panel-full">
 
                     <div class="configuracion-header">
@@ -446,7 +446,7 @@ $fechaNac = $fecha->format("j") . " de " . $meses[(int) $fecha->format("n") - 1]
                     </div>
 
                 </div>
-            </div>
+            </div>-->
 
         </DIV>
         <div class="editar-overlay" id="editarPerfilOverlay">

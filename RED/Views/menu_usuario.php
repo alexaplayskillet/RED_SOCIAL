@@ -18,9 +18,9 @@
 
             <ul class="profile-menu-list">
 
-                <li>
+                <!--<li>
                     <i class="ion-md-help-circle"></i> Ayuda
-                </li>
+                </li>-->
 
                 <li onclick="toggleAccessMenu(true)">
                     <i class="ion-md-options"></i> Accesibilidad
